@@ -1,0 +1,19 @@
+---
+import PageHeader from '../layout/PageHeader.astro';
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { SearchBox } from '../ui';
+import { articlesHero } from '../../content/articles-hub/hero';
+---
+
+<PageHeader
+  title={articlesHero.title}
+  description={articlesHero.description}
+  breadcrumb={articlesHero.breadcrumb}
+/>
+
+<Section spacing="sm" class="border-b border-gray-100">
+  <Container>
+    <SearchBox class="max-w-xl" />
+  </Container>
+</Section>

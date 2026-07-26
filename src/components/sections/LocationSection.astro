@@ -1,0 +1,31 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Button, SectionHeader } from '../ui';
+import { iconRegistry } from '../../lib/icons';
+import { locationHeader, addressLines, mapsHref } from '../../content/contact';
+
+const MapPinIcon = iconRegistry['map-pin'];
+---
+
+<Section>
+  <Container class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      <SectionHeader {...locationHeader} align="left" />
+      <address class="mt-6 not-italic text-base text-gray-700">
+        {addressLines.map((line) => <p>{line}</p>)}
+      </address>
+      <Button href={mapsHref ?? '#'} external disabled={!mapsHref} class="mt-6">
+        Buka di Google Maps
+      </Button>
+    </div>
+
+    <div class="flex aspect-video flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gray-200 px-6 text-center">
+      {MapPinIcon && <MapPinIcon size={28} class="text-gray-500" aria-hidden="true" />}
+      <p class="text-sm text-gray-700">{addressLines.join(', ')}</p>
+      <p class="text-xs text-gray-600">
+        Peta interaktif akan diaktifkan setelah lokasi diverifikasi di Google Maps.
+      </p>
+    </div>
+  </Container>
+</Section>

@@ -1,0 +1,38 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Button, SectionHeader } from '../ui';
+import { aboutPreview } from '../../content/homepage/about-preview';
+---
+
+<Section class="bg-gray-50">
+  <Container class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      <SectionHeader align="left" {...aboutPreview.header} />
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button
+          href={aboutPreview.primaryCTA.href}
+          variant={aboutPreview.primaryCTA.variant}
+          external={aboutPreview.primaryCTA.external}
+        >
+          {aboutPreview.primaryCTA.label}
+        </Button>
+        {aboutPreview.secondaryCTA && (
+          <Button
+            href={aboutPreview.secondaryCTA.href}
+            variant={aboutPreview.secondaryCTA.variant}
+            external={aboutPreview.secondaryCTA.external}
+          >
+            {aboutPreview.secondaryCTA.label}
+          </Button>
+        )}
+      </div>
+    </div>
+
+    <div class="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+      <p class="px-6 text-center text-sm text-gray-700">
+        [Foto profil/gedung madrasah akan diperbarui]
+      </p>
+    </div>
+  </Container>
+</Section>

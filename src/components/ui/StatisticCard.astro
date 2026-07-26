@@ -1,0 +1,18 @@
+---
+import type { Statistic } from '../../types';
+import Card from './Card.astro';
+
+interface Props extends Omit<Statistic, 'id'> {
+  id?: string;
+  class?: string;
+}
+
+const { label, value, suffix, id, class: className } = Astro.props;
+---
+
+<Card id={id} variant="bordered" class:list={['text-center', className]}>
+  <p class="text-3xl font-bold text-emerald-700 md:text-4xl">
+    {value}<span class="text-amber-600">{suffix}</span>
+  </p>
+  <p class="mt-2 text-sm font-medium text-gray-600">{label}</p>
+</Card>

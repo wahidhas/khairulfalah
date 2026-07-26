@@ -1,0 +1,33 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import {
+  AboutHeroSection,
+  HistorySection,
+  VisionMissionSection,
+  ValuesSection,
+  LeadershipSection,
+  TeachersPreviewSection,
+  AchievementsSection,
+  FinalCTASection,
+} from '../components/sections';
+import { aboutHero, aboutFinalCta } from '../content/about';
+import { buildBreadcrumbSchema } from '../lib/seo';
+
+const breadcrumbSchema = buildBreadcrumbSchema(aboutHero.breadcrumb, Astro.site);
+---
+
+<MainLayout
+  title="Tentang Kami"
+  description="Mengenal sejarah, visi misi, nilai-nilai, pimpinan, dan tenaga pendidik Madrasah Khairul Falah."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+
+  <AboutHeroSection />
+  <HistorySection />
+  <VisionMissionSection />
+  <ValuesSection />
+  <LeadershipSection />
+  <TeachersPreviewSection />
+  <AchievementsSection />
+  <FinalCTASection content={aboutFinalCta} />
+</MainLayout>

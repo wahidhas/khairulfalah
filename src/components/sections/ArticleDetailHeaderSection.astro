@@ -1,0 +1,64 @@
+---
+import Container from '../layout/Container.astro';
+import Section from '../layout/Section.astro';
+import { Badge, Breadcrumb } from '../ui';
+import type { ArticleEntry } from '../../lib/articles';
+import { categorySlug } from '../../lib/articles';
+import { formatDate } from '../../lib/date';
+import { formatReadingTime } from '../../lib/reading-time';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  article: ArticleEntry;
+  authorProfile?: CollectionEntry<'authors'>;
+  readingTimeMinutes: number;
+}
+
+const { article, authorProfile, readingTimeMinutes } = Astro.props;
+const { data } = article;
+
+const breadcrumb = [
+  { label: 'Beranda', href: '/' },
+  { label: 'Artikel', href: '/articles' },
+  { label: data.title, href: `/articles/${article.id}` },
+];
+---
+
+<header class="border-b border-gray-100 bg-gray-50 py-12 md:py-16">
+  <Container>
+    <div class="mb-4">
+      <Breadcrumb items={breadcrumb} />
+    </div>
+
+    <a href={`/articles/category/${categorySlug(data.category)}`} class="w-fit">
+      <Badge variant="secondary">{data.category}</Badge>
+    </a>
+
+    <h1 class="mt-4 text-h1 text-gray-900">{data.title}</h1>
+    <p class="mt-4 max-w-2xl text-lead text-gray-600">{data.description}</p>
+
+    <div class="mt-6 flex flex-wrap items-center gap-2 text-sm text-gray-600">
+      <span class="font-medium text-gray-900">{data.author}</span>
+      {authorProfile?.data.role && <span>&middot; {authorProfile.data.role}</span>}
+      <span aria-hidden="true">&middot;</span>
+      <time datetime={data.publishDate.toISOString()}>{formatDate(data.publishDate)}</time>
+      {data.updatedDate && (
+        <span class="text-gray-500">(Diperbarui {formatDate(data.updatedDate)})</span>
+      )}
+      <span aria-hidden="true">&middot;</span>
+      <span>{formatReadingTime(readingTimeMinutes)}</span>
+    </div>
+  </Container>
+</header>
+
+<Section spacing="sm">
+  <Container>
+    <div class="flex aspect-video items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+      {data.image.src ? (
+        <img src={data.image.src} alt={data.image.alt} loading="eager" class="h-full w-full object-cover" />
+      ) : (
+        <span class="px-6 text-center text-sm text-gray-600" aria-hidden="true">{data.image.alt || data.title}</span>
+      )}
+    </div>
+  </Container>
+</Section>

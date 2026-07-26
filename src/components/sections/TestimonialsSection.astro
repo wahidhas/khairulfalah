@@ -1,0 +1,23 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { TestimonialCard, SectionHeader } from '../ui';
+import { testimonialsHeader, testimonials } from '../../content/homepage/testimonials';
+---
+
+<Section>
+  <Container>
+    <SectionHeader {...testimonialsHeader} />
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {testimonials.map((testimonial) => (
+        <TestimonialCard
+          name={testimonial.name}
+          role={testimonial.role}
+          quote={testimonial.quote}
+          avatar={testimonial.avatar}
+          placeholder={testimonial.placeholder}
+        />
+      ))}
+    </div>
+  </Container>
+</Section>

@@ -1,0 +1,41 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import {
+  StudentLifeHeroSection,
+  DailyLifeSection,
+  LearningExperienceSection,
+  TahfizCharacterSection,
+  ProjectBasedLearningSection,
+  ExtracurricularSection,
+  GallerySection,
+  StudentLifeFAQSection,
+  StudentLifeCTASection,
+} from '../components/sections';
+import { studentLifeHero, studentLifeFaq } from '../content/student-life';
+import { buildBreadcrumbSchema, buildFAQSchema } from '../lib/seo';
+
+const breadcrumbSchema = studentLifeHero.breadcrumb
+  ? buildBreadcrumbSchema(studentLifeHero.breadcrumb, Astro.site)
+  : null;
+const faqSchema = buildFAQSchema(studentLifeFaq);
+---
+
+<MainLayout
+  title="Kehidupan Madrasah"
+  description="Lihat bagaimana siswa belajar, bertumbuh, beribadah, dan berkarya di Madrasah Khairul Falah."
+>
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  )}
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+
+  <StudentLifeHeroSection />
+  <DailyLifeSection />
+  <LearningExperienceSection />
+  <TahfizCharacterSection />
+  <ProjectBasedLearningSection />
+  <ExtracurricularSection />
+  <GallerySection />
+  <StudentLifeFAQSection />
+  <StudentLifeCTASection />
+</MainLayout>

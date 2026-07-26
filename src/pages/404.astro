@@ -1,0 +1,26 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Container from '../components/layout/Container.astro';
+import Section from '../components/layout/Section.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<MainLayout
+  title="Halaman Tidak Ditemukan"
+  description="Halaman yang Anda cari tidak dapat ditemukan."
+  noindex
+>
+  <Section class="min-h-[60vh]">
+    <Container class="flex flex-col items-center gap-6 text-center">
+      <span class="text-sm font-semibold uppercase tracking-wide text-emerald-700">404</span>
+      <h1 class="max-w-xl text-3xl font-bold text-gray-900 md:text-4xl">Halaman Tidak Ditemukan</h1>
+      <p class="max-w-md text-base text-gray-600">
+        Maaf, halaman yang Anda cari tidak tersedia atau sudah dipindahkan.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="/">Kembali ke Beranda</Button>
+        <Button href="/ppdb" variant="secondary">Daftar PPDB</Button>
+      </div>
+    </Container>
+  </Section>
+</MainLayout>

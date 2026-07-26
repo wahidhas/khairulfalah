@@ -1,0 +1,41 @@
+---
+import type { PersonProfile } from '../../types';
+import { iconRegistry } from '../../lib/icons';
+import Card from './Card.astro';
+import Badge from './Badge.astro';
+
+interface Props extends Omit<PersonProfile, 'id'> {
+  id?: string;
+  class?: string;
+}
+
+const { name, role, photo, bio, placeholder, id, class: className } = Astro.props;
+
+const UserIcon = iconRegistry['user-round'];
+---
+
+<Card id={id} variant="bordered" class:list={['flex flex-col items-center gap-3 text-center', className]}>
+  {placeholder && <Badge variant="gray">Placeholder</Badge>}
+  {photo?.src ? (
+    <img
+      src={photo.src}
+      alt={photo.alt}
+      width="96"
+      height="96"
+      loading="lazy"
+      class="h-24 w-24 rounded-full object-cover"
+    />
+  ) : (
+    <span
+      class="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-500"
+      aria-hidden="true"
+    >
+      <UserIcon size={40} />
+    </span>
+  )}
+  <div>
+    <p class="text-base font-semibold text-gray-900">{name}</p>
+    <p class="text-sm text-emerald-700">{role}</p>
+  </div>
+  {bio && <p class="text-sm text-gray-600">{bio}</p>}
+</Card>

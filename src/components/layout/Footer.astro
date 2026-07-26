@@ -1,0 +1,60 @@
+---
+import Container from './Container.astro';
+import { footerNavGroups, siteConfig, contactConfig } from '../../config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-gray-100 bg-gray-50">
+  <Container class="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-8">
+    <div>
+      <a
+        href="/"
+        class="rounded-lg text-lg font-bold text-emerald-700 focus-ring"
+      >
+        {siteConfig.siteName}
+      </a>
+      <p class="mt-4 max-w-sm text-sm leading-relaxed text-gray-600">{siteConfig.description}</p>
+    </div>
+
+    {footerNavGroups.map((group) => (
+      <div>
+        <h2 class="text-sm font-semibold text-gray-900">{group.title}</h2>
+        <ul class="mt-4 flex flex-col gap-3">
+          {group.items.map((item) => (
+            <li>
+              {item.comingSoon ? (
+                <span class="text-sm text-gray-500" aria-label={`${item.label} (segera hadir)`}>
+                  {item.label}
+                </span>
+              ) : (
+                <a
+                  href={item.href}
+                  class="rounded text-sm text-gray-600 hover:text-emerald-700 focus-ring"
+                >
+                  {item.label}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+
+    <div>
+      <h2 class="text-sm font-semibold text-gray-900">Kontak</h2>
+      <ul class="mt-4 flex flex-col gap-3 text-sm text-gray-600">
+        <li>{contactConfig.address}</li>
+        <li>{contactConfig.whatsapp}</li>
+        <li>{contactConfig.email}</li>
+        <li>{contactConfig.officeHours}</li>
+      </ul>
+    </div>
+  </Container>
+
+  <div class="border-t border-gray-200">
+    <Container class="flex flex-col items-center justify-between gap-2 py-6 text-sm text-gray-500 sm:flex-row">
+      <p>&copy; {year} {siteConfig.copyright}</p>
+    </Container>
+  </div>
+</footer>

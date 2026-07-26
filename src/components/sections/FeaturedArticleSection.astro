@@ -1,0 +1,54 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Card, Badge, Button, SectionHeader } from '../ui';
+import type { ArticleEntry } from '../../lib/articles';
+import { categorySlug } from '../../lib/articles';
+import { formatDate } from '../../lib/date';
+import { calculateReadingTime, formatReadingTime } from '../../lib/reading-time';
+
+interface Props {
+  article: ArticleEntry;
+}
+
+const { article } = Astro.props;
+const { data, body } = article;
+const readingTime = calculateReadingTime(body ?? '');
+const href = `/articles/${article.id}`;
+---
+
+<Section spacing="sm">
+  <Container>
+    <SectionHeader badge="Sorotan" title="Artikel Utama" />
+
+    <Card variant="elevated" padding="lg" class="mt-8 grid gap-8 lg:grid-cols-2 lg:items-center">
+      <div class="flex aspect-video items-center justify-center overflow-hidden rounded-xl bg-gray-200">
+        {data.image.src ? (
+          <img src={data.image.src} alt={data.image.alt} loading="eager" class="h-full w-full object-cover" />
+        ) : (
+          <span class="text-sm text-gray-600" aria-hidden="true">{data.category}</span>
+        )}
+      </div>
+
+      <div class="text-left">
+        <a href={`/articles/category/${categorySlug(data.category)}`} class="w-fit">
+          <Badge variant="secondary">{data.category}</Badge>
+        </a>
+        <h3 class="mt-4 text-h3 text-gray-900">
+          <a href={href} class="hover:text-emerald-700">{data.title}</a>
+        </h3>
+        <p class="mt-3 text-base text-gray-600">{data.description}</p>
+
+        <div class="mt-4 flex flex-wrap items-center gap-2 text-sm text-gray-500">
+          <span>{data.author}</span>
+          <span aria-hidden="true">&middot;</span>
+          <time datetime={data.publishDate.toISOString()}>{formatDate(data.publishDate)}</time>
+          <span aria-hidden="true">&middot;</span>
+          <span>{formatReadingTime(readingTime)}</span>
+        </div>
+
+        <Button href={href} variant="primary" class="mt-6">Baca Selengkapnya</Button>
+      </div>
+    </Card>
+  </Container>
+</Section>

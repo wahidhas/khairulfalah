@@ -1,0 +1,27 @@
+---
+// TODO(Sprint 9+): komponen placeholder, belum fungsional. Aktifkan search engine artikel
+// (mis. client-side index atau endpoint pencarian) lalu ganti `disabled` + wiring form di sini.
+import { iconRegistry } from '../../lib/icons';
+
+interface Props {
+  id?: string;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
+
+const SearchIcon = iconRegistry['search'];
+---
+
+<div id={id} class:list={['relative', className]}>
+  <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400" aria-hidden="true">
+    {SearchIcon && <SearchIcon size={18} />}
+  </span>
+  <input
+    type="search"
+    disabled
+    aria-label="Cari artikel (segera hadir)"
+    placeholder="Cari artikel... (segera hadir)"
+    class="w-full cursor-not-allowed rounded-lg border border-gray-200 bg-gray-50 py-2.5 pl-10 pr-4 text-sm text-gray-500 placeholder:text-gray-400"
+  />
+</div>

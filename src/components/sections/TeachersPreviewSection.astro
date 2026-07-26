@@ -1,0 +1,33 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { PersonCard, Button, SectionHeader } from '../ui';
+import { teachersHeader, teachersPreview, teachersCta } from '../../content/about';
+---
+
+<Section class="bg-gray-50">
+  <Container>
+    <SectionHeader {...teachersHeader} />
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      {teachersPreview.map((person) => (
+        <PersonCard
+          name={person.name}
+          role={person.role}
+          photo={person.photo}
+          bio={person.bio}
+          placeholder={person.placeholder}
+        />
+      ))}
+    </div>
+    <div class="mt-10 flex justify-center">
+      {/*
+        Halaman /teachers belum dibuat (di luar scope Sprint 10 — "jangan membuat halaman
+        baru"). href sengaja TIDAK dikirim ke Button (tanpa href, Button merender <button>
+        native, bukan <a>) agar tidak ada href rusak yang bisa di-crawl mesin pencari/audit link.
+      */}
+      <Button variant={teachersCta.variant} disabled ariaLabel={`${teachersCta.label} (segera hadir)`}>
+        {teachersCta.label}
+      </Button>
+    </div>
+  </Container>
+</Section>

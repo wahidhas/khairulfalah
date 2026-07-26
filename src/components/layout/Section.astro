@@ -1,0 +1,29 @@
+---
+type Spacing = 'sm' | 'md' | 'lg';
+
+interface Props {
+  spacing?: Spacing;
+  as?: string;
+  id?: string;
+  class?: string;
+}
+
+const props = Astro.props;
+const spacing: Spacing = props.spacing ?? 'md';
+const Tag = props.as ?? 'section';
+const id = props.id;
+const className = props.class;
+
+// Seluruh nilai dari skala 4px resmi DESIGN_SYSTEM.md (4/8/12/16/20/24/32/40/48/64/80/96/128).
+const spacings: Record<Spacing, string> = {
+  sm: 'py-8 md:py-12 lg:py-16',
+  md: 'py-16 md:py-20 lg:py-24',
+  lg: 'py-20 md:py-24 lg:py-32',
+};
+
+const spacingClass = spacings[spacing];
+---
+
+<Tag id={id} class:list={[spacingClass, className]}>
+  <slot />
+</Tag>

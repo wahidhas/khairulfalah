@@ -1,0 +1,127 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import { siteConfig, brandingConfig, seoConfig } from '../config';
+import { buildPageTitle, getCanonicalUrl } from '../lib/seo';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = seoConfig.defaultDescription,
+  image = seoConfig.defaultImage,
+  noindex = false,
+} = Astro.props;
+
+const pageTitle = buildPageTitle(title);
+const canonicalUrl = getCanonicalUrl(Astro.site, Astro.url.pathname);
+const imageUrl = image ? getCanonicalUrl(Astro.site, image) : undefined;
+
+/**
+ * Analytics (Sprint 10) — ID dari environment variable, TIDAK PERNAH hardcode. Script hanya
+ * dirender bila env var-nya benar-benar diisi (kosong di lokal/dev = tidak ada script sama
+ * sekali). Lihat .env.example & ANALYTICS_SETUP.md untuk cara mengisinya.
+ */
+const gaId = import.meta.env.PUBLIC_GA_ID;
+const clarityId = import.meta.env.PUBLIC_CLARITY_ID;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : seoConfig.robots} />
+
+    <meta property="og:type" content={seoConfig.openGraphType} />
+    <meta property="og:site_name" content={siteConfig.siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={siteConfig.locale} />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+
+    <meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
+
+    <link rel="icon" type="image/svg+xml" href={brandingConfig.favicon} />
+    <link rel="icon" href={brandingConfig.faviconIco} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/*
+      Font stylesheet dimuat non-blocking (preload + swap onload) — audit performa Sprint 10
+      menemukan <link rel="stylesheet"> biasa menahan First Contentful Paint (render-blocking
+      request, ~1.5-1.7s pada halaman dengan teks banyak). Pola ini standar (web.dev), tidak
+      mengubah font/perilaku visual, hanya cara pemuatannya. <noscript> tetap sebagai fallback.
+    */}
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    {gaId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} is:inline></script>
+        <script define:vars={{ gaId }} is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
+
+    {clarityId && (
+      <script define:vars={{ clarityId }} is:inline>
+        (function (c, l, a, r, i, t, y) {
+          c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+          t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+          y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, 'clarity', 'script', clarityId);
+      </script>
+    )}
+  </head>
+  <body class="flex min-h-screen flex-col bg-white font-sans text-gray-900">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-emerald-600 focus:px-4 focus:py-2 focus:text-white"
+    >
+      Lewati ke konten utama
+    </a>
+
+    <Navbar />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

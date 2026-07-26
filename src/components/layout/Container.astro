@@ -1,0 +1,29 @@
+---
+type Size = 'narrow' | 'default' | 'wide' | 'full';
+
+interface Props {
+  size?: Size;
+  as?: string;
+  id?: string;
+  class?: string;
+}
+
+const props = Astro.props;
+const size: Size = props.size ?? 'default';
+const Tag = props.as ?? 'div';
+const id = props.id;
+const className = props.class;
+
+const sizes: Record<Size, string> = {
+  narrow: 'max-w-3xl',
+  default: 'max-w-[1280px]',
+  wide: 'max-w-[1440px]',
+  full: 'max-w-none',
+};
+
+const sizeClass = sizes[size];
+---
+
+<Tag id={id} class:list={['mx-auto w-full px-4 md:px-6 lg:px-8', sizeClass, className]}>
+  <slot />
+</Tag>

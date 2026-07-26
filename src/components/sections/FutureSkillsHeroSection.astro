@@ -1,0 +1,55 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Button, SectionHeader, Breadcrumb } from '../ui';
+import { futureSkillsHero } from '../../content/future-skills';
+---
+
+<Section class="bg-gray-50">
+  <Container class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      {futureSkillsHero.breadcrumb && (
+        <div class="mb-4">
+          <Breadcrumb items={futureSkillsHero.breadcrumb} />
+        </div>
+      )}
+      <SectionHeader
+        as="h1"
+        align="left"
+        title={futureSkillsHero.header.title}
+        description={futureSkillsHero.header.description}
+      />
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button
+          href={futureSkillsHero.primaryCTA.href}
+          variant={futureSkillsHero.primaryCTA.variant}
+          external={futureSkillsHero.primaryCTA.external}
+        >
+          {futureSkillsHero.primaryCTA.label}
+        </Button>
+        {futureSkillsHero.secondaryCTA && (
+          <Button
+            href={futureSkillsHero.secondaryCTA.href}
+            variant={futureSkillsHero.secondaryCTA.variant}
+            external={futureSkillsHero.secondaryCTA.external}
+          >
+            {futureSkillsHero.secondaryCTA.label}
+          </Button>
+        )}
+      </div>
+    </div>
+
+    <div class="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+      {futureSkillsHero.image.src ? (
+        <img
+          src={futureSkillsHero.image.src}
+          alt={futureSkillsHero.image.alt}
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      ) : (
+        <p class="px-6 text-center text-sm text-gray-700">{futureSkillsHero.image.alt}</p>
+      )}
+    </div>
+  </Container>
+</Section>

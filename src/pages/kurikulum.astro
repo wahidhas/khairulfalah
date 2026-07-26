@@ -1,0 +1,41 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import {
+  CurriculumHeroSection,
+  PhilosophySection,
+  GraduateProfileSection,
+  LearningDomainsSection,
+  LearningApproachSection,
+  ReadinessFrameworkSection,
+  WeeklyLearningSection,
+  CurriculumFAQSection,
+  CurriculumCTASection,
+} from '../components/sections';
+import { curriculumHero, curriculumFaq } from '../content/curriculum';
+import { buildBreadcrumbSchema, buildFAQSchema } from '../lib/seo';
+
+const breadcrumbSchema = curriculumHero.breadcrumb
+  ? buildBreadcrumbSchema(curriculumHero.breadcrumb, Astro.site)
+  : null;
+const faqSchema = buildFAQSchema(curriculumFaq);
+---
+
+<MainLayout
+  title="Kurikulum & KFLF"
+  description="Kurikulum Berbasis Cinta dan Khairul Falah Learning Framework (KFLF) — kurikulum madrasah modern yang membentuk karakter dan kompetensi masa depan siswa di Bekasi."
+>
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  )}
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+
+  <CurriculumHeroSection />
+  <PhilosophySection />
+  <GraduateProfileSection />
+  <LearningDomainsSection />
+  <LearningApproachSection />
+  <ReadinessFrameworkSection />
+  <WeeklyLearningSection />
+  <CurriculumFAQSection />
+  <CurriculumCTASection />
+</MainLayout>

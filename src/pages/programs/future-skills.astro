@@ -1,0 +1,39 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import {
+  FutureSkillsHeroSection,
+  WhyFutureSkillsSection,
+  SkillsGridSection,
+  ProgramsSection,
+  ProjectsSection,
+  LearningJourneySection,
+  FutureSkillsFAQSection,
+  FutureSkillsCTASection,
+} from '../../components/sections';
+import { futureSkillsHero, futureSkillsFaq } from '../../content/future-skills';
+import { buildBreadcrumbSchema, buildFAQSchema } from '../../lib/seo';
+
+const breadcrumbSchema = futureSkillsHero.breadcrumb
+  ? buildBreadcrumbSchema(futureSkillsHero.breadcrumb, Astro.site)
+  : null;
+const faqSchema = buildFAQSchema(futureSkillsFaq);
+---
+
+<MainLayout
+  title="Future Skills Academy"
+  description="Program AI, Coding, Robotics, Entrepreneurship, dan keterampilan masa depan untuk siswa Madrasah Khairul Falah."
+>
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  )}
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+
+  <FutureSkillsHeroSection />
+  <WhyFutureSkillsSection />
+  <SkillsGridSection />
+  <ProgramsSection />
+  <ProjectsSection />
+  <LearningJourneySection />
+  <FutureSkillsFAQSection />
+  <FutureSkillsCTASection />
+</MainLayout>

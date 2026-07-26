@@ -1,0 +1,59 @@
+---
+import Container from './Container.astro';
+import MobileMenu from './MobileMenu.astro';
+import Button from '../ui/Button.astro';
+import { iconRegistry } from '../../lib/icons';
+import { mainNavItems, navCta, siteConfig } from '../../config';
+
+const Menu = iconRegistry.menu;
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur">
+  <Container class="flex h-16 items-center justify-between md:h-20">
+    <a
+      href="/"
+      class="rounded-lg text-lg font-bold text-emerald-700 focus-ring md:text-xl"
+    >
+      {siteConfig.siteName}
+    </a>
+
+    <nav aria-label="Navigasi utama" class="hidden items-center gap-8 lg:flex">
+      <ul class="flex items-center gap-6">
+        {mainNavItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={[
+                'rounded-lg text-sm font-medium transition-colors hover:text-emerald-700 focus-ring',
+                isActive(item.href) ? 'text-emerald-700' : 'text-gray-700',
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <Button href={navCta.href} size="sm">{navCta.label}</Button>
+    </nav>
+
+    <button
+      type="button"
+      id="mobile-menu-trigger"
+      aria-haspopup="dialog"
+      aria-controls="mobile-menu"
+      aria-label="Buka menu navigasi"
+      class="inline-flex items-center justify-center rounded-lg p-2 text-gray-700 hover:bg-gray-100 focus-ring lg:hidden"
+    >
+      <Menu size={24} aria-hidden="true" />
+    </button>
+  </Container>
+</header>
+
+<MobileMenu items={mainNavItems} cta={navCta} />

@@ -1,0 +1,52 @@
+---
+import type { SectionHeader as SectionHeaderContent } from '../../types';
+import Badge from './Badge.astro';
+
+type Align = 'center' | 'left';
+
+interface Props extends SectionHeaderContent {
+  as?: 'h1' | 'h2';
+  align?: Align;
+  invert?: boolean;
+  id?: string;
+  class?: string;
+}
+
+const props = Astro.props;
+const { badge, title, subtitle, description } = props;
+const Tag = props.as ?? 'h2';
+const align: Align = props.align ?? 'center';
+const invert = props.invert ?? false;
+const id = props.id;
+const className = props.class;
+
+const alignClasses: Record<Align, string> = {
+  center: 'text-center',
+  left: 'text-left',
+};
+
+const descriptionAlignClasses: Record<Align, string> = {
+  center: 'mx-auto',
+  left: '',
+};
+
+const titleColor = invert ? 'text-white' : 'text-gray-900';
+const subtitleColor = invert ? 'text-amber-300' : 'text-emerald-700';
+const descriptionColor = invert ? 'text-emerald-50' : 'text-gray-600';
+const titleSize = Tag === 'h1' ? 'text-h1' : 'text-h2';
+---
+
+<div id={id} class:list={[alignClasses[align], className]}>
+  {badge && (
+    <Badge variant={invert ? 'gray' : 'warning'} class="mb-4">
+      {badge}
+    </Badge>
+  )}
+  <Tag class:list={[titleSize, titleColor]}>{title}</Tag>
+  {subtitle && <p class:list={['mt-2 text-base font-medium', subtitleColor]}>{subtitle}</p>}
+  {description && (
+    <p class:list={['mt-4 max-w-2xl text-base', descriptionColor, descriptionAlignClasses[align]]}>
+      {description}
+    </p>
+  )}
+</div>

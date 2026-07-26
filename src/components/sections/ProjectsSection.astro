@@ -1,0 +1,25 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Card, IconBox, Badge, SectionHeader } from '../ui';
+import { projectsHeader, projects } from '../../content/future-skills';
+---
+
+<Section class="bg-gray-50">
+  <Container>
+    <SectionHeader {...projectsHeader} />
+    <Grid cols="1-2-3" class="mt-10">
+      {projects.map((project) => (
+        <Card variant="bordered" class="flex flex-col items-start gap-3 text-left">
+          {project.placeholder && <Badge variant="gray">Contoh Project</Badge>}
+          <IconBox icon={project.icon} color="emerald" />
+          <div>
+            <h3 class="text-base font-semibold text-gray-900">{project.title}</h3>
+            <p class="mt-2 text-sm text-gray-600">{project.description}</p>
+          </div>
+        </Card>
+      ))}
+    </Grid>
+  </Container>
+</Section>

@@ -1,0 +1,24 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Card, Badge, SectionHeader } from '../ui';
+import { achievementsHeader, achievements } from '../../content/about';
+---
+
+<Section>
+  <Container>
+    <SectionHeader {...achievementsHeader} />
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {achievements.map((item) => (
+        <Card variant="bordered" class="flex flex-col items-start gap-3 text-left">
+          {item.placeholder && <Badge variant="gray">Placeholder</Badge>}
+          <div>
+            <h3 class="text-base font-semibold text-gray-900">{item.title}</h3>
+            {item.year && <p class="mt-1 text-xs text-gray-600">{item.year}</p>}
+            <p class="mt-2 text-sm text-gray-600">{item.description}</p>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Container>
+</Section>

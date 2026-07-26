@@ -1,0 +1,22 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Card, IconBox, SectionHeader } from '../ui';
+import { philosophyHeader, philosophyPillars } from '../../content/curriculum';
+---
+
+<Section>
+  <Container>
+    <SectionHeader {...philosophyHeader} />
+    <Grid cols="1-2-4" class="mt-10">
+      {philosophyPillars.map((pillar) => (
+        <Card variant="elevated" class="text-left">
+          <IconBox icon={pillar.icon} color="emerald" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">{pillar.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{pillar.description}</p>
+        </Card>
+      ))}
+    </Grid>
+  </Container>
+</Section>

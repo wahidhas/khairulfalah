@@ -1,0 +1,22 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Card, IconBox, SectionHeader } from '../ui';
+import { skillsHeader, skills } from '../../content/future-skills';
+---
+
+<Section class="bg-gray-50">
+  <Container>
+    <SectionHeader {...skillsHeader} />
+    <Grid cols="1-2-3" class="mt-10">
+      {skills.map((skill) => (
+        <Card variant="bordered" class="text-left">
+          <IconBox icon={skill.icon} color={skill.color as 'emerald' | 'amber' | 'gray'} />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">{skill.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{skill.description}</p>
+        </Card>
+      ))}
+    </Grid>
+  </Container>
+</Section>

@@ -1,0 +1,28 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Card, SectionHeader } from '../ui';
+import { iconRegistry } from '../../lib/icons';
+import { requirementsHeader, requirements } from '../../content/ppdb';
+
+const CheckIcon = iconRegistry['circle-check-big'];
+---
+
+<Section>
+  <Container size="narrow">
+    <SectionHeader {...requirementsHeader} />
+    <Card variant="bordered" padding="lg" class="mt-10">
+      <ul class="flex flex-col gap-4">
+        {requirements.map((item) => (
+          <li class="flex items-start gap-3">
+            <CheckIcon size={20} class="mt-0.5 shrink-0 text-emerald-700" aria-hidden="true" />
+            <div>
+              <p class="text-base font-medium text-gray-900">{item.label}</p>
+              {item.note && <p class="mt-1 text-sm text-gray-600">{item.note}</p>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Card>
+  </Container>
+</Section>

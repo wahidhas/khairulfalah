@@ -1,0 +1,37 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { SectionHeader, ArticleCard } from '../ui';
+import type { ArticleEntry } from '../../lib/articles';
+import { categorySlug } from '../../lib/articles';
+import { calculateReadingTime } from '../../lib/reading-time';
+
+interface Props {
+  articles: ArticleEntry[];
+}
+
+const { articles } = Astro.props;
+---
+
+{articles.length > 0 && (
+  <Section spacing="sm" class="bg-gray-50">
+    <Container>
+      <SectionHeader badge="Terkait" title="Artikel Terkait" />
+      <Grid cols="1-2-3" class="mt-8">
+        {articles.map((article) => (
+          <ArticleCard
+            href={`/articles/${article.id}`}
+            title={article.data.title}
+            description={article.data.description}
+            category={article.data.category}
+            categoryHref={`/articles/category/${categorySlug(article.data.category)}`}
+            publishDate={article.data.publishDate}
+            readingTimeMinutes={calculateReadingTime(article.body ?? '')}
+            image={article.data.image}
+          />
+        ))}
+      </Grid>
+    </Container>
+  </Section>
+)}

@@ -1,0 +1,39 @@
+---
+import IconBox from './IconBox.astro';
+import Button from './Button.astro';
+
+interface Props {
+  icon?: string;
+  title: string;
+  description?: string;
+  retryLabel?: string;
+  retryHref?: string;
+  id?: string;
+  class?: string;
+}
+
+const {
+  icon = 'triangle-alert',
+  title,
+  description,
+  retryLabel,
+  retryHref,
+  id,
+  class: className,
+} = Astro.props;
+
+// Situs ini sepenuhnya statis (belum ada fetch data sisi klien), jadi "retry" yang benar-benar
+// fungsional tanpa JavaScript tambahan adalah memuat ulang halaman saat ini.
+const fallbackRetryHref = Astro.url.pathname;
+---
+
+<div id={id} class:list={['flex flex-col items-center gap-3 py-12 text-center', className]}>
+  <IconBox icon={icon} color="amber" size="lg" />
+  <p class="text-base font-semibold text-gray-900">{title}</p>
+  {description && <p class="max-w-sm text-sm text-gray-600">{description}</p>}
+  {retryLabel && (
+    <Button href={retryHref ?? fallbackRetryHref} variant="outline" size="sm" class="mt-2">
+      {retryLabel}
+    </Button>
+  )}
+</div>

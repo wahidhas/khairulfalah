@@ -1,0 +1,65 @@
+---
+import Button from '../ui/Button.astro';
+import { iconRegistry } from '../../lib/icons';
+import type { NavigationItem } from '../../types';
+
+interface Props {
+  items: NavigationItem[];
+  cta: NavigationItem;
+}
+
+const { items, cta } = Astro.props;
+const X = iconRegistry.x;
+---
+
+<dialog
+  id="mobile-menu"
+  aria-label="Menu navigasi"
+  class="fixed inset-y-0 right-0 m-0 h-dvh w-80 max-w-[85vw] flex-col gap-8 bg-white p-6 open:flex backdrop:bg-gray-900/50"
+>
+  <div class="flex items-center justify-between">
+    <span class="text-base font-semibold text-gray-900">Menu</span>
+    <button
+      type="button"
+      id="mobile-menu-close"
+      aria-label="Tutup menu navigasi"
+      class="inline-flex items-center justify-center rounded-lg p-2 text-gray-700 hover:bg-gray-100 focus-ring"
+    >
+      <X size={24} aria-hidden="true" />
+    </button>
+  </div>
+
+  <nav aria-label="Navigasi mobile" class="flex-1">
+    <ul class="flex flex-col gap-1">
+      {items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="block rounded-lg px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-emerald-700 focus-ring"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <Button href={cta.href} class="w-full">{cta.label}</Button>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('mobile-menu') as HTMLDialogElement | null;
+  const trigger = document.getElementById('mobile-menu-trigger');
+  const closeBtn = document.getElementById('mobile-menu-close');
+
+  trigger?.addEventListener('click', () => dialog?.showModal());
+  closeBtn?.addEventListener('click', () => dialog?.close());
+
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  dialog?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => dialog.close());
+  });
+</script>

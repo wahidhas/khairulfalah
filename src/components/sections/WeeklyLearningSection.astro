@@ -1,0 +1,28 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Card, Badge, SectionHeader } from '../ui';
+import { weeklyLearningHeader, weeklyLearning } from '../../content/curriculum';
+---
+
+<Section>
+  <Container>
+    <SectionHeader {...weeklyLearningHeader} />
+    <Grid cols="1-2" class="mt-10">
+      {weeklyLearning.map((day) => (
+        <Card variant="elevated" class="text-left">
+          <Badge variant="primary">{day.day}</Badge>
+          <ul class="mt-4 flex flex-col gap-3">
+            {day.activities.map((activity) => (
+              <li class="flex items-center gap-3 text-sm text-gray-700">
+                <span class="h-2 w-2 shrink-0 rounded-full bg-emerald-600" aria-hidden="true"></span>
+                {activity}
+              </li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+    </Grid>
+  </Container>
+</Section>

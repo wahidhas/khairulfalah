@@ -1,0 +1,18 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { ArticlesHeroSection, FeaturedArticleSection, ArticlesGridSection } from '../../components/sections';
+import { getAllArticles, getFeaturedArticle } from '../../lib/articles';
+
+const articles = await getAllArticles();
+const featured = getFeaturedArticle(articles);
+const latestArticles = articles.filter((article) => article.id !== featured?.id);
+---
+
+<MainLayout
+  title="Artikel"
+  description="Kabar, kegiatan, dan informasi terbaru seputar Madrasah Khairul Falah."
+>
+  <ArticlesHeroSection />
+  {featured && <FeaturedArticleSection article={featured} />}
+  <ArticlesGridSection articles={latestArticles} />
+</MainLayout>

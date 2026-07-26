@@ -1,0 +1,20 @@
+---
+import PageHeader from '../layout/PageHeader.astro';
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { aboutHero } from '../../content/about';
+---
+
+<PageHeader
+  title={aboutHero.title}
+  description={aboutHero.description}
+  breadcrumb={aboutHero.breadcrumb}
+/>
+
+<Section>
+  <Container>
+    <div class="flex aspect-video items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+      <p class="px-6 text-center text-sm text-gray-700">{aboutHero.image.alt}</p>
+    </div>
+  </Container>
+</Section>

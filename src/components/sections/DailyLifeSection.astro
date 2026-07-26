@@ -1,0 +1,28 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Card, Badge, SectionHeader } from '../ui';
+import { iconRegistry } from '../../lib/icons';
+import { dailyLifeHeader, dailyLife } from '../../content/student-life';
+
+const ChevronDown = iconRegistry['chevron-down'];
+---
+
+<Section>
+  <Container size="narrow">
+    <SectionHeader {...dailyLifeHeader} />
+    <ol class="mt-10 flex flex-col items-center">
+      {dailyLife.map((item, index) => (
+        <li class="flex w-full flex-col items-center">
+          <Card variant="bordered" class="flex w-full items-center gap-4 text-left">
+            <Badge variant="primary">{item.time}</Badge>
+            <p class="text-base font-medium text-gray-900">{item.activity}</p>
+          </Card>
+          {index < dailyLife.length - 1 && (
+            <ChevronDown size={20} class="my-1 shrink-0 text-emerald-700" aria-hidden="true" />
+          )}
+        </li>
+      ))}
+    </ol>
+  </Container>
+</Section>

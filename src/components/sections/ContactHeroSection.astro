@@ -1,0 +1,55 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Button, SectionHeader, Breadcrumb } from '../ui';
+import { contactHero } from '../../content/contact';
+---
+
+<Section class="bg-gray-50">
+  <Container class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      {contactHero.breadcrumb && (
+        <div class="mb-4">
+          <Breadcrumb items={contactHero.breadcrumb} />
+        </div>
+      )}
+      <SectionHeader
+        as="h1"
+        align="left"
+        title={contactHero.header.title}
+        description={contactHero.header.description}
+      />
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button
+          href={contactHero.primaryCTA.href}
+          variant={contactHero.primaryCTA.variant}
+          external={contactHero.primaryCTA.external}
+        >
+          {contactHero.primaryCTA.label}
+        </Button>
+        {contactHero.secondaryCTA && (
+          <Button
+            href={contactHero.secondaryCTA.href}
+            variant={contactHero.secondaryCTA.variant}
+            external={contactHero.secondaryCTA.external}
+          >
+            {contactHero.secondaryCTA.label}
+          </Button>
+        )}
+      </div>
+    </div>
+
+    <div class="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+      {contactHero.image.src ? (
+        <img
+          src={contactHero.image.src}
+          alt={contactHero.image.alt}
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      ) : (
+        <p class="px-6 text-center text-sm text-gray-700">{contactHero.image.alt}</p>
+      )}
+    </div>
+  </Container>
+</Section>

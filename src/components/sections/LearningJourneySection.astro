@@ -1,0 +1,29 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Card, Badge, SectionHeader } from '../ui';
+import { iconRegistry } from '../../lib/icons';
+import { journeyHeader, journey } from '../../content/future-skills';
+
+const ChevronDown = iconRegistry['chevron-down'];
+---
+
+<Section class="bg-gray-50">
+  <Container size="narrow">
+    <SectionHeader {...journeyHeader} />
+    <ol class="mt-10 flex flex-col items-center">
+      {journey.map((step, index) => (
+        <li class="flex w-full flex-col items-center">
+          <Card variant="elevated" class="w-full text-left">
+            <Badge variant="primary">{step.label}</Badge>
+            <h3 class="mt-3 text-base font-semibold text-gray-900">{step.title}</h3>
+            <p class="mt-2 text-sm text-gray-600">{step.description}</p>
+          </Card>
+          {index < journey.length - 1 && (
+            <ChevronDown size={24} class="my-2 shrink-0 text-emerald-700" aria-hidden="true" />
+          )}
+        </li>
+      ))}
+    </ol>
+  </Container>
+</Section>

@@ -1,0 +1,46 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import {
+  PPDBHeroSection,
+  WhyChooseSection,
+  AdmissionProcessSection,
+  RequirementsSection,
+  FeesSection,
+  PPDBFAQSection,
+  PPDBContactSection,
+  PPDBCTASection,
+} from '../components/sections';
+import { ppdbHero, ppdbFaq } from '../content/ppdb';
+import { buildBreadcrumbSchema, buildFAQSchema } from '../lib/seo';
+
+const breadcrumbSchema = ppdbHero.breadcrumb
+  ? buildBreadcrumbSchema(ppdbHero.breadcrumb, Astro.site)
+  : null;
+const faqSchema = buildFAQSchema(ppdbFaq);
+---
+
+{/*
+  SEO: brief meminta title "PPDB Madrasah Khairul Falah". MainLayout otomatis menambahkan
+  titleTemplate "%s | Madrasah Khairul Falah", sehingga meneruskan judul lengkap akan
+  menghasilkan "PPDB Madrasah Khairul Falah | Madrasah Khairul Falah" (brand ganda, buruk
+  untuk SEO). Dikirim "PPDB" agar hasil akhirnya "PPDB | Madrasah Khairul Falah" —
+  kata kunci sama, konsisten dengan seluruh halaman lain.
+*/}
+<MainLayout
+  title="PPDB"
+  description="Informasi lengkap penerimaan peserta didik baru Madrasah Khairul Falah."
+>
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  )}
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+
+  <PPDBHeroSection />
+  <WhyChooseSection />
+  <AdmissionProcessSection />
+  <RequirementsSection />
+  <FeesSection />
+  <PPDBFAQSection />
+  <PPDBContactSection />
+  <PPDBCTASection />
+</MainLayout>

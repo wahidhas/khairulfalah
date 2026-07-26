@@ -1,0 +1,66 @@
+---
+import { render } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import {
+  ArticleDetailHeaderSection,
+  ArticleBodySection,
+  RelatedArticlesSection,
+} from '../../components/sections';
+import { getAllArticles, getRelatedArticles, getAuthorProfile, type ArticleEntry } from '../../lib/articles';
+import { calculateReadingTime } from '../../lib/reading-time';
+import { buildArticleSchema, buildBreadcrumbSchema } from '../../lib/seo';
+
+export async function getStaticPaths() {
+  const articles = await getAllArticles();
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article, allArticles: articles },
+  }));
+}
+
+interface Props {
+  article: ArticleEntry;
+  allArticles: ArticleEntry[];
+}
+
+const { article, allArticles } = Astro.props;
+const { data, body } = article;
+
+const readingTimeMinutes = calculateReadingTime(body ?? '');
+const authorProfile = await getAuthorProfile(data.author);
+const relatedArticles = getRelatedArticles(allArticles, article);
+const { Content } = await render(article);
+
+const pathname = `/articles/${article.id}`;
+
+const articleSchema = buildArticleSchema(
+  {
+    title: data.title,
+    description: data.description,
+    publishDate: data.publishDate,
+    updatedDate: data.updatedDate,
+    author: data.author,
+    image: data.image.src || undefined,
+    pathname,
+  },
+  Astro.site
+);
+
+const breadcrumbSchema = buildBreadcrumbSchema(
+  [
+    { label: 'Beranda', href: '/' },
+    { label: 'Artikel', href: '/articles' },
+    { label: data.title, href: pathname },
+  ],
+  Astro.site
+);
+---
+
+<MainLayout title={data.title} description={data.description} image={data.image.src || undefined}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} is:inline />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+
+  <ArticleDetailHeaderSection article={article} authorProfile={authorProfile} readingTimeMinutes={readingTimeMinutes} />
+  <ArticleBodySection Content={Content} tags={data.tags} />
+  <RelatedArticlesSection articles={relatedArticles} />
+</MainLayout>

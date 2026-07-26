@@ -1,0 +1,47 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import {
+  TransformationHeroSection,
+  WhyTransformationSection,
+  NewDirectionSection,
+  TransformationGraduateProfileSection,
+  PillarsSection,
+  RoadmapSection,
+  FutureReadySection,
+  TransformationFAQSection,
+  TransformationCTASection,
+} from '../components/sections';
+import { transformationHero, transformationFaq } from '../content/transformation';
+import { buildBreadcrumbSchema, buildFAQSchema } from '../lib/seo';
+
+const breadcrumbSchema = transformationHero.breadcrumb
+  ? buildBreadcrumbSchema(transformationHero.breadcrumb, Astro.site)
+  : null;
+const faqSchema = buildFAQSchema(transformationFaq);
+---
+
+{/*
+  SEO: brief meminta title "Transformasi Madrasah Khairul Falah". MainLayout otomatis
+  menambahkan titleTemplate "%s | Madrasah Khairul Falah", sehingga meneruskan judul lengkap
+  akan menghasilkan brand ganda (sama seperti kasus PPDB Sprint 7). Dikirim "Transformasi"
+  agar hasil akhirnya "Transformasi | Madrasah Khairul Falah".
+*/}
+<MainLayout
+  title="Transformasi"
+  description="Arah baru Madrasah Khairul Falah menuju pendidikan Islam yang relevan dengan masa depan."
+>
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  )}
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+
+  <TransformationHeroSection />
+  <WhyTransformationSection />
+  <NewDirectionSection />
+  <TransformationGraduateProfileSection />
+  <PillarsSection />
+  <RoadmapSection />
+  <FutureReadySection />
+  <TransformationFAQSection />
+  <TransformationCTASection />
+</MainLayout>

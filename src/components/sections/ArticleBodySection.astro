@@ -1,0 +1,32 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Badge } from '../ui';
+import { iconRegistry } from '../../lib/icons';
+
+interface Props {
+  Content: unknown;
+  tags: string[];
+}
+
+const { Content, tags } = Astro.props as { Content: any; tags: string[] };
+
+const TagIcon = iconRegistry['tag'];
+---
+
+<Section spacing="sm">
+  <Container size="narrow">
+    <div class="article-content">
+      <Content />
+    </div>
+
+    {tags.length > 0 && (
+      <div class="mt-10 flex flex-wrap items-center gap-2 border-t border-gray-100 pt-6">
+        {TagIcon && <TagIcon size={16} class="text-gray-400" />}
+        {tags.map((tag) => (
+          <Badge variant="gray" uppercase={false}>{tag}</Badge>
+        ))}
+      </div>
+    )}
+  </Container>
+</Section>

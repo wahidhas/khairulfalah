@@ -1,0 +1,55 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Button, SectionHeader, Breadcrumb } from '../ui';
+import { ppdbHero } from '../../content/ppdb';
+---
+
+<Section class="bg-gray-50">
+  <Container class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      {ppdbHero.breadcrumb && (
+        <div class="mb-4">
+          <Breadcrumb items={ppdbHero.breadcrumb} />
+        </div>
+      )}
+      <SectionHeader
+        as="h1"
+        align="left"
+        title={ppdbHero.header.title}
+        description={ppdbHero.header.description}
+      />
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button
+          href={ppdbHero.primaryCTA.href}
+          variant={ppdbHero.primaryCTA.variant}
+          external={ppdbHero.primaryCTA.external}
+        >
+          {ppdbHero.primaryCTA.label}
+        </Button>
+        {ppdbHero.secondaryCTA && (
+          <Button
+            href={ppdbHero.secondaryCTA.href}
+            variant={ppdbHero.secondaryCTA.variant}
+            external={ppdbHero.secondaryCTA.external}
+          >
+            {ppdbHero.secondaryCTA.label}
+          </Button>
+        )}
+      </div>
+    </div>
+
+    <div class="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+      {ppdbHero.image.src ? (
+        <img
+          src={ppdbHero.image.src}
+          alt={ppdbHero.image.alt}
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      ) : (
+        <p class="px-6 text-center text-sm text-gray-700">{ppdbHero.image.alt}</p>
+      )}
+    </div>
+  </Container>
+</Section>

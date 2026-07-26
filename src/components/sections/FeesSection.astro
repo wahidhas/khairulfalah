@@ -1,0 +1,28 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Card, IconBox, Badge, SectionHeader } from '../ui';
+import { feesHeader, fees, feesNotice } from '../../content/ppdb';
+---
+
+<Section class="bg-gray-50">
+  <Container>
+    <SectionHeader {...feesHeader} />
+
+    <div class="mt-6 flex justify-center">
+      <Badge variant="warning" uppercase={false}>{feesNotice}</Badge>
+    </div>
+
+    <Grid cols="1-2-3" class="mt-10">
+      {fees.map((fee) => (
+        <Card variant="bordered" class="text-left">
+          <IconBox icon={fee.icon} color="amber" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">{fee.name}</h3>
+          <p class="mt-2 text-lg font-semibold text-emerald-700">{fee.amount}</p>
+          {fee.note && <p class="mt-2 text-sm text-gray-600">{fee.note}</p>}
+        </Card>
+      ))}
+    </Grid>
+  </Container>
+</Section>

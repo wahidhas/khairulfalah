@@ -1,0 +1,22 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Card, IconBox, SectionHeader } from '../ui';
+import { officeHoursHeader, officeHours } from '../../content/contact';
+---
+
+<Section class="bg-gray-50">
+  <Container>
+    <SectionHeader {...officeHoursHeader} />
+    <Grid cols="1-2" class="mx-auto mt-10 max-w-2xl">
+      {officeHours.map((item) => (
+        <Card variant="bordered" class="text-left">
+          <IconBox icon="calendar-days" color="emerald" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">{item.day}</h3>
+          <p class="mt-2 text-lg font-semibold text-emerald-700">{item.hours}</p>
+        </Card>
+      ))}
+    </Grid>
+  </Container>
+</Section>

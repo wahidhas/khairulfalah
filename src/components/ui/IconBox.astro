@@ -1,0 +1,49 @@
+---
+import { iconRegistry } from '../../lib/icons';
+
+type Color = 'emerald' | 'amber' | 'gray';
+type Size = 'sm' | 'md' | 'lg';
+
+interface Props {
+  icon: string;
+  color?: Color;
+  size?: Size;
+  id?: string;
+  class?: string;
+}
+
+const { icon, color = 'emerald', size = 'md', id, class: className } = Astro.props;
+
+const Icon = iconRegistry[icon];
+
+const boxColors: Record<Color, string> = {
+  emerald: 'bg-emerald-100 text-emerald-700',
+  amber: 'bg-amber-100 text-amber-700',
+  gray: 'bg-gray-100 text-gray-700',
+};
+
+const boxSizes: Record<Size, string> = {
+  sm: 'h-8 w-8',
+  md: 'h-10 w-10',
+  lg: 'h-14 w-14',
+};
+
+const iconSizes: Record<Size, number> = {
+  sm: 16,
+  md: 20,
+  lg: 28,
+};
+---
+
+<div
+  id={id}
+  class:list={[
+    'inline-flex shrink-0 items-center justify-center rounded-lg',
+    boxColors[color],
+    boxSizes[size],
+    className,
+  ]}
+  aria-hidden="true"
+>
+  {Icon && <Icon size={iconSizes[size]} />}
+</div>

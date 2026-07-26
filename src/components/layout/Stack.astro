@@ -1,0 +1,45 @@
+---
+type Direction = 'row' | 'column';
+type Gap = 'sm' | 'md' | 'lg';
+type Align = 'start' | 'center' | 'end' | 'stretch';
+
+interface Props {
+  direction?: Direction;
+  gap?: Gap;
+  align?: Align;
+  wrap?: boolean;
+  as?: string;
+  id?: string;
+  class?: string;
+}
+
+const props = Astro.props;
+const direction: Direction = props.direction ?? 'column';
+const gap: Gap = props.gap ?? 'md';
+const align: Align = props.align ?? 'stretch';
+const wrap = props.wrap ?? false;
+const Tag = props.as ?? 'div';
+const id = props.id;
+const className = props.class;
+
+const directionClass = direction === 'row' ? 'flex-row' : 'flex-col';
+
+const gaps: Record<Gap, string> = {
+  sm: 'gap-2',
+  md: 'gap-4',
+  lg: 'gap-6',
+};
+
+const aligns: Record<Align, string> = {
+  start: 'items-start',
+  center: 'items-center',
+  end: 'items-end',
+  stretch: 'items-stretch',
+};
+
+const wrapClass = wrap ? 'flex-wrap' : '';
+---
+
+<Tag id={id} class:list={['flex', directionClass, gaps[gap], aligns[align], wrapClass, className]}>
+  <slot />
+</Tag>

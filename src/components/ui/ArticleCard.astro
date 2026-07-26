@@ -1,0 +1,65 @@
+---
+import Card from './Card.astro';
+import Badge from './Badge.astro';
+import { iconRegistry } from '../../lib/icons';
+import { formatDate } from '../../lib/date';
+import { formatReadingTime } from '../../lib/reading-time';
+
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  category: string;
+  categoryHref: string;
+  publishDate: Date;
+  readingTimeMinutes: number;
+  image: { src: string; alt: string };
+  id?: string;
+  class?: string;
+}
+
+const {
+  href,
+  title,
+  description,
+  category,
+  categoryHref,
+  publishDate,
+  readingTimeMinutes,
+  image,
+  id,
+  class: className,
+} = Astro.props;
+
+const ClockIcon = iconRegistry['clock'];
+---
+
+<Card id={id} variant="bordered" padding="sm" class:list={['flex flex-col overflow-hidden text-left', className]}>
+  <div class="flex aspect-video items-center justify-center overflow-hidden rounded-lg bg-gray-200">
+    {image.src ? (
+      <img src={image.src} alt={image.alt} loading="lazy" class="h-full w-full object-cover" />
+    ) : (
+      <span class="text-sm text-gray-600" aria-hidden="true">{category}</span>
+    )}
+  </div>
+
+  <div class="flex flex-1 flex-col p-4">
+    <a href={categoryHref} class="w-fit">
+      <Badge variant="secondary">{category}</Badge>
+    </a>
+
+    <h3 class="mt-3 text-base font-semibold text-gray-900">
+      <a href={href} class="hover:text-emerald-700">{title}</a>
+    </h3>
+    <p class="mt-2 line-clamp-2 flex-1 text-sm text-gray-600">{description}</p>
+
+    <div class="mt-4 flex items-center gap-2 text-xs text-gray-500">
+      <time datetime={publishDate.toISOString()}>{formatDate(publishDate)}</time>
+      <span aria-hidden="true">&middot;</span>
+      <span class="inline-flex items-center gap-1">
+        {ClockIcon && <ClockIcon size={14} />}
+        {formatReadingTime(readingTimeMinutes)}
+      </span>
+    </div>
+  </div>
+</Card>

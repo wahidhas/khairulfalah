@@ -1,0 +1,23 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { PersonCard, SectionHeader } from '../ui';
+import { leadershipHeader, leadership } from '../../content/about';
+---
+
+<Section>
+  <Container>
+    <SectionHeader {...leadershipHeader} />
+    <div class="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
+      {leadership.map((person) => (
+        <PersonCard
+          name={person.name}
+          role={person.role}
+          photo={person.photo}
+          bio={person.bio}
+          placeholder={person.placeholder}
+        />
+      ))}
+    </div>
+  </Container>
+</Section>

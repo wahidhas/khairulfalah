@@ -1,0 +1,32 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Card, IconBox, SectionHeader } from '../ui';
+import { programsHeader, programs } from '../../content/future-skills';
+---
+
+<Section id="programs">
+  <Container>
+    <SectionHeader {...programsHeader} />
+    <Grid cols="1-2-3" class="mt-10">
+      {programs.map((program) => (
+        <Card variant="elevated" class="text-left">
+          <IconBox icon={program.icon} color="amber" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">{program.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{program.description}</p>
+          <dl class="mt-4 flex flex-col gap-1 border-t border-gray-100 pt-3 text-xs text-gray-600">
+            <div class="flex justify-between gap-2">
+              <dt class="font-medium text-gray-700">Durasi</dt>
+              <dd>{program.duration}</dd>
+            </div>
+            <div class="flex justify-between gap-2">
+              <dt class="font-medium text-gray-700">Usia</dt>
+              <dd>{program.ageRange}</dd>
+            </div>
+          </dl>
+        </Card>
+      ))}
+    </Grid>
+  </Container>
+</Section>

@@ -1,0 +1,45 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import { ArticlesGridSection } from '../../../components/sections';
+import PageHeader from '../../../components/layout/PageHeader.astro';
+import {
+  getAllArticles,
+  getArticlesByCategory,
+  categorySlug,
+  type ArticleCategory,
+} from '../../../lib/articles';
+import { articleCategories } from '../../../content.config';
+
+export async function getStaticPaths() {
+  return articleCategories.map((category) => ({
+    params: { category: categorySlug(category) },
+    props: { category },
+  }));
+}
+
+interface Props {
+  category: ArticleCategory;
+}
+
+const { category } = Astro.props;
+const articles = await getAllArticles();
+const categoryArticles = getArticlesByCategory(articles, category);
+
+const breadcrumb = [
+  { label: 'Beranda', href: '/' },
+  { label: 'Artikel', href: '/articles' },
+  { label: category, href: `/articles/category/${categorySlug(category)}` },
+];
+---
+
+<MainLayout
+  title={`Kategori: ${category}`}
+  description={`Kumpulan artikel kategori ${category} di Madrasah Khairul Falah.`}
+>
+  <PageHeader
+    title={category}
+    description={`Kumpulan artikel kategori ${category}.`}
+    breadcrumb={breadcrumb}
+  />
+  <ArticlesGridSection articles={categoryArticles} title={`Artikel ${category}`} activeCategory={category} />
+</MainLayout>

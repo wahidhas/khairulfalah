@@ -1,0 +1,52 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Button, SectionHeader } from '../ui';
+import { hero } from '../../content/homepage/hero';
+---
+
+<Section class="bg-gray-50">
+  <Container class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      <SectionHeader
+        as="h1"
+        align="left"
+        badge={hero.header.badge}
+        title={hero.header.title}
+        subtitle={hero.header.subtitle}
+        description={hero.header.description}
+      />
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button
+          href={hero.primaryCTA.href}
+          variant={hero.primaryCTA.variant}
+          external={hero.primaryCTA.external}
+        >
+          {hero.primaryCTA.label}
+        </Button>
+        {hero.secondaryCTA && (
+          <Button
+            href={hero.secondaryCTA.href}
+            variant={hero.secondaryCTA.variant}
+            external={hero.secondaryCTA.external}
+          >
+            {hero.secondaryCTA.label}
+          </Button>
+        )}
+      </div>
+    </div>
+
+    <div class="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+      {hero.image.src ? (
+        <img
+          src={hero.image.src}
+          alt={hero.image.alt}
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      ) : (
+        <p class="px-6 text-center text-sm text-gray-700">{hero.image.alt}</p>
+      )}
+    </div>
+  </Container>
+</Section>

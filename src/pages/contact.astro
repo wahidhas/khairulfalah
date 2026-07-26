@@ -1,0 +1,48 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import {
+  ContactHeroSection,
+  TrustBuilderSection,
+  ContactInfoSection,
+  LocationSection,
+  OfficeHoursSection,
+  ContactFAQSection,
+  ContactCTASection,
+} from '../components/sections';
+import { contactHero, contactFaq } from '../content/contact';
+import { buildBreadcrumbSchema, buildFAQSchema } from '../lib/seo';
+
+const breadcrumbSchema = contactHero.breadcrumb
+  ? buildBreadcrumbSchema(contactHero.breadcrumb, Astro.site)
+  : null;
+const faqSchema = buildFAQSchema(contactFaq);
+---
+
+{/*
+  Page Structure brief mencantumkan "Hubungi Kami" dan "CTA" sebagai dua langkah terpisah,
+  tapi hanya satu section konten yang dideskripsikan setelah FAQ ("# Contact CTA" — tombol
+  Chat WhatsApp/Telepon Sekarang). Ditafsirkan sebagai SATU section (judulnya "Hubungi Kami",
+  perannya CTA) — konsisten dengan pola setiap halaman lain di situs ini yang hanya punya
+  satu CTA banner penutup, bukan dua berurutan.
+
+  Trust Builder ("Mengapa Orang Tua Memilih...") dideskripsikan penuh di brief namun tidak
+  tercantum eksplisit di Page Structure — ditempatkan setelah Hero (sebelum Informasi Kontak)
+  agar membangun kepercayaan lebih dulu sebelum detail kontak/lokasi.
+*/}
+<MainLayout
+  title="Kontak"
+  description="Hubungi Madrasah Khairul Falah untuk informasi program pendidikan dan PPDB."
+>
+  {breadcrumbSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  )}
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+
+  <ContactHeroSection />
+  <TrustBuilderSection />
+  <ContactInfoSection />
+  <LocationSection />
+  <OfficeHoursSection />
+  <ContactFAQSection />
+  <ContactCTASection />
+</MainLayout>

@@ -1,0 +1,20 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { SectionHeader } from '../ui';
+import { galleryHeader, gallery } from '../../content/student-life';
+---
+
+<Section>
+  <Container>
+    <SectionHeader {...galleryHeader} />
+    <Grid cols="1-2-3" class="mt-10">
+      {gallery.map((image) => (
+        <div class="flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-gray-200">
+          <p class="px-4 text-center text-xs text-gray-700">{image.alt}</p>
+        </div>
+      ))}
+    </Grid>
+  </Container>
+</Section>

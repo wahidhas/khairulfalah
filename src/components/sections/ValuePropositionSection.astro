@@ -1,0 +1,21 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Card, IconBox, SectionHeader } from '../ui';
+import { valuePropositionHeader, valueProposition } from '../../content/homepage/value-proposition';
+---
+
+<Section>
+  <Container>
+    <SectionHeader {...valuePropositionHeader} />
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {valueProposition.map((feature) => (
+        <Card variant="bordered" class="text-left">
+          <IconBox icon={feature.icon} color="emerald" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">{feature.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{feature.description}</p>
+        </Card>
+      ))}
+    </div>
+  </Container>
+</Section>

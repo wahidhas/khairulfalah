@@ -1,0 +1,60 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Badge, SectionHeader, EmptyState, ArticleCard } from '../ui';
+import type { ArticleEntry } from '../../lib/articles';
+import { categorySlug } from '../../lib/articles';
+import { calculateReadingTime } from '../../lib/reading-time';
+import { articleCategories } from '../../content.config';
+
+interface Props {
+  articles: ArticleEntry[];
+  title?: string;
+  badge?: string;
+  activeCategory?: string;
+}
+
+const { articles, title = 'Artikel Terbaru', badge = 'Semua Artikel', activeCategory } = Astro.props;
+---
+
+<Section spacing="sm">
+  <Container>
+    <SectionHeader badge={badge} title={title} />
+
+    <nav aria-label="Filter kategori" class="mt-6 flex flex-wrap gap-2">
+      <a href="/articles">
+        <Badge variant={activeCategory === undefined ? 'primary' : 'gray'} uppercase={false}>Semua</Badge>
+      </a>
+      {articleCategories.map((category) => (
+        <a href={`/articles/category/${categorySlug(category)}`}>
+          <Badge variant={activeCategory === category ? 'primary' : 'gray'} uppercase={false}>{category}</Badge>
+        </a>
+      ))}
+    </nav>
+
+    {articles.length > 0 ? (
+      <Grid cols="1-2-3" class="mt-8">
+        {articles.map((article) => (
+          <ArticleCard
+            href={`/articles/${article.id}`}
+            title={article.data.title}
+            description={article.data.description}
+            category={article.data.category}
+            categoryHref={`/articles/category/${categorySlug(article.data.category)}`}
+            publishDate={article.data.publishDate}
+            readingTimeMinutes={calculateReadingTime(article.body ?? '')}
+            image={article.data.image}
+          />
+        ))}
+      </Grid>
+    ) : (
+      <EmptyState
+        icon="newspaper"
+        title="Belum ada artikel di kategori ini"
+        description="Artikel akan ditampilkan di sini setelah dipublikasikan."
+        class="mt-8"
+      />
+    )}
+  </Container>
+</Section>

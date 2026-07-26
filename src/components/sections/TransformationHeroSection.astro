@@ -1,0 +1,55 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { Button, SectionHeader, Breadcrumb } from '../ui';
+import { transformationHero } from '../../content/transformation';
+---
+
+<Section class="bg-gray-50">
+  <Container class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      {transformationHero.breadcrumb && (
+        <div class="mb-4">
+          <Breadcrumb items={transformationHero.breadcrumb} />
+        </div>
+      )}
+      <SectionHeader
+        as="h1"
+        align="left"
+        title={transformationHero.header.title}
+        description={transformationHero.header.description}
+      />
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button
+          href={transformationHero.primaryCTA.href}
+          variant={transformationHero.primaryCTA.variant}
+          external={transformationHero.primaryCTA.external}
+        >
+          {transformationHero.primaryCTA.label}
+        </Button>
+        {transformationHero.secondaryCTA && (
+          <Button
+            href={transformationHero.secondaryCTA.href}
+            variant={transformationHero.secondaryCTA.variant}
+            external={transformationHero.secondaryCTA.external}
+          >
+            {transformationHero.secondaryCTA.label}
+          </Button>
+        )}
+      </div>
+    </div>
+
+    <div class="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
+      {transformationHero.image.src ? (
+        <img
+          src={transformationHero.image.src}
+          alt={transformationHero.image.alt}
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      ) : (
+        <p class="px-6 text-center text-sm text-gray-700">{transformationHero.image.alt}</p>
+      )}
+    </div>
+  </Container>
+</Section>

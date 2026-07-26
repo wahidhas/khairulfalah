@@ -1,0 +1,27 @@
+---
+import Container from './Container.astro';
+import Breadcrumb from '../ui/Breadcrumb.astro';
+import type { NavigationItem } from '../../types';
+
+interface Props {
+  title: string;
+  description?: string;
+  breadcrumb?: NavigationItem[];
+}
+
+const { title, description, breadcrumb } = Astro.props;
+---
+
+<header class="border-b border-gray-100 bg-gray-50 py-12 md:py-16">
+  <Container>
+    {breadcrumb && breadcrumb.length > 0 && (
+      <div class="mb-4">
+        <Breadcrumb items={breadcrumb} />
+      </div>
+    )}
+    <h1 class="text-h1 text-gray-900">{title}</h1>
+    {description && (
+      <p class="mt-4 max-w-2xl text-lead text-gray-600">{description}</p>
+    )}
+  </Container>
+</header>

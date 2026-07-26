@@ -1,0 +1,22 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import { Card, IconBox, SectionHeader } from '../ui';
+import { activitiesHeader, activities } from '../../content/student-life';
+---
+
+<Section>
+  <Container>
+    <SectionHeader {...activitiesHeader} />
+    <Grid cols="1-2-4" class="mt-10">
+      {activities.map((item) => (
+        <Card variant="bordered" class="text-left">
+          <IconBox icon={item.icon} color="amber" />
+          <h3 class="mt-4 text-base font-semibold text-gray-900">{item.title}</h3>
+          <p class="mt-2 text-sm text-gray-600">{item.description}</p>
+        </Card>
+      ))}
+    </Grid>
+  </Container>
+</Section>
