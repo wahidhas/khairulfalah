@@ -5,6 +5,9 @@ publishDate: 2026-07-01
 author: Admin Madrasah
 category: Announcements
 featured: true
+image:
+  src: /images/articles/informasi-ppdb-tahun-ajaran-baru/cover.webp
+  alt: Informasi PPDB Madrasah Khairul Falah
 tags:
   - ppdb
   - pengumuman

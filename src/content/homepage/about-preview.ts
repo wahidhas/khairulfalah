@@ -1,4 +1,4 @@
-import type { CTASection } from '../../types';
+import type { CTASection, ImageAsset } from '../../types';
 
 /** Placeholder — ringkasan profil madrasah menyusul dari yayasan (Sejarah, Visi, Misi, Nilai). */
 export const aboutPreview: CTASection = {
@@ -12,4 +12,13 @@ export const aboutPreview: CTASection = {
     href: '/about',
     variant: 'outline',
   },
+};
+
+/**
+ * Dipisah dari `aboutPreview` (bukan properti `CTASection`) karena field image hanya relevan
+ * di section ini, sementara CTASection dipakai luas oleh banner CTA lain yang murni teks.
+ */
+export const aboutPreviewImage: ImageAsset = {
+  src: '/images/about/about.webp',
+  alt: 'Profil dan gedung Madrasah Khairul Falah',
 };

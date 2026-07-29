@@ -13,6 +13,7 @@ export { default as ErrorState } from './ErrorState.astro';
 export { default as Skeleton } from './Skeleton.astro';
 export { default as ArticleCard } from './ArticleCard.astro';
 export { default as SearchBox } from './SearchBox.astro';
+export { default as SmartImage } from './SmartImage.astro';
 
 // Container, Section & PageHeader sudah ada di src/components/layout/ sejak Sprint 1 dan
 // dipakai luas oleh Navbar/Footer. Diekspor ulang di sini (bukan diduplikasi)

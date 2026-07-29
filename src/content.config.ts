@@ -41,6 +41,17 @@ const articles = defineCollection({
         alt: z.string(),
       })
       .default({ src: '', alt: '' }),
+    // Galeri foto tambahan per artikel (opsional) — Sprint Image Management. caption opsional,
+    // ditampilkan ArticleGallerySection hanya bila array ini tidak kosong.
+    gallery: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+          caption: z.string().optional(),
+        })
+      )
+      .default([]),
     tags: z.array(z.string()).default([]),
   }),
 });

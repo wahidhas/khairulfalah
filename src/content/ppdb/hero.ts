@@ -30,7 +30,7 @@ export const ppdbHero: HeroContent = {
     variant: 'outline',
   },
   image: {
-    src: '',
-    alt: '[Foto kegiatan madrasah akan diperbarui]',
+    src: '/images/ppdb/hero.webp',
+    alt: 'Kegiatan Madrasah Khairul Falah',
   },
 };

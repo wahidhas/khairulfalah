@@ -1,7 +1,7 @@
 ---
 import Section from '../layout/Section.astro';
 import Container from '../layout/Container.astro';
-import { Card, Badge, Button, SectionHeader } from '../ui';
+import { Card, Badge, Button, SectionHeader, SmartImage } from '../ui';
 import type { ArticleEntry } from '../../lib/articles';
 import { categorySlug } from '../../lib/articles';
 import { formatDate } from '../../lib/date';
@@ -22,12 +22,16 @@ const href = `/articles/${article.id}`;
     <SectionHeader badge="Sorotan" title="Artikel Utama" />
 
     <Card variant="elevated" padding="lg" class="mt-8 grid gap-8 lg:grid-cols-2 lg:items-center">
-      <div class="flex aspect-video items-center justify-center overflow-hidden rounded-xl bg-gray-200">
-        {data.image.src ? (
-          <img src={data.image.src} alt={data.image.alt} loading="eager" class="h-full w-full object-cover" />
-        ) : (
-          <span class="text-sm text-gray-600" aria-hidden="true">{data.category}</span>
-        )}
+      <div class="aspect-video overflow-hidden rounded-xl bg-gray-200">
+        <SmartImage
+          src={data.image.src}
+          alt={data.image.alt || data.title}
+          fallback="/images/placeholders/hero-placeholder.svg"
+          width={1200}
+          height={675}
+          loading="eager"
+          class="h-full w-full object-cover"
+        />
       </div>
 
       <div class="text-left">

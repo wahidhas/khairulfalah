@@ -32,7 +32,7 @@ export const contactHero: HeroContent = {
     variant: 'outline',
   },
   image: {
-    src: '',
-    alt: '[Foto lingkungan madrasah akan diperbarui]',
+    src: '/images/contact/hero.webp',
+    alt: 'Lingkungan Madrasah Khairul Falah',
   },
 };

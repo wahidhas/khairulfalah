@@ -1,7 +1,7 @@
 ---
 import Section from '../layout/Section.astro';
 import Container from '../layout/Container.astro';
-import { Button, SectionHeader, Breadcrumb } from '../ui';
+import { Button, SectionHeader, Breadcrumb, SmartImage } from '../ui';
 import { transformationHero } from '../../content/transformation';
 ---
 
@@ -39,17 +39,17 @@ import { transformationHero } from '../../content/transformation';
       </div>
     </div>
 
-    <div class="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
-      {transformationHero.image.src ? (
-        <img
-          src={transformationHero.image.src}
-          alt={transformationHero.image.alt}
-          class="h-full w-full object-cover"
-          loading="eager"
-        />
-      ) : (
-        <p class="px-6 text-center text-sm text-gray-700">{transformationHero.image.alt}</p>
-      )}
+    <div class="aspect-4/3 overflow-hidden rounded-2xl bg-gray-200">
+      <SmartImage
+        src={transformationHero.image.src}
+        alt={transformationHero.image.alt}
+        fallback="/images/placeholders/hero-placeholder.svg"
+        width={1920}
+        height={1440}
+        loading="eager"
+        fetchpriority="high"
+        class="h-full w-full object-cover"
+      />
     </div>
   </Container>
 </Section>

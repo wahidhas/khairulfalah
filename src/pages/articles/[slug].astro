@@ -4,6 +4,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import {
   ArticleDetailHeaderSection,
   ArticleBodySection,
+  ArticleGallerySection,
   RelatedArticlesSection,
 } from '../../components/sections';
 import { getAllArticles, getRelatedArticles, getAuthorProfile, type ArticleEntry } from '../../lib/articles';
@@ -62,5 +63,6 @@ const breadcrumbSchema = buildBreadcrumbSchema(
 
   <ArticleDetailHeaderSection article={article} authorProfile={authorProfile} readingTimeMinutes={readingTimeMinutes} />
   <ArticleBodySection Content={Content} tags={data.tags} />
+  <ArticleGallerySection gallery={data.gallery} />
   <RelatedArticlesSection articles={relatedArticles} />
 </MainLayout>

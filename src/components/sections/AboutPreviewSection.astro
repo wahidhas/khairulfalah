@@ -1,8 +1,8 @@
 ---
 import Section from '../layout/Section.astro';
 import Container from '../layout/Container.astro';
-import { Button, SectionHeader } from '../ui';
-import { aboutPreview } from '../../content/homepage/about-preview';
+import { Button, SectionHeader, SmartImage } from '../ui';
+import { aboutPreview, aboutPreviewImage } from '../../content/homepage/about-preview';
 ---
 
 <Section class="bg-gray-50">
@@ -29,10 +29,15 @@ import { aboutPreview } from '../../content/homepage/about-preview';
       </div>
     </div>
 
-    <div class="flex aspect-4/3 items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
-      <p class="px-6 text-center text-sm text-gray-700">
-        [Foto profil/gedung madrasah akan diperbarui]
-      </p>
+    <div class="aspect-4/3 overflow-hidden rounded-2xl bg-gray-200">
+      <SmartImage
+        src={aboutPreviewImage.src}
+        alt={aboutPreviewImage.alt}
+        fallback="/images/placeholders/hero-placeholder.svg"
+        width={1600}
+        height={1200}
+        class="h-full w-full object-cover"
+      />
     </div>
   </Container>
 </Section>

@@ -1,7 +1,7 @@
 ---
 import Section from '../layout/Section.astro';
 import Container from '../layout/Container.astro';
-import { Card, IconBox, SectionHeader } from '../ui';
+import { Card, IconBox, SectionHeader, SmartImage } from '../ui';
 import { studentLifeHeader, studentLife } from '../../content/homepage/student-life';
 ---
 
@@ -11,8 +11,15 @@ import { studentLifeHeader, studentLife } from '../../content/homepage/student-l
     <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
       {studentLife.map((item) => (
         <Card variant="bordered" class="text-left">
-          <div class="flex aspect-video items-center justify-center rounded-lg bg-gray-100">
-            <p class="px-4 text-center text-xs text-gray-700">[Foto kegiatan akan diperbarui]</p>
+          <div class="aspect-video overflow-hidden rounded-lg bg-gray-100">
+            <SmartImage
+              src={item.image?.src}
+              alt={item.image?.alt ?? item.title}
+              fallback="/images/placeholders/gallery-placeholder.svg"
+              width={800}
+              height={450}
+              class="h-full w-full object-cover"
+            />
           </div>
           <IconBox icon={item.icon} color="emerald" class="mt-4" />
           <h3 class="mt-4 text-base font-semibold text-gray-900">{item.title}</h3>

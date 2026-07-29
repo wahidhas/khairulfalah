@@ -22,7 +22,7 @@ export const curriculumHero: HeroContent = {
     variant: 'outline',
   },
   image: {
-    src: '',
-    alt: '[Foto aktivitas belajar siswa akan diperbarui]',
+    src: '/images/curriculum/hero.webp',
+    alt: 'Aktivitas belajar siswa Madrasah Khairul Falah',
   },
 };

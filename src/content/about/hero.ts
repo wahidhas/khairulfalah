@@ -10,7 +10,7 @@ export const aboutHero: PageHeroContent = {
     { label: 'Tentang', href: '/about' },
   ],
   image: {
-    src: '',
-    alt: '[Foto gedung/kegiatan madrasah akan diperbarui]',
+    src: '/images/about/about.webp',
+    alt: 'Gedung dan kegiatan Madrasah Khairul Falah',
   },
 };

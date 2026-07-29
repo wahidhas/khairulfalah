@@ -1,6 +1,7 @@
 ---
 import type { Testimonial } from '../../types';
 import { iconRegistry } from '../../lib/icons';
+import { imageExists } from '../../lib/images';
 import Card from './Card.astro';
 import Badge from './Badge.astro';
 
@@ -12,6 +13,7 @@ interface Props extends Omit<Testimonial, 'id'> {
 const { name, role, quote, avatar, placeholder, id, class: className } = Astro.props;
 
 const UserIcon = iconRegistry['user-round'];
+const hasAvatar = imageExists(avatar);
 ---
 
 <Card id={id} variant="default" class:list={['flex flex-col gap-4', className]}>
@@ -22,7 +24,7 @@ const UserIcon = iconRegistry['user-round'];
   )}
   <p class="text-sm leading-relaxed text-gray-700">&ldquo;{quote}&rdquo;</p>
   <div class="mt-auto flex items-center gap-3">
-    {avatar ? (
+    {hasAvatar ? (
       <img
         src={avatar}
         alt={name}

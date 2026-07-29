@@ -5,6 +5,9 @@ publishDate: 2026-07-10
 author: Tim Khairul Falah
 category: News
 featured: true
+image:
+  src: /images/articles/peluncuran-kafa-future-skills-academy/cover.webp
+  alt: Peluncuran KAFA Future Skills Academy
 tags:
   - future-skills
   - program

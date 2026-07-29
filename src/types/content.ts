@@ -33,6 +33,8 @@ export interface FeatureCard {
   icon: string;
   title: string;
   description: string;
+  /** Opsional — hanya diisi kartu yang menampilkan foto (mis. preview Kehidupan Madrasah). */
+  image?: ImageAsset;
 }
 
 export interface Program {

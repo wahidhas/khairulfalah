@@ -1,6 +1,7 @@
 ---
 import type { PersonProfile } from '../../types';
 import { iconRegistry } from '../../lib/icons';
+import { imageExists } from '../../lib/images';
 import Card from './Card.astro';
 import Badge from './Badge.astro';
 
@@ -12,11 +13,15 @@ interface Props extends Omit<PersonProfile, 'id'> {
 const { name, role, photo, bio, placeholder, id, class: className } = Astro.props;
 
 const UserIcon = iconRegistry['user-round'];
+// Foto hanya ditampilkan bila filenya benar-benar ada di public/ (mis. public/images/teachers/*.webp)
+// — bila belum diisi/tidak ditemukan, tetap pakai fallback ikon yang sudah ada (tidak diganti
+// dengan placeholder gambar baru, supaya tampilan yang sudah berjalan tidak berubah).
+const hasPhoto = imageExists(photo?.src);
 ---
 
 <Card id={id} variant="bordered" class:list={['flex flex-col items-center gap-3 text-center', className]}>
   {placeholder && <Badge variant="gray">Placeholder</Badge>}
-  {photo?.src ? (
+  {hasPhoto && photo ? (
     <img
       src={photo.src}
       alt={photo.alt}

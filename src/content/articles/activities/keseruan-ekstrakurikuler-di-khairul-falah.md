@@ -5,6 +5,22 @@ publishDate: 2026-06-15
 author: Admin Madrasah
 category: Activities
 featured: false
+image:
+  src: /images/articles/keseruan-ekstrakurikuler-di-khairul-falah/cover.webp
+  alt: Kegiatan ekstrakurikuler siswa Madrasah Khairul Falah
+gallery:
+  - src: /images/articles/keseruan-ekstrakurikuler-di-khairul-falah/1.webp
+    alt: Kegiatan Pramuka
+    caption: "Pramuka — melatih kemandirian, kepemimpinan, dan kerja sama"
+  - src: /images/articles/keseruan-ekstrakurikuler-di-khairul-falah/2.webp
+    alt: Kegiatan Futsal
+    caption: "Futsal — mengasah kebugaran fisik dan semangat sportivitas"
+  - src: /images/articles/keseruan-ekstrakurikuler-di-khairul-falah/3.webp
+    alt: Kegiatan Tahfiz Club
+    caption: "Tahfiz Club — pendalaman hafalan Al-Qur'an"
+  - src: /images/articles/keseruan-ekstrakurikuler-di-khairul-falah/4.webp
+    alt: Kegiatan Coding Club
+    caption: "Coding Club — eksplorasi pemrograman di luar jam pelajaran"
 tags:
   - ekstrakurikuler
   - kegiatan-siswa

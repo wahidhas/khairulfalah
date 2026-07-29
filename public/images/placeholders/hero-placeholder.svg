@@ -1,0 +1,13 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder foto">
+  <rect width="1920" height="1080" fill="#ecfdf5"/>
+  <rect x="0.5" y="0.5" width="1919" height="1079" fill="none" stroke="#a7f3d0" stroke-width="1"/>
+  <g transform="translate(960,470)" fill="none" stroke="#6ee7b7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-140" y="-100" width="280" height="200" rx="16"/>
+    <circle cx="-70" cy="-40" r="22"/>
+    <path d="M -140 60 L -30 -20 L 40 40 L 90 0 L 140 60"/>
+  </g>
+  <circle cx="1090" cy="380" r="10" fill="#fbbf24"/>
+  <text x="960" y="640" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" fill="#6b7280">
+    Foto akan segera hadir
+  </text>
+</svg>

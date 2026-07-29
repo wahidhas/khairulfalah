@@ -26,7 +26,7 @@ export const hero: HeroContent = {
     variant: 'outline',
   },
   image: {
-    src: '',
-    alt: '[Foto aktivitas madrasah akan diperbarui]',
+    src: '/images/hero/homepage.webp',
+    alt: 'Aktivitas siswa Madrasah Khairul Falah',
   },
 };

@@ -26,7 +26,7 @@ export const futureSkillsHero: HeroContent = {
     variant: 'outline',
   },
   image: {
-    src: '',
-    alt: '[Foto aktivitas Future Skills akan diperbarui]',
+    src: '/images/future-skills/hero.webp',
+    alt: 'Aktivitas Future Skills Academy Khairul Falah',
   },
 };

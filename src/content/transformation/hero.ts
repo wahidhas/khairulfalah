@@ -22,7 +22,7 @@ export const transformationHero: HeroContent = {
     variant: 'outline',
   },
   image: {
-    src: '',
-    alt: '[Visual transformasi madrasah akan diperbarui]',
+    src: '/images/transformation/hero.webp',
+    alt: 'Visual transformasi Madrasah Khairul Falah',
   },
 };

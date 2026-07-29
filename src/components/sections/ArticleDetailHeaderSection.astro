@@ -1,7 +1,7 @@
 ---
 import Container from '../layout/Container.astro';
 import Section from '../layout/Section.astro';
-import { Badge, Breadcrumb } from '../ui';
+import { Badge, Breadcrumb, SmartImage } from '../ui';
 import type { ArticleEntry } from '../../lib/articles';
 import { categorySlug } from '../../lib/articles';
 import { formatDate } from '../../lib/date';
@@ -53,12 +53,17 @@ const breadcrumb = [
 
 <Section spacing="sm">
   <Container>
-    <div class="flex aspect-video items-center justify-center overflow-hidden rounded-2xl bg-gray-200">
-      {data.image.src ? (
-        <img src={data.image.src} alt={data.image.alt} loading="eager" class="h-full w-full object-cover" />
-      ) : (
-        <span class="px-6 text-center text-sm text-gray-600" aria-hidden="true">{data.image.alt || data.title}</span>
-      )}
+    <div class="aspect-video overflow-hidden rounded-2xl bg-gray-200">
+      <SmartImage
+        src={data.image.src}
+        alt={data.image.alt || data.title}
+        fallback="/images/placeholders/hero-placeholder.svg"
+        width={1920}
+        height={1080}
+        loading="eager"
+        fetchpriority="high"
+        class="h-full w-full object-cover"
+      />
     </div>
   </Container>
 </Section>

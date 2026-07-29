@@ -1,6 +1,7 @@
 ---
 import Card from './Card.astro';
 import Badge from './Badge.astro';
+import SmartImage from './SmartImage.astro';
 import { iconRegistry } from '../../lib/icons';
 import { formatDate } from '../../lib/date';
 import { formatReadingTime } from '../../lib/reading-time';
@@ -35,12 +36,15 @@ const ClockIcon = iconRegistry['clock'];
 ---
 
 <Card id={id} variant="bordered" padding="sm" class:list={['flex flex-col overflow-hidden text-left', className]}>
-  <div class="flex aspect-video items-center justify-center overflow-hidden rounded-lg bg-gray-200">
-    {image.src ? (
-      <img src={image.src} alt={image.alt} loading="lazy" class="h-full w-full object-cover" />
-    ) : (
-      <span class="text-sm text-gray-600" aria-hidden="true">{category}</span>
-    )}
+  <div class="aspect-video overflow-hidden rounded-lg bg-gray-200">
+    <SmartImage
+      src={image.src}
+      alt={image.alt || title}
+      fallback="/images/placeholders/hero-placeholder.svg"
+      width={800}
+      height={450}
+      class="h-full w-full object-cover"
+    />
   </div>
 
   <div class="flex flex-1 flex-col p-4">

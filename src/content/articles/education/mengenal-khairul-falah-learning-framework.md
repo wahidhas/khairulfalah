@@ -5,6 +5,9 @@ publishDate: 2026-06-22
 author: Tim Khairul Falah
 category: Education
 featured: false
+image:
+  src: /images/articles/mengenal-khairul-falah-learning-framework/cover.webp
+  alt: Khairul Falah Learning Framework
 tags:
   - kurikulum
   - kflf

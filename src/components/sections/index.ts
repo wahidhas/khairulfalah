@@ -88,3 +88,6 @@ export { default as RoadmapSection } from './RoadmapSection.astro';
 export { default as FutureReadySection } from './FutureReadySection.astro';
 export { default as TransformationFAQSection } from './TransformationFAQSection.astro';
 export { default as TransformationCTASection } from './TransformationCTASection.astro';
+
+// Article gallery (Image Management sprint)
+export { default as ArticleGallerySection } from './ArticleGallerySection.astro';

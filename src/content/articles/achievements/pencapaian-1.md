@@ -5,6 +5,9 @@ publishDate: 2026-06-01
 author: Admin Madrasah
 category: Achievements
 featured: false
+image:
+  src: /images/articles/pencapaian-1/cover.webp
+  alt: "[Contoh placeholder] Pencapaian siswa Madrasah Khairul Falah"
 tags:
   - prestasi
 ---
