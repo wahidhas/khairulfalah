@@ -16,6 +16,7 @@ import { testimonialsHeader, testimonials } from '../../content/homepage/testimo
           quote={testimonial.quote}
           avatar={testimonial.avatar}
           placeholder={testimonial.placeholder}
+          slot={`testimonials.${testimonial.id}`}
         />
       ))}
     </div>

@@ -18,6 +18,7 @@ export const studentLife: FeatureCard[] = [
     title: 'Aktivitas Harian',
     description: 'Deskripsi akan diperbarui oleh tim konten.',
     image: { src: '/images/gallery/pembelajaran/1.webp', alt: 'Aktivitas harian siswa' },
+    imageSlot: 'gallery.aktivitas-harian',
   },
   {
     id: 'tahfiz',
@@ -25,6 +26,7 @@ export const studentLife: FeatureCard[] = [
     title: 'Tahfiz',
     description: 'Deskripsi akan diperbarui oleh tim konten.',
     image: { src: '/images/gallery/tahfiz/1.webp', alt: 'Kegiatan tahfiz siswa' },
+    imageSlot: 'gallery.tahfiz',
   },
   {
     id: 'project',
@@ -32,6 +34,7 @@ export const studentLife: FeatureCard[] = [
     title: 'Project',
     description: 'Deskripsi akan diperbarui oleh tim konten.',
     image: { src: '/images/gallery/project/1.webp', alt: 'Project siswa' },
+    imageSlot: 'gallery.project',
   },
   {
     id: 'ekstrakurikuler',
@@ -39,5 +42,6 @@ export const studentLife: FeatureCard[] = [
     title: 'Ekstrakurikuler',
     description: 'Deskripsi akan diperbarui oleh tim konten.',
     image: { src: '/images/gallery/event/1.webp', alt: 'Kegiatan ekstrakurikuler siswa' },
+    imageSlot: 'gallery.ekstrakurikuler',
   },
 ];

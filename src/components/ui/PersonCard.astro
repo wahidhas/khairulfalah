@@ -1,30 +1,35 @@
 ---
 import type { PersonProfile } from '../../types';
 import { iconRegistry } from '../../lib/icons';
-import { imageExists } from '../../lib/images';
+import { imageExists, slotToRealPath } from '../../lib/images';
 import Card from './Card.astro';
 import Badge from './Badge.astro';
 
 interface Props extends Omit<PersonProfile, 'id'> {
   id?: string;
   class?: string;
+  /** Identitas mis. "teacher.guru-1" — bila `photo` belum diisi content file, dipakai untuk
+   * mencari foto asli otomatis di /images/teacher/{key}.webp tanpa perlu ubah content file. */
+  slot?: string;
 }
 
-const { name, role, photo, bio, placeholder, id, class: className } = Astro.props;
+const { name, role, photo, bio, placeholder, id, slot, class: className } = Astro.props;
 
 const UserIcon = iconRegistry['user-round'];
-// Foto hanya ditampilkan bila filenya benar-benar ada di public/ (mis. public/images/teachers/*.webp)
-// — bila belum diisi/tidak ditemukan, tetap pakai fallback ikon yang sudah ada (tidak diganti
-// dengan placeholder gambar baru, supaya tampilan yang sudah berjalan tidak berubah).
-const hasPhoto = imageExists(photo?.src);
+const photoSrc = photo?.src || (slot ? slotToRealPath(slot) : undefined);
+// Foto hanya ditampilkan bila filenya benar-benar ada di public/ (mis. public/images/teacher/*.webp)
+// — bila belum diisi/tidak ditemukan, tetap pakai fallback ikon yang sudah ada (satu ikon generik
+// yang sama untuk semua orang, BUKAN placeholder gambar baru — sengaja, supaya tidak terkesan
+// mengklaim identitas orang tertentu, lihat IMAGE_GUIDE.md).
+const hasPhoto = imageExists(photoSrc);
 ---
 
 <Card id={id} variant="bordered" class:list={['flex flex-col items-center gap-3 text-center', className]}>
   {placeholder && <Badge variant="gray">Placeholder</Badge>}
-  {hasPhoto && photo ? (
+  {hasPhoto ? (
     <img
-      src={photo.src}
-      alt={photo.alt}
+      src={photoSrc}
+      alt={photo?.alt || name}
       width="96"
       height="96"
       loading="lazy"

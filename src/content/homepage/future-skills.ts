@@ -19,6 +19,7 @@ export const futureSkills: LearningDomain[] = [
     description: 'Deskripsi akan diperbarui oleh tim kurikulum.',
     color: 'emerald',
     icon: 'cpu',
+    imageSlot: 'future-skills.ai-literacy',
   },
   {
     id: 'coding',
@@ -26,6 +27,7 @@ export const futureSkills: LearningDomain[] = [
     description: 'Deskripsi akan diperbarui oleh tim kurikulum.',
     color: 'amber',
     icon: 'code',
+    imageSlot: 'future-skills.coding',
   },
   {
     id: 'robotics',
@@ -33,6 +35,7 @@ export const futureSkills: LearningDomain[] = [
     description: 'Deskripsi akan diperbarui oleh tim kurikulum.',
     color: 'emerald',
     icon: 'bot',
+    imageSlot: 'future-skills.robotics',
   },
   {
     id: 'communication',
@@ -40,6 +43,7 @@ export const futureSkills: LearningDomain[] = [
     description: 'Deskripsi akan diperbarui oleh tim kurikulum.',
     color: 'amber',
     icon: 'mic',
+    imageSlot: 'future-skills.communication',
   },
   {
     id: 'entrepreneurship',
@@ -47,6 +51,7 @@ export const futureSkills: LearningDomain[] = [
     description: 'Deskripsi akan diperbarui oleh tim kurikulum.',
     color: 'emerald',
     icon: 'lightbulb',
+    imageSlot: 'future-skills.entrepreneurship',
   },
   {
     id: 'digital-citizenship',
@@ -54,5 +59,6 @@ export const futureSkills: LearningDomain[] = [
     description: 'Deskripsi akan diperbarui oleh tim kurikulum.',
     color: 'amber',
     icon: 'globe',
+    imageSlot: 'future-skills.digital-citizenship',
   },
 ];

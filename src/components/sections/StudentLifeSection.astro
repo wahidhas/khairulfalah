@@ -15,7 +15,7 @@ import { studentLifeHeader, studentLife } from '../../content/homepage/student-l
             <SmartImage
               src={item.image?.src}
               alt={item.image?.alt ?? item.title}
-              fallback="/images/placeholders/gallery-placeholder.svg"
+              slot={item.imageSlot ?? 'gallery'}
               width={800}
               height={450}
               class="h-full w-full object-cover"

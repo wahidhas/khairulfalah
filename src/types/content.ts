@@ -12,6 +12,11 @@ export interface ImageAsset {
   alt: string;
 }
 
+/** ImageAsset + identitas slot placeholder kontekstual (lihat src/lib/images.ts). */
+export interface SlottedImage extends ImageAsset {
+  slot: string;
+}
+
 export interface SectionHeader {
   badge?: string;
   title: string;
@@ -35,6 +40,8 @@ export interface FeatureCard {
   description: string;
   /** Opsional — hanya diisi kartu yang menampilkan foto (mis. preview Kehidupan Madrasah). */
   image?: ImageAsset;
+  /** Opsional — identitas slot placeholder kontekstual untuk `image` (lihat src/lib/images.ts). */
+  imageSlot?: string;
 }
 
 export interface Program {
@@ -51,6 +58,10 @@ export interface LearningDomain {
   description: string;
   color: string;
   icon: string;
+  /** Opsional — foto asli domain, diisi setelah tersedia. */
+  image?: ImageAsset;
+  /** Opsional — identitas slot placeholder kontekstual untuk thumbnail domain (lihat src/lib/images.ts). */
+  imageSlot?: string;
 }
 
 export interface Statistic {

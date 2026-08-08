@@ -16,6 +16,7 @@ import { teachersHeader, teachersPreview, teachersCta } from '../../content/abou
           photo={person.photo}
           bio={person.bio}
           placeholder={person.placeholder}
+          slot={`teachers.${person.id}`}
         />
       ))}
     </div>

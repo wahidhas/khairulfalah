@@ -43,7 +43,7 @@ import { curriculumHero } from '../../content/curriculum';
       <SmartImage
         src={curriculumHero.image.src}
         alt={curriculumHero.image.alt}
-        fallback="/images/placeholders/hero-placeholder.svg"
+        slot="curriculum.hero"
         width={1920}
         height={1440}
         loading="eager"

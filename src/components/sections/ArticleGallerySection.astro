@@ -28,7 +28,7 @@ const { gallery } = Astro.props;
               <SmartImage
                 src={image.src}
                 alt={image.alt}
-                fallback="/images/placeholders/gallery-placeholder.svg"
+                slot="gallery"
                 width={1200}
                 height={1200}
                 class="h-full w-full object-cover"

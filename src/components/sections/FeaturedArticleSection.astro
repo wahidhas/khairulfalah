@@ -26,7 +26,7 @@ const href = `/articles/${article.id}`;
         <SmartImage
           src={data.image.src}
           alt={data.image.alt || data.title}
-          fallback="/images/placeholders/hero-placeholder.svg"
+          slot="article"
           width={1200}
           height={675}
           loading="eager"

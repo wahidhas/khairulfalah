@@ -1,19 +1,23 @@
 ---
 import type { Testimonial } from '../../types';
 import { iconRegistry } from '../../lib/icons';
-import { imageExists } from '../../lib/images';
+import { imageExists, slotToRealPath } from '../../lib/images';
 import Card from './Card.astro';
 import Badge from './Badge.astro';
 
 interface Props extends Omit<Testimonial, 'id'> {
   id?: string;
   class?: string;
+  /** Identitas mis. "testimonial.testimoni-1" — dipakai mencari avatar asli otomatis di
+   * /images/testimonial/{key}.webp bila `avatar` belum diisi content file. */
+  slot?: string;
 }
 
-const { name, role, quote, avatar, placeholder, id, class: className } = Astro.props;
+const { name, role, quote, avatar, placeholder, id, slot, class: className } = Astro.props;
 
 const UserIcon = iconRegistry['user-round'];
-const hasAvatar = imageExists(avatar);
+const avatarSrc = avatar || (slot ? slotToRealPath(slot) : undefined);
+const hasAvatar = imageExists(avatarSrc);
 ---
 
 <Card id={id} variant="default" class:list={['flex flex-col gap-4', className]}>
@@ -26,7 +30,7 @@ const hasAvatar = imageExists(avatar);
   <div class="mt-auto flex items-center gap-3">
     {hasAvatar ? (
       <img
-        src={avatar}
+        src={avatarSrc}
         alt={name}
         width="40"
         height="40"

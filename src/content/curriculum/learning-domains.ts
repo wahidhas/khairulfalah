@@ -13,6 +13,7 @@ export const learningDomains: LearningDomain[] = [
     description: 'Penguatan akidah, ibadah, dan kedekatan dengan Al-Qur’an sebagai fondasi utama.',
     color: 'emerald',
     icon: 'moon',
+    imageSlot: 'kflf.iman-al-quran',
   },
   {
     id: 'komunikasi-global',
@@ -20,6 +21,7 @@ export const learningDomains: LearningDomain[] = [
     description: 'Kemampuan berbahasa dan berkomunikasi secara efektif lintas budaya.',
     color: 'amber',
     icon: 'languages',
+    imageSlot: 'kflf.komunikasi-global',
   },
   {
     id: 'matematika-computational-thinking',
@@ -27,6 +29,7 @@ export const learningDomains: LearningDomain[] = [
     description: 'Kemampuan berpikir logis, terstruktur, dan menyelesaikan masalah secara sistematis.',
     color: 'emerald',
     icon: 'calculator',
+    imageSlot: 'kflf.matematika-computational-thinking',
   },
   {
     id: 'sains-inovasi',
@@ -34,6 +37,7 @@ export const learningDomains: LearningDomain[] = [
     description: 'Eksplorasi ilmiah dan semangat mencipta solusi berbasis sains.',
     color: 'amber',
     icon: 'flask-conical',
+    imageSlot: 'kflf.sains-inovasi',
   },
   {
     id: 'peradaban-kepemimpinan-entrepreneurship',
@@ -41,6 +45,7 @@ export const learningDomains: LearningDomain[] = [
     description: 'Wawasan sejarah peradaban serta kemampuan memimpin dan berwirausaha.',
     color: 'emerald',
     icon: 'graduation-cap',
+    imageSlot: 'kflf.peradaban-kepemimpinan-entrepreneurship',
   },
   {
     id: 'life-skills-wellbeing',
@@ -48,6 +53,7 @@ export const learningDomains: LearningDomain[] = [
     description: 'Kecakapan hidup dan kesejahteraan fisik-mental siswa sehari-hari.',
     color: 'amber',
     icon: 'heart',
+    imageSlot: 'kflf.life-skills-wellbeing',
   },
   {
     id: 'creativity-impact-project',
@@ -55,5 +61,6 @@ export const learningDomains: LearningDomain[] = [
     description: 'Proyek kreatif yang memberi dampak nyata bagi lingkungan sekitar.',
     color: 'emerald',
     icon: 'sparkles',
+    imageSlot: 'kflf.creativity-impact-project',
   },
 ];
