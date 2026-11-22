@@ -1,14 +1,15 @@
 # Daftar berkas redesign 2027/2028
 
-Perbandingan terhadap basis `8fd9dbe`. `package.json` dan `package-lock.json` tidak berubah.
+Perbandingan terhadap basis `8fd9dbe`, termasuk revisi UI/UX mengikuti referensi. `package.json` dan `package-lock.json` tidak berubah.
 
-## Berkas baru (43)
+## Berkas baru (50)
 
 - [docs/REDESIGN_2027_2028.md](../docs/REDESIGN_2027_2028.md)
 - [docs/REDESIGN_FILES.md](../docs/REDESIGN_FILES.md)
 - [docs/REDESIGN_PREVIEW.md](../docs/REDESIGN_PREVIEW.md)
 - [docs/screenshots/homepage-desktop.jpg](../docs/screenshots/homepage-desktop.jpg)
 - [docs/screenshots/homepage-mobile.jpg](../docs/screenshots/homepage-mobile.jpg)
+- [docs/screenshots/homepage-news.jpg](../docs/screenshots/homepage-news.jpg)
 - [docs/screenshots/mi-desktop.jpg](../docs/screenshots/mi-desktop.jpg)
 - [docs/screenshots/mi-growth-portal.jpg](../docs/screenshots/mi-growth-portal.jpg)
 - [docs/screenshots/mi-mobile.jpg](../docs/screenshots/mi-mobile.jpg)
@@ -16,16 +17,21 @@ Perbandingan terhadap basis `8fd9dbe`. `package.json` dan `package-lock.json` ti
 - [docs/screenshots/mts-learning-journey.jpg](../docs/screenshots/mts-learning-journey.jpg)
 - [docs/screenshots/mts-mobile.jpg](../docs/screenshots/mts-mobile.jpg)
 - [docs/screenshots/mts-portfolio.jpg](../docs/screenshots/mts-portfolio.jpg)
+- [docs/screenshots/reference-responsive-results.json](../docs/screenshots/reference-responsive-results.json)
 - [docs/screenshots/responsive-results.json](../docs/screenshots/responsive-results.json)
 - [docs/screenshots/spmb-desktop.jpg](../docs/screenshots/spmb-desktop.jpg)
 - [docs/screenshots/spmb-mobile.jpg](../docs/screenshots/spmb-mobile.jpg)
 - [public/images/brand/social-preview.png](../public/images/brand/social-preview.png)
 - [scripts/verify-site.mjs](../scripts/verify-site.mjs)
 - [src/assets/brand/social-preview.svg](../src/assets/brand/social-preview.svg)
+- [src/components/layout/ContactBar.astro](../src/components/layout/ContactBar.astro)
+- [src/components/sections/AcademyNewsSection.astro](../src/components/sections/AcademyNewsSection.astro)
 - [src/components/sections/AdmissionBanner.astro](../src/components/sections/AdmissionBanner.astro)
 - [src/components/sections/DigitalJourneySection.astro](../src/components/sections/DigitalJourneySection.astro)
+- [src/components/sections/FoundationHighlightsSection.astro](../src/components/sections/FoundationHighlightsSection.astro)
 - [src/components/sections/GrowthPathsSection.astro](../src/components/sections/GrowthPathsSection.astro)
 - [src/components/sections/GrowthPortalPreview.astro](../src/components/sections/GrowthPortalPreview.astro)
+- [src/components/sections/LevelChoicesSection.astro](../src/components/sections/LevelChoicesSection.astro)
 - [src/components/sections/LevelHeroSection.astro](../src/components/sections/LevelHeroSection.astro)
 - [src/components/sections/LevelProgramsSection.astro](../src/components/sections/LevelProgramsSection.astro)
 - [src/components/sections/MIExperienceSection.astro](../src/components/sections/MIExperienceSection.astro)
@@ -33,6 +39,7 @@ Perbandingan terhadap basis `8fd9dbe`. `package.json` dan `package-lock.json` ti
 - [src/components/sections/PortfolioGallery.astro](../src/components/sections/PortfolioGallery.astro)
 - [src/components/sections/SharedFoundationSection.astro](../src/components/sections/SharedFoundationSection.astro)
 - [src/components/ui/ActivityMedia.astro](../src/components/ui/ActivityMedia.astro)
+- [src/components/ui/CampaignVisual.astro](../src/components/ui/CampaignVisual.astro)
 - [src/components/ui/LevelIdentityCard.astro](../src/components/ui/LevelIdentityCard.astro)
 - [src/components/ui/ProgramFeatureCard.astro](../src/components/ui/ProgramFeatureCard.astro)
 - [src/content/homepage/identity.ts](../src/content/homepage/identity.ts)
