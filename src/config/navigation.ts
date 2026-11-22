@@ -6,10 +6,8 @@ export const mainNavItems: NavigationItem[] = [
     { label: 'MTs Khairul Falah', href: '/mts' },
     { label: 'RA · Informasi melalui admin', href: '/contact#ra' },
   ] },
-  { label: 'Kurikulum KFLF', href: '/kurikulum' },
   { label: 'Kegiatan & Karya', href: '/student-life' },
   { label: 'Tentang Kami', href: '/about' },
-  { label: 'SPMB 2027/2028', href: '/ppdb' },
   { label: 'Kontak', href: '/contact' },
 ];
 export const navCta: NavigationItem = { label: 'Daftar SPMB', href: '/ppdb' };
