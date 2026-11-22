@@ -1,0 +1,51 @@
+---
+import Container from '../layout/Container.astro';
+import Section from '../layout/Section.astro';
+import PersonCard from '../ui/PersonCard.astro';
+import { staffDirectory, staffFilters } from '../../content/teachers';
+---
+
+<Section id="daftar-guru" spacing="sm" class="bg-surface">
+  <Container>
+    <div data-staff-directory>
+      <div hidden data-staff-filters role="group" aria-label="Filter guru dan tenaga kependidikan" class="mb-6 flex flex-wrap gap-3">
+        {staffFilters.map(filter => (
+          <button type="button" data-staff-filter={filter.id} aria-pressed={filter.id === 'all'} aria-controls="staff-list" class="inline-flex min-h-11 items-center gap-2 rounded-lg border border-brand bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-sage focus-ring aria-pressed:bg-brand aria-pressed:text-white">
+            {filter.label}
+            <span>({filter.id === 'all' ? staffDirectory.length : staffDirectory.filter(person => person.group === filter.id).length})</span>
+          </button>
+        ))}
+      </div>
+      <p data-staff-count role="status" aria-live="polite" aria-atomic="true" class="mb-8 text-sm text-muted">Menampilkan {staffDirectory.length} guru dan tenaga kependidikan.</p>
+      <ul id="staff-list" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {staffDirectory.map(person => (
+          <li data-staff-group={person.group}>
+            <PersonCard id={person.id} name={person.name} role={person.role} unit={person.unit} photo={person.photo} bio={person.bio} placeholder={person.placeholder} slot={`teachers.${person.id}`} class="h-full" />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Container>
+</Section>
+
+<script>
+  const directory = document.querySelector<HTMLElement>('[data-staff-directory]');
+  if (directory) {
+    const buttons = Array.from(directory.querySelectorAll<HTMLButtonElement>('[data-staff-filter]'));
+    const profiles = Array.from(directory.querySelectorAll<HTMLElement>('[data-staff-group]'));
+    const count = directory.querySelector<HTMLElement>('[data-staff-count]');
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.staffFilter;
+        let visibleCount = 0;
+        for (const profile of profiles) {
+          profile.hidden = filter !== 'all' && profile.dataset.staffGroup !== filter;
+          if (!profile.hidden) visibleCount++;
+        }
+        for (const option of buttons) option.setAttribute('aria-pressed', String(option === button));
+        if (count) count.textContent = `Menampilkan ${visibleCount} guru dan tenaga kependidikan.`;
+      });
+    }
+    directory.querySelector<HTMLElement>('[data-staff-filters]')?.removeAttribute('hidden');
+  }
+</script>

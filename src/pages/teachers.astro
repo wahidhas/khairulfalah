@@ -1,0 +1,20 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import StaffDirectorySection from '../components/sections/StaffDirectorySection.astro';
+import { staffPage } from '../content/teachers';
+import { buildBreadcrumbSchema } from '../lib/seo';
+
+const breadcrumb = [
+  { label: 'Beranda', href: '/' },
+  { label: 'Tentang Kami', href: '/about' },
+  { label: 'Guru & Tenaga Kependidikan', href: '/teachers' },
+];
+const breadcrumbSchema = buildBreadcrumbSchema(breadcrumb, Astro.site);
+---
+
+<MainLayout title={staffPage.title} description={staffPage.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  <PageHeader title={staffPage.title} description={staffPage.description} breadcrumb={breadcrumb} />
+  <StaffDirectorySection />
+</MainLayout>

@@ -1,5 +1,11 @@
 # INFORMATION_ARCHITECTURE.md
 
+> Direktori `/teachers` memuat guru MI, guru MTs, dan tenaga kependidikan, dengan
+> filter Semua/MI/MTs/Tendik. Enam profil ringkas dan tombol ke direktori tersedia
+> di `/about#guru-tendik`; footer juga memuat tautan Guru & Tendik. Data terpusat
+> di `src/content/teachers.ts`. Foto dapat ditambahkan ke
+> `public/images/teachers/{id-profil}.webp` melalui mekanisme PersonCard yang sudah ada.
+
 > Layanan Digital: empat kartu di beranda (`/#layanan-digital`) setelah Kegiatan & Karya,
 > sebelum CTA SPMB. Footer semua halaman memuat SAJADA MI, SAJADA MTs, Ruang Baca,
 > Laporan Infaq, dan Karya. Akses terkait juga tersedia di MI/MTs, Tentang Kami (Infaq),

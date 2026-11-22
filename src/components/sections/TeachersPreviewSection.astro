@@ -5,7 +5,7 @@ import { PersonCard, Button, SectionHeader } from '../ui';
 import { teachersHeader, teachersPreview, teachersCta } from '../../content/about';
 ---
 
-<Section class="bg-gray-50">
+<Section id="guru-tendik" class="bg-gray-50">
   <Container>
     <SectionHeader {...teachersHeader} />
     <div class="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
@@ -13,6 +13,7 @@ import { teachersHeader, teachersPreview, teachersCta } from '../../content/abou
         <PersonCard
           name={person.name}
           role={person.role}
+          unit={person.unit}
           photo={person.photo}
           bio={person.bio}
           placeholder={person.placeholder}
@@ -21,12 +22,7 @@ import { teachersHeader, teachersPreview, teachersCta } from '../../content/abou
       ))}
     </div>
     <div class="mt-10 flex justify-center">
-      {/*
-        Halaman /teachers belum dibuat (di luar scope Sprint 10 — "jangan membuat halaman
-        baru"). href sengaja TIDAK dikirim ke Button (tanpa href, Button merender <button>
-        native, bukan <a>) agar tidak ada href rusak yang bisa di-crawl mesin pencari/audit link.
-      */}
-      <Button variant={teachersCta.variant} disabled ariaLabel={`${teachersCta.label} (segera hadir)`}>
+      <Button href={teachersCta.href} variant={teachersCta.variant}>
         {teachersCta.label}
       </Button>
     </div>
