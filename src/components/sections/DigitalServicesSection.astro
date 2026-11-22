@@ -1,0 +1,45 @@
+---
+import Container from '../layout/Container.astro';
+import Section from '../layout/Section.astro';
+import Button from '../ui/Button.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import { digitalServices, serviceSections } from '../../content/digital-services';
+import { iconRegistry } from '../../lib/icons';
+import type { ServiceContext } from '../../content/digital-services';
+
+interface Props { context?: ServiceContext }
+const { context = 'home' } = Astro.props;
+const content = serviceSections[context];
+const services = digitalServices.filter(service => content.services.includes(service.id));
+const Arrow = iconRegistry['arrow-right'];
+---
+
+<Section id="layanan-digital" spacing="sm" class="border-y border-line bg-surface">
+  <Container>
+    <SectionHeader badge="Terhubung bersama" title={content.title} description={content.description} />
+    <p class="mt-4 text-center text-sm text-muted">Tautan aplikasi dibuka di tab baru.</p>
+    <div class:list={[
+      'mt-10 grid gap-6',
+      services.length === 4 ? 'sm:grid-cols-2 xl:grid-cols-4' : services.length === 3 ? 'md:grid-cols-3' : services.length === 2 ? 'md:grid-cols-2' : 'mx-auto max-w-3xl',
+    ]}>
+      {services.map(service => {
+        const Icon = iconRegistry[service.icon];
+        const links = service.links.filter(link => !link.level || (context !== 'mi' && context !== 'mts') || link.level === context);
+        return (
+          <article class="flex min-w-0 flex-col rounded-2xl border border-line bg-white p-6 shadow-sm">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-sage text-brand" aria-hidden="true"><Icon size={24} /></span>
+            <h3 class="mt-5 text-xl font-bold text-ink">{service.name}</h3>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-muted">{service.description}</p>
+            <div class="mt-6 flex flex-col gap-3">
+              {links.map(link => (
+                <Button href={link.href} external variant="secondary" size="sm" ariaLabel={`${link.label} (tab baru)`} class="justify-between text-left">
+                  <span>{link.label}</span><Arrow size={16} class="shrink-0 -rotate-45" aria-hidden="true" />
+                </Button>
+              ))}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </Container>
+</Section>
