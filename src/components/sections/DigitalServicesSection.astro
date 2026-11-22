@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Container from '../layout/Container.astro';
 import Section from '../layout/Section.astro';
 import Button from '../ui/Button.astro';
@@ -6,12 +7,17 @@ import SectionHeader from '../ui/SectionHeader.astro';
 import { digitalServices, serviceSections } from '../../content/digital-services';
 import { iconRegistry } from '../../lib/icons';
 import type { ServiceContext } from '../../content/digital-services';
+import type { ImageMetadata } from 'astro';
 
 interface Props { context?: ServiceContext }
 const { context = 'home' } = Astro.props;
 const content = serviceSections[context];
 const services = digitalServices.filter(service => content.services.includes(service.id));
 const Arrow = iconRegistry['arrow-right'];
+const logos = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../public/images/logos/apps/*.{png,webp}',
+  { eager: true },
+);
 ---
 
 <Section id="layanan-digital" spacing="sm" class="border-y border-line bg-surface">
@@ -23,11 +29,13 @@ const Arrow = iconRegistry['arrow-right'];
       services.length === 4 ? 'sm:grid-cols-2 xl:grid-cols-4' : services.length === 3 ? 'md:grid-cols-3' : services.length === 2 ? 'md:grid-cols-2' : 'mx-auto max-w-3xl',
     ]}>
       {services.map(service => {
-        const Icon = iconRegistry[service.icon];
+        const logo = logos[`../../../public${service.logo}`]?.default;
         const links = service.links.filter(link => !link.level || (context !== 'mi' && context !== 'mts') || link.level === context);
         return (
           <article class="flex min-w-0 flex-col rounded-2xl border border-line bg-white p-6 shadow-sm">
-            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-sage text-brand" aria-hidden="true"><Icon size={24} /></span>
+            <div class="flex h-40 items-center justify-center">
+              {logo && <Image src={logo} alt={`Logo ${service.name}`} width={192} widths={[192, 256, 384].filter(width => width <= logo.width)} sizes="160px" format="webp" loading="lazy" decoding="async" class="h-36 w-40 object-contain" />}
+            </div>
             <h3 class="mt-5 text-xl font-bold text-ink">{service.name}</h3>
             <p class="mt-3 flex-1 text-sm leading-relaxed text-muted">{service.description}</p>
             <div class="mt-6 flex flex-col gap-3">

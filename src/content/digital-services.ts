@@ -10,7 +10,7 @@ interface ServiceLink {
 interface DigitalService {
   id: ServiceId;
   name: string;
-  icon: string;
+  logo: string;
   description: string;
   links: ServiceLink[];
 }
@@ -19,7 +19,7 @@ export const digitalServices: DigitalService[] = [
   {
     id: 'sajada',
     name: 'SAJADA',
-    icon: 'clipboard-list',
+    logo: '/images/logos/apps/sajada.png',
     description: 'Jurnal mengajar, presensi, dan arsip kegiatan untuk mendukung refleksi serta perencanaan pembelajaran guru.',
     links: [
       { label: 'SAJADA MI', href: 'https://sajada-mi.khairulfalah.my.id/', level: 'mi' },
@@ -29,21 +29,21 @@ export const digitalServices: DigitalService[] = [
   {
     id: 'ruang-baca',
     name: 'Ruang Baca',
-    icon: 'book-open',
+    logo: '/images/logos/apps/ruang-baca.png',
     description: 'Layanan perpustakaan untuk katalog buku, pencatatan kunjungan, pendaftaran, dan jadwal penggunaan.',
     links: [{ label: 'Buka Ruang Baca', href: 'https://ruangbaca.khairulfalah.my.id/' }],
   },
   {
     id: 'infaq',
     name: 'Laporan Infaq',
-    icon: 'receipt',
+    logo: '/images/logos/apps/infaq.png',
     description: 'Laporan penerimaan dan pengeluaran gerakan infaq bersama warga madrasah.',
     links: [{ label: 'Lihat Laporan Infaq', href: 'https://infaq.khairulfalah.or.id/' }],
   },
   {
     id: 'karya',
     name: 'Karya',
-    icon: 'trophy',
+    logo: '/images/logos/apps/karya.webp',
     description: 'Jurnal ekstrakurikuler dan pencatatan prestasi siswa Khairul Falah.',
     links: [{ label: 'Buka Karya', href: 'https://karya-app.khairulfalah.my.id/' }],
   },
