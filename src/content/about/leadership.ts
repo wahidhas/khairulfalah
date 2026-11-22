@@ -2,22 +2,45 @@ import type { PersonProfile, SectionHeader } from '../../types';
 
 export const leadershipHeader: SectionHeader = {
   badge: 'Pimpinan',
-  title: 'Pimpinan Madrasah',
-  description: 'Struktur pimpinan akan diperbarui setelah data resmi diterima dari yayasan.',
+  title: 'Pimpinan Yayasan & Madrasah',
+  description: 'Pengurus yayasan, koordinator pendidikan, konsultan, dan kepala satuan pendidikan Khairul Falah.',
 };
 
-/** Placeholder — nama & biodata belum tersedia. Jangan mengarang biodata. */
 export const leadership: PersonProfile[] = [
   {
-    id: 'kepala-madrasah',
-    name: '[Nama akan diperbarui]',
-    role: 'Kepala Madrasah',
-    placeholder: true,
+    id: 'ketua-yayasan',
+    name: 'H. Amir Mahmud, S.Ag',
+    role: 'Ketua Yayasan',
+    placeholder: false,
   },
   {
-    id: 'ketua-yayasan',
-    name: '[Nama akan diperbarui]',
-    role: 'Ketua Yayasan',
-    placeholder: true,
+    id: 'koordinator-pendidikan',
+    name: 'Wahid Hasyim, S.Kom',
+    role: 'Koordinator Pendidikan',
+    placeholder: false,
+  },
+  {
+    id: 'konsultan',
+    name: 'Dr. H. Hasbiyallah, M.Ag',
+    role: 'Konsultan',
+    placeholder: false,
+  },
+  {
+    id: 'kepala-ra',
+    name: 'Neneng Huliyah, S.Pd.I',
+    role: 'Kepala RA',
+    placeholder: false,
+  },
+  {
+    id: 'kepala-mi',
+    name: 'Ust. Muhammad Holili, S.Pd.I',
+    role: 'Kepala MI',
+    placeholder: false,
+  },
+  {
+    id: 'kepala-mts',
+    name: 'KH. Moh. Jalaluddin, S.Ag, M.Pd',
+    role: 'Kepala MTs',
+    placeholder: false,
   },
 ];
