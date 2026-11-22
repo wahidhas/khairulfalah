@@ -54,10 +54,11 @@ Selesai.
 
 ## Cara Mengganti Foto Halaman Tentang
 
-Replace `public/images/about/about.webp`
+Ganti `public/images/about/about.png` dengan gambar baru. Gambar ditampilkan utuh
+di halaman Tentang dan dioptimalkan saat build menjadi WebP responsif.
 
-(Foto ini dipakai di dua tempat: halaman Tentang dan preview "Mengenal Madrasah Khairul Falah"
-di homepage — cukup ganti satu file.)
+Jika nama atau format file berubah, sesuaikan `image.src` dan deskripsi `image.alt`
+di `src/content/about/hero.ts`. Commit dan push ke GitHub untuk memperbarui website publik.
 
 ## Cara Mengganti Foto Transformasi
 
@@ -298,18 +299,17 @@ pembaca pembaca layar (screen reader) tidak salah mengira ilustrasi sebagai foto
   ada di `PLACEHOLDER_CATEGORY_FILE` (kategori -> file) dan `SLOT_CATEGORY_OVERRIDE` (slot ->
   kategori) di file yang sama — ini SATU-SATUNYA tempat yang perlu diedit untuk menambah
   kategori placeholder baru.
-- Komponen `SmartImage` (`src/components/ui/SmartImage.astro`) adalah satu-satunya tempat yang
-  merender `<img>` untuk foto section — dipakai di seluruh Hero, About Preview, domain
+- Komponen `SmartImage` (`src/components/ui/SmartImage.astro`) merender gambar untuk section
+  lama — dipakai di Hero, About Preview, domain
   Kurikulum/Future Skills, Kehidupan Madrasah, Galeri, dan kartu Artikel. Prop `slot` (opsional)
   memilih placeholder kontekstual; prop lama `fallback` (path literal) tetap didukung untuk
   kompatibilitas mundur tapi sebaiknya tidak dipakai lagi di kode baru. Alt text otomatis
   diganti ke teks generik jujur selama yang tampil adalah placeholder (lihat bagian di atas).
-- Astro's built-in `<Image />` component **sengaja tidak dipakai** — komponen tersebut hanya
-  bisa mengoptimalkan gambar yang di-import lewat ESM dari `src/assets/`, sementara sistem ini
-  butuh path dinamis dari `public/images/` (dokumentasi resmi Astro: gambar di `public/`
-  disajikan apa adanya, tidak diproses `<Image />`). `<img>` biasa dengan `width`/`height`/
-  `loading="lazy"`/`decoding="async"` eksplisit dipakai sebagai gantinya — tetap responsive,
-  lazy-loaded, dan mencegah layout shift, hanya tanpa resize/convert otomatis saat build.
+- `SmartImage` mengimpor aset dalam `public/images/about/` melalui `import.meta.glob`
+  dan memakai Astro `<Image />` untuk menghasilkan WebP responsif saat build. Gambar lain
+  tetap memakai `<img>` dengan dimensi dan pengaturan loading eksplisit.
+  `ActivityMedia` juga mengoptimalkan gambar MI/MTs, sedangkan `FoundationLogo`
+  mengoptimalkan logo yayasan. Path konten tetap disimpan di Content Layer.
 - Foto guru (`PersonCard`) dan avatar testimoni (`TestimonialCard`) sengaja TIDAK memakai
   placeholder gambar — keduanya sudah punya fallback ikon lingkaran generik yang sudah berjalan
   baik dan sengaja dipertahankan (satu ikon yang sama untuk semua orang, supaya tidak terkesan
