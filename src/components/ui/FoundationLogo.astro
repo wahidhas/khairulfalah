@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import officialLogo from '../../../public/images/logos/yayasan.png';
+import { brandingConfig } from '../../config';
+
+interface Props {
+  size?: number;
+  loading?: 'eager' | 'lazy';
+  class?: string;
+}
+
+const { size = 56, loading = 'lazy', class: className } = Astro.props;
+---
+
+<Image
+  src={officialLogo}
+  alt={brandingConfig.logoAlt}
+  width={size}
+  height={size}
+  densities={[1, 2]}
+  format="webp"
+  loading={loading}
+  decoding="async"
+  class:list={['shrink-0 object-contain', className]}
+/>

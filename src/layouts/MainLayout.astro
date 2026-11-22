@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import officialLogo from '../../public/images/logos/yayasan.png';
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
 import { siteConfig, brandingConfig, seoConfig } from '../config';
@@ -23,6 +25,7 @@ const {
 const pageTitle = buildPageTitle(title);
 const canonicalUrl = getCanonicalUrl(Astro.site, Astro.url.pathname);
 const imageUrl = image ? getCanonicalUrl(Astro.site, image) : undefined;
+const foundationFavicon = await getImage({ src: officialLogo, width: 48, height: 48, format: 'png' });
 
 /**
  * Analytics (Sprint 10) — ID dari environment variable, TIDAK PERNAH hardcode. Script hanya
@@ -62,7 +65,7 @@ const clarityId = import.meta.env.PUBLIC_CLARITY_ID;
     {imageExists(brandingConfig.favicon) ? (
       <link rel="icon" type="image/svg+xml" href={brandingConfig.favicon} />
     ) : imageExists(brandingConfig.logo) ? (
-      <link rel="icon" type="image/png" href={brandingConfig.logo} />
+      <link rel="icon" type="image/png" href={foundationFavicon.src} />
     ) : <link rel="icon" href="data:," />}
     {imageExists(brandingConfig.faviconIco) && <link rel="icon" href={brandingConfig.faviconIco} />}
 

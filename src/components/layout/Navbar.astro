@@ -3,6 +3,7 @@ import Container from './Container.astro';
 import MobileMenu from './MobileMenu.astro';
 import ContactBar from './ContactBar.astro';
 import Button from '../ui/Button.astro';
+import FoundationLogo from '../ui/FoundationLogo.astro';
 import { iconRegistry } from '../../lib/icons';
 import { imageExists } from '../../lib/images';
 import { mainNavItems, navCta, brandingConfig } from '../../config';
@@ -15,7 +16,7 @@ const isActive = (href: string) => href === '/' ? path === '/' : path === href |
 <header class="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
   <Container class="flex min-h-20 items-center justify-between gap-4 py-3">
     <a href="/" aria-label="Yayasan Khairul Falah, Beranda" class="flex shrink-0 items-center gap-3 rounded-lg text-brand focus-ring">
-      {imageExists(brandingConfig.logo) && <img src={brandingConfig.logo} alt={brandingConfig.logoAlt} width="44" height="44" class="h-11 w-11 object-contain" />}
+      {imageExists(brandingConfig.logo) && <FoundationLogo size={56} loading="eager" class="h-14 w-14" />}
       <span><span class="block text-sm font-medium tracking-wide">YAYASAN</span><span class="block text-lg font-bold tracking-tight">Khairul Falah<span class="text-brand">.</span></span></span>
     </a>
     <nav aria-label="Navigasi utama" class="hidden items-center gap-4 xl:flex">
