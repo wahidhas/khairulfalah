@@ -8,12 +8,13 @@ import Badge from './Badge.astro';
 interface Props extends Omit<PersonProfile, 'id'> {
   id?: string;
   class?: string;
+  unit?: string;
   /** Identitas mis. "teacher.guru-1" — bila `photo` belum diisi content file, dipakai untuk
    * mencari foto asli otomatis di /images/teacher/{key}.webp tanpa perlu ubah content file. */
   slot?: string;
 }
 
-const { name, role, photo, bio, placeholder, id, slot, class: className } = Astro.props;
+const { name, role, photo, bio, placeholder, unit, id, slot, class: className } = Astro.props;
 
 const UserIcon = iconRegistry['user-round'];
 const photoSrc = photo?.src || (slot ? slotToRealPath(slot) : undefined);
@@ -46,6 +47,7 @@ const hasPhoto = imageExists(photoSrc);
   <div>
     <p class="text-base font-semibold text-gray-900">{name}</p>
     <p class="text-sm text-emerald-700">{role}</p>
+    {unit && <p class="mt-2 text-xs font-semibold text-muted">{unit}</p>}
   </div>
   {bio && <p class="text-sm text-gray-600">{bio}</p>}
 </Card>

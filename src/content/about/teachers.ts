@@ -1,21 +1,17 @@
-import type { PersonProfile, SectionHeader, Button } from '../../types';
+import type { SectionHeader, Button } from '../../types';
+import { staffDirectory } from '../teachers';
 
 export const teachersHeader: SectionHeader = {
   badge: 'Tenaga Pendidik',
   title: 'Guru & Tenaga Kependidikan',
-  description: 'Pratinjau profil guru — daftar lengkap akan tersedia setelah halaman Guru dibuat.',
+  description: 'Sebagian tim guru dan tenaga kependidikan yang mendampingi keseharian madrasah. Kenali seluruh tim melalui halaman lengkap.',
 };
 
-/** Placeholder — belum ada profil guru resmi. Jangan mengarang biodata. */
-export const teachersPreview: PersonProfile[] = [
-  { id: 'guru-1', name: '[Nama akan diperbarui]', role: 'Tenaga Pengajar', placeholder: true },
-  { id: 'guru-2', name: '[Nama akan diperbarui]', role: 'Tenaga Pengajar', placeholder: true },
-  { id: 'guru-3', name: '[Nama akan diperbarui]', role: 'Tenaga Pengajar', placeholder: true },
-];
+const previewIds = ['siti-nur-hatiqoh', 'astuti-ramdhaniati-fitri', 'jamilah-syairoh', 'neneng-fauziah', 'zultaman', 'widia-reisya-yulianti'];
+export const teachersPreview = staffDirectory.filter(person => previewIds.includes(person.id));
 
-/** href menunjuk ke /teachers — halaman tersebut belum dibuat (di luar scope Sprint 3). */
 export const teachersCta: Button = {
-  label: 'Lihat Seluruh Guru',
+  label: 'Lihat Seluruh Guru & Tendik',
   href: '/teachers',
   variant: 'outline',
 };

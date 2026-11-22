@@ -60,11 +60,11 @@ for (const [route, { html }] of pages) {
     }
   }
 }
-for (const route of ['/', '/mi/', '/mts/', '/ppdb/', '/spmb/mi/', '/spmb/mts/', '/about/', '/transformasi/', '/kurikulum/', '/student-life/', '/articles/', '/contact/', '/programs/future-skills/']) {
+for (const route of ['/', '/mi/', '/mts/', '/ppdb/', '/spmb/mi/', '/spmb/mts/', '/about/', '/teachers/', '/transformasi/', '/kurikulum/', '/student-life/', '/articles/', '/contact/', '/programs/future-skills/']) {
   if (!pages.has(route)) errors.push(`Required route missing: ${route}`);
 }
 const sitemap = await readFile(path.join(root, 'sitemap-0.xml'), 'utf8');
-for (const route of ['/mi', '/mts', '/ppdb', '/spmb/mi', '/spmb/mts']) {
+for (const route of ['/mi', '/mts', '/ppdb', '/spmb/mi', '/spmb/mts', '/teachers']) {
   if (!sitemap.includes(`https://khairulfalah.my.id${route}`)) errors.push(`Route missing from sitemap: ${route}`);
 }
 if (errors.length) {

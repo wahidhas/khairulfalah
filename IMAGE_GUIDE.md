@@ -177,12 +177,13 @@ menyentuh kode Astro/TypeScript.
 Dua cara, pilih salah satu:
 
 **Cara cepat (tanpa edit kode):** taruh file di `public/images/teachers/{id-guru}.webp` — id
-guru mengikuti `id` yang sudah ada di `src/content/about/teachers.ts` (mis. `guru-1.webp` untuk
-entri `id: 'guru-1'`). Foto otomatis terdeteksi tanpa perlu mengedit file data.
+guru mengikuti `id` yang sudah ada di `src/content/teachers.ts` (mis. `siti-nur-hatiqoh.webp`
+untuk entri `id: 'siti-nur-hatiqoh'`). Foto otomatis terdeteksi di direktori dan pratinjau
+Tentang Kami tanpa perlu mengedit file data.
 
 **Cara eksplisit (bila ingin path/nama file bebas):**
 1. Copy file foto ke `public/images/teachers/` — nama file bebas, mis. `nama-guru.webp`.
-2. Edit data guru di `src/content/about/teachers.ts`, isi field
+2. Edit data guru di `src/content/teachers.ts`, isi field
    `photo: { src: '/images/teachers/nama-guru.webp', alt: 'Nama Guru' }`.
 
 **Penting:** selama foto asli belum ada, kartu guru TIDAK menampilkan ilustrasi/foto apa pun —
