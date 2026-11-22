@@ -4,7 +4,7 @@ import Container from '../layout/Container.astro';
 import Button from '../ui/Button.astro';
 import { homeFramework as content } from '../../content/homepage/identity';
 ---
-<Section><Container class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+<Section spacing="sm"><Container class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
   <div><p class="brand-eyebrow text-brand">{content.badge}</p><h2 class="brand-heading mt-4 text-ink">{content.title}</h2><p class="mt-6 leading-relaxed text-muted">{content.description}</p><Button href="/kurikulum" variant="outline" class="mt-8">{content.cta}</Button></div>
   <div class="rounded-2xl border border-line bg-cream p-6 md:p-10"><p class="brand-eyebrow text-brand">KFLF</p><p class="mt-2 text-sm font-medium text-muted">{content.name}</p><blockquote class="mt-8 text-2xl font-semibold leading-snug tracking-tight text-ink">“{content.quote}”</blockquote><p class="mt-8 text-sm text-muted">Contoh bukti perkembangan</p><ul class="mt-4 grid grid-cols-2 gap-3">{content.evidence.map(item => <li class="rounded-lg border border-line bg-white px-4 py-3 text-sm font-semibold text-brand">{item}</li>)}</ul></div>
 </Container></Section>

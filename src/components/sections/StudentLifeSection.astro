@@ -1,12 +1,18 @@
 ---
-import Section from '../layout/Section.astro';
 import Container from '../layout/Container.astro';
 import Button from '../ui/Button.astro';
-import ActivityMedia from '../ui/ActivityMedia.astro';
 import { homeLife as content } from '../../content/homepage/identity';
+import { iconRegistry } from '../../lib/icons';
 ---
-<Section class="bg-brand-soft"><Container>
-  <div class="max-w-2xl"><p class="brand-eyebrow text-brand">{content.badge}</p><h2 class="brand-heading mt-4 text-ink">{content.title}</h2><p class="mt-5 leading-relaxed text-muted">{content.description}</p></div>
-  <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{content.categories.map(item => <article class="overflow-hidden rounded-2xl border border-line bg-white p-3"><ActivityMedia src={item.photo} alt={`Dokumentasi ${item.title} Khairul Falah`} label={item.title} icon={item.icon} /><h3 class="px-3 pb-4 pt-5 text-lg font-semibold text-ink">{item.title}</h3></article>)}</div>
-  <Button href="/student-life" variant="outline" class="mt-8">{content.cta}</Button>
-</Container></Section>
+
+<section class="bg-surface py-12 md:py-16">
+  <Container>
+    <div class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
+      <div class="max-w-2xl"><p class="brand-eyebrow text-brand">{content.badge}</p><h2 class="brand-heading mt-3 text-ink">{content.title}</h2><p class="mt-4 leading-relaxed text-muted">{content.description}</p></div>
+      <Button href="/student-life" variant="outline">{content.cta}</Button>
+    </div>
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {content.categories.map(item => { const Icon = iconRegistry[item.icon]; return <li class="flex items-center gap-4 rounded-xl border border-line bg-white p-5"><span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-soft text-brand"><Icon size={22} aria-hidden="true" /></span><h3 class="text-base font-semibold text-ink">{item.title}</h3></li>; })}
+    </ul>
+  </Container>
+</section>

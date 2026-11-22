@@ -1,16 +1,24 @@
 ---
 import Container from '../layout/Container.astro';
 import Button from '../ui/Button.astro';
-import LevelIdentityCard from '../ui/LevelIdentityCard.astro';
+import CampaignVisual from '../ui/CampaignVisual.astro';
 import { homeIdentity as content } from '../../content/homepage/identity';
-import { levels } from '../../content/levels';
 ---
-<section class="bg-brand text-white">
-  <Container class="pb-12 pt-12 text-center md:pb-12 md:pt-16">
-    <p class="brand-eyebrow text-gold">{content.eyebrow}</p>
-    <h1 class="hero-heading mx-auto mt-6 max-w-5xl"><span class="block text-gold">{content.headline[0]}</span><span class="block">{content.headline[1]}</span></h1>
-    <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white md:text-lg">{content.intro}</p>
-    <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row"><Button href="#jenjang" variant="accent">{content.primaryCta}</Button><Button href="/ppdb" variant="inverse">{content.secondaryCta}</Button></div>
+
+<section class="academy-hero relative isolate overflow-hidden bg-cream">
+  <CampaignVisual />
+  <Container class="relative z-10 pointer-events-none">
+    <div class="academy-hero-copy pointer-events-auto">
+      <p class="text-sm font-bold tracking-wide text-brand">{content.eyebrow}</p>
+      <h1 class="academy-hero-heading mt-5 text-ink">
+        <span class="block">{content.headline[0]}</span>
+        <span class="academy-emphasis">{content.headline[1]}</span>
+      </h1>
+      <p class="mt-6 max-w-lg text-base leading-relaxed text-muted">{content.intro}</p>
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <Button href="#jenjang">{content.primaryCta}</Button>
+        <Button href="/kurikulum" variant="outline">Lihat Kurikulum</Button>
+      </div>
+    </div>
   </Container>
-  <Container id="jenjang" class="pb-12 md:pb-16"><h2 class="mb-6 text-center text-base font-medium text-white">{content.levelsLabel}</h2><div class="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">{levels.map(level => <LevelIdentityCard level={level} />)}</div></Container>
 </section>

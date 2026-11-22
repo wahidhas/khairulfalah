@@ -3,10 +3,21 @@ import Section from '../layout/Section.astro';
 import Container from '../layout/Container.astro';
 import Button from '../ui/Button.astro';
 import { homeAdmission as content } from '../../content/homepage/identity';
+import { academyHome } from '../../content/homepage/identity';
+import { contactConfig } from '../../config';
+import { whatsappHref, emailHref } from '../../lib/contact';
+import { iconRegistry } from '../../lib/icons';
 import type { LevelContent } from '../../types/levels';
-interface Props { level?: LevelContent }
-const { level } = Astro.props;
+interface Props { level?: LevelContent; compact?: boolean }
+const { level, compact = false } = Astro.props;
+const wa = whatsappHref(contactConfig.whatsapp);
+const email = emailHref(contactConfig.email);
+const Message = iconRegistry['message-circle'];
 ---
-<Section class="bg-brand text-white"><Container class="text-center"><p class="brand-eyebrow text-gold">{content.badge}</p><h2 class="brand-heading mx-auto mt-5 max-w-4xl">{level?.finalCta ?? content.title}</h2><p class="mx-auto mt-6 max-w-2xl leading-relaxed text-white">{content.description}</p>
+{compact ? <section class="py-10"><Container><div class="grid items-center gap-6 rounded-2xl bg-brand p-6 text-white lg:grid-cols-[1fr_1.4fr_auto] lg:p-8">
+  <div class="flex items-center gap-4"><span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold text-ink"><Message size={28} aria-hidden="true" /></span><div><h2 class="text-lg font-bold">{academyHome.helpTitle}</h2><p class="mt-1 text-sm leading-relaxed">{academyHome.helpIntro}</p></div></div>
+  <div class="grid gap-3 border-white/25 text-sm sm:grid-cols-2 lg:border-x lg:px-6">{wa ? <a href={wa} class="rounded focus-ring"><span class="block text-gold">WhatsApp Madrasah</span><span class="mt-1 block">{contactConfig.whatsapp}</span></a> : <a href="/contact" class="rounded underline underline-offset-4 focus-ring">{academyHome.contactCta}</a>}{email ? <a href={email} class="rounded break-all focus-ring"><span class="block text-gold">Email Madrasah</span><span class="mt-1 block">{contactConfig.email}</span></a> : <p class="leading-relaxed">{academyHome.journeyIntro}</p>}</div>
+  <Button href="/ppdb" variant="accent">Daftar SPMB 2027/2028</Button>
+</div></Container></section> : <Section class="bg-brand text-white"><Container class="text-center"><p class="brand-eyebrow text-gold">{content.badge}</p><h2 class="brand-heading mx-auto mt-5 max-w-4xl">{level?.finalCta ?? content.title}</h2><p class="mx-auto mt-6 max-w-2xl leading-relaxed text-white">{content.description}</p>
   <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">{level ? <Button href={`/spmb/${level.id}`} variant="accent">Daftar {level.id === 'mi' ? 'MI' : 'MTs'} 2027/2028</Button> : <><Button href="/spmb/mi" variant="accent">Daftar MI 2027/2028</Button><Button href="/spmb/mts" variant="light">Daftar MTs 2027/2028</Button></>}</div>
-</Container></Section>
+</Container></Section>}

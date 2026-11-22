@@ -5,6 +5,7 @@ import Container from '../components/layout/Container.astro';
 import Breadcrumb from '../components/ui/Breadcrumb.astro';
 import Button from '../components/ui/Button.astro';
 import LevelIdentityCard from '../components/ui/LevelIdentityCard.astro';
+import CampaignVisual from '../components/ui/CampaignVisual.astro';
 import { levels } from '../content/levels';
 import { admissions } from '../content/spmb';
 import { homeAdmission } from '../content/homepage/identity';
@@ -14,7 +15,19 @@ const breadcrumbSchema = buildBreadcrumbSchema(crumbs, Astro.site);
 ---
 <MainLayout title="SPMB Khairul Falah 2027/2028 | Pendaftaran MI dan MTs" description="Pusat informasi SPMB Khairul Falah Bekasi 2027/2028. Pilih MI Adab & Life Skills atau MTs Digital Creator dan temukan informasi penerimaan sesuai jenjang.">
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
-  <Section class="bg-cream" spacing="sm"><Container><Breadcrumb items={crumbs} /><div class="mx-auto max-w-3xl py-8 text-center"><p class="brand-eyebrow text-brand">{homeAdmission.badge}</p><h1 class="brand-heading mt-5 text-ink">{homeAdmission.title}</h1><p class="mt-6 text-lg leading-relaxed text-muted">{homeAdmission.description}</p><p class="mt-6 inline-flex rounded-lg border border-line bg-white px-4 py-3 text-sm font-semibold text-brand">{admissions.status}</p></div></Container></Section>
-  <Section id="jenjang" spacing="sm"><Container><h2 class="brand-heading text-center text-ink">Pilih jenjang pendidikan anak Anda.</h2><div class="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-2">{levels.map(level => <LevelIdentityCard level={level} admission />)}</div></Container></Section>
+  <section class="academy-hero relative isolate overflow-hidden bg-cream">
+    <CampaignVisual href="#jenjang" cta="Pilih Jenjang" />
+    <Container class="relative z-10 pointer-events-none">
+      <div class="academy-hero-copy pointer-events-auto">
+        <Breadcrumb items={crumbs} />
+        <p class="brand-eyebrow mt-8 text-brand">{homeAdmission.badge}</p>
+        <h1 class="brand-heading mt-5 text-ink">{homeAdmission.title}</h1>
+        <p class="mt-5 leading-relaxed text-muted">{homeAdmission.description}</p>
+        <p class="mt-5 inline-flex rounded-lg border border-line bg-white px-4 py-3 text-sm font-semibold text-brand">{admissions.status}</p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row"><Button href="#jenjang">Pilih Jenjang Pendidikan</Button><Button href="#kontak-ppdb" variant="outline">Hubungi Madrasah</Button></div>
+      </div>
+    </Container>
+  </section>
+  <Section id="jenjang" spacing="sm"><Container><h2 class="brand-heading text-center text-ink">Pilih jenjang pendidikan anak Anda.</h2><div class="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-2">{levels.map(level => <LevelIdentityCard level={level} admission compact />)}</div></Container></Section>
   <Section id="alur-pendaftaran" class="bg-brand-soft"><Container><h2 class="brand-heading max-w-3xl text-ink">Informasi khusus untuk setiap jenjang.</h2><p class="mt-5 max-w-2xl leading-relaxed text-muted">Buka halaman SPMB MI atau MTs untuk melihat status jadwal, persyaratan, tahapan, FAQ, serta kontak panitia. Jadwal dan biaya akan diumumkan setelah disahkan.</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><Button href="/spmb/mi">Informasi SPMB MI</Button><Button href="/spmb/mts" variant="outline">Informasi SPMB MTs</Button></div><div id="kontak-ppdb" class="mt-10 border-t border-line pt-8"><h3 class="text-xl font-bold text-ink">Perlu informasi lebih lanjut?</h3><p class="mt-3 text-muted">Silakan hubungi madrasah melalui kanal resmi pada halaman Kontak.</p><Button href="/contact#informasi-kontak" variant="outline" class="mt-5">Hubungi Madrasah</Button></div></Container></Section>
 </MainLayout>

@@ -1,6 +1,7 @@
 ---
 import Container from './Container.astro';
 import MobileMenu from './MobileMenu.astro';
+import ContactBar from './ContactBar.astro';
 import Button from '../ui/Button.astro';
 import { iconRegistry } from '../../lib/icons';
 import { imageExists } from '../../lib/images';
@@ -10,6 +11,7 @@ const Chevron = iconRegistry['chevron-down'];
 const path = Astro.url.pathname;
 const isActive = (href: string) => href === '/' ? path === '/' : path === href || path.startsWith(href + '/') || (href === '/ppdb' && path.startsWith('/spmb/'));
 ---
+<ContactBar />
 <header class="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
   <Container class="flex min-h-20 items-center justify-between gap-4 py-3">
     <a href="/" aria-label="Yayasan Khairul Falah, Beranda" class="flex shrink-0 items-center gap-3 rounded-lg text-brand focus-ring">

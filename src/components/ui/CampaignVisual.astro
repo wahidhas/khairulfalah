@@ -1,0 +1,24 @@
+---
+import Button from './Button.astro';
+import { imageExists } from '../../lib/images';
+import { iconRegistry } from '../../lib/icons';
+import { academyHome as content } from '../../content/homepage/identity';
+
+interface Props { href?: string; cta?: string }
+const { href = '/ppdb', cta = content.admissionCta } = Astro.props;
+const Graduation = iconRegistry['graduation-cap'];
+const realPhoto = imageExists(content.heroImage);
+const photo = realPhoto ? content.heroImage : content.illustration;
+---
+
+<div class="academy-hero-visual">
+  <img src={photo} alt={realPhoto ? content.imageAlt : content.illustrationAlt} width="1400" height="1120" fetchpriority="high" decoding="async" class="h-full w-full object-cover" />
+  {!realPhoto && <p class="academy-illustration-label">{content.illustrationLabel}</p>}
+  <aside aria-label="Informasi penerimaan siswa" class="academy-admission-card">
+    <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-soft text-brand"><Graduation size={26} aria-hidden="true" /></span>
+    <p class="mt-3 text-base font-semibold text-ink">{content.admissionLabel}</p>
+    <p class="mt-1 text-3xl font-bold tracking-tight text-brand">{content.admissionYear}</p>
+    <p class="mb-4 mt-2 text-sm text-muted">{content.admissionStatus}</p>
+    <Button href={href} variant="accent" size="sm" class="w-full">{cta}</Button>
+  </aside>
+</div>
