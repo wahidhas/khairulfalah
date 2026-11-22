@@ -22,7 +22,7 @@ const isActive = (href: string) => href === '/' ? path === '/' : path === href |
       </ul>
       <Button href={navCta.href} size="sm">{navCta.label}</Button>
     </nav>
-    <div class="flex items-center gap-3 xl:hidden"><Button href={navCta.href} size="sm" class="hidden sm:inline-flex">{navCta.label}</Button><button type="button" id="mobile-menu-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu navigasi" class="flex h-11 w-11 items-center justify-center rounded-lg text-brand hover:bg-brand-soft focus-ring"><Menu size={24} aria-hidden="true" /></button></div>
+    <div class="flex items-center gap-3 xl:hidden"><span class="hidden sm:block"><Button href={navCta.href} size="sm">{navCta.label}</Button></span><button type="button" id="mobile-menu-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu navigasi" class="flex h-11 w-11 items-center justify-center rounded-lg text-brand hover:bg-brand-soft focus-ring"><Menu size={24} aria-hidden="true" /></button></div>
   </Container>
 </header>
 <MobileMenu items={mainNavItems} cta={navCta} />

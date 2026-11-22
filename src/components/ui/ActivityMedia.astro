@@ -5,9 +5,14 @@ interface Props { src: string; alt: string; label: string; icon?: string; theme?
 const { src, alt, label, icon = 'book-open', theme = 'neutral', eager = false, class: className } = Astro.props;
 const Icon = iconRegistry[icon];
 const exists = imageExists(src);
+const responsiveSources = [480, 960, 1440]
+  .map(width => ({ width, src: src.replace(/\.(webp|png|jpe?g)$/i, `-${width}.$1`) }))
+  .filter(candidate => imageExists(candidate.src))
+  .map(candidate => `${candidate.src} ${candidate.width}w`)
+  .join(', ');
 ---
 <figure class:list={['relative flex aspect-[16/10] min-w-0 items-center justify-center overflow-hidden rounded-xl', theme === 'mts' ? 'digital-grid bg-navy text-white' : 'media-grid bg-sage text-brand', className]}>
-  {exists ? <img src={src} alt={alt} width="960" height="600" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" class="absolute inset-0 h-full w-full object-cover" /> : <div class="relative flex max-w-sm flex-col items-center gap-4 p-6 text-center">
+  {exists ? <img src={src} srcset={responsiveSources || undefined} sizes={responsiveSources ? '(min-width: 1280px) 600px, (min-width: 768px) 45vw, 100vw' : undefined} alt={alt} width="960" height="600" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" class="absolute inset-0 h-full w-full object-cover" /> : <div class="relative flex max-w-sm flex-col items-center gap-4 p-6 text-center">
     <span class:list={['flex h-16 w-16 items-center justify-center rounded-2xl shadow-sm', theme === 'mts' ? 'bg-digital text-gold' : 'bg-white text-brand']} aria-hidden="true">{Icon && <Icon size={32} />}</span>
     <span class="text-lg font-semibold leading-snug">{label}</span>
     <span class:list={['rounded-lg px-3 py-2 text-sm', theme === 'mts' ? 'bg-navy text-white' : 'bg-white text-brand']}>Foto kegiatan akan ditambahkan</span>
