@@ -15,7 +15,7 @@ const X = iconRegistry.x;
 <dialog
   id="mobile-menu"
   aria-label="Menu navigasi"
-  class="fixed inset-y-0 right-0 m-0 h-dvh w-80 max-w-[85vw] flex-col gap-8 bg-white p-6 open:flex backdrop:bg-gray-900/50"
+  class="fixed inset-y-0 right-0 left-auto m-0 h-dvh max-h-dvh w-96 max-w-[90vw] flex-col gap-6 overflow-y-auto bg-white p-6 open:flex backdrop:bg-gray-900/50"
 >
   <div class="flex items-center justify-between">
     <span class="text-base font-semibold text-gray-900">Menu</span>
@@ -33,12 +33,12 @@ const X = iconRegistry.x;
     <ul class="flex flex-col gap-1">
       {items.map((item) => (
         <li>
-          <a
+          {item.children ? <details class="group"><summary class="min-h-11 cursor-pointer rounded-lg px-3 py-3 font-semibold text-brand focus-ring">{item.label}</summary><ul class="ml-3 border-l border-line pl-3">{item.children.map(child => <li><a href={child.href} class="block rounded-lg px-3 py-3 text-sm text-ink hover:bg-brand-soft focus-ring">{child.label}</a></li>)}</ul></details> : <a
             href={item.href}
             class="block rounded-lg px-3 py-3 text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-emerald-700 focus-ring"
           >
             {item.label}
-          </a>
+          </a>}
         </li>
       ))}
     </ul>
@@ -52,8 +52,10 @@ const X = iconRegistry.x;
   const trigger = document.getElementById('mobile-menu-trigger');
   const closeBtn = document.getElementById('mobile-menu-close');
 
-  trigger?.addEventListener('click', () => dialog?.showModal());
+  trigger?.addEventListener('click', () => { dialog?.showModal(); trigger.setAttribute('aria-expanded', 'true'); });
   closeBtn?.addEventListener('click', () => dialog?.close());
+  dialog?.addEventListener('close', () => { trigger?.setAttribute('aria-expanded', 'false'); trigger?.focus(); });
+  window.matchMedia('(min-width: 1280px)').addEventListener('change', event => { if (event.matches) dialog?.close(); });
 
   dialog?.addEventListener('click', (event) => {
     if (event.target === dialog) dialog.close();

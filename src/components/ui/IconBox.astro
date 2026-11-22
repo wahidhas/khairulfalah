@@ -1,7 +1,7 @@
 ---
 import { iconRegistry } from '../../lib/icons';
 
-type Color = 'emerald' | 'amber' | 'gray';
+type Color = 'emerald' | 'amber' | 'gray' | 'brand' | 'digital';
 type Size = 'sm' | 'md' | 'lg';
 
 interface Props {
@@ -17,6 +17,8 @@ const { icon, color = 'emerald', size = 'md', id, class: className } = Astro.pro
 const Icon = iconRegistry[icon];
 
 const boxColors: Record<Color, string> = {
+  brand: 'bg-brand-soft text-brand',
+  digital: 'bg-digital-soft text-digital',
   emerald: 'bg-emerald-100 text-emerald-700',
   amber: 'bg-amber-100 text-amber-700',
   gray: 'bg-gray-100 text-gray-700',

@@ -1,0 +1,12 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import ProgramFeatureCard from '../ui/ProgramFeatureCard.astro';
+import { sharedFoundation as content } from '../../content/levels';
+---
+<Section>
+  <Container>
+    <div class="grid gap-6 lg:grid-cols-2 lg:items-end"><div><p class="brand-eyebrow text-brand">{content.badge}</p><h2 class="brand-heading mt-4 max-w-xl text-ink">{content.title}</h2></div><p class="max-w-xl text-lg leading-relaxed text-muted">{content.description}</p></div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{content.items.map(feature => <ProgramFeatureCard feature={feature} />)}</div>
+  </Container>
+</Section>

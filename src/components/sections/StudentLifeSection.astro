@@ -1,31 +1,12 @@
 ---
 import Section from '../layout/Section.astro';
 import Container from '../layout/Container.astro';
-import { Card, IconBox, SectionHeader, SmartImage } from '../ui';
-import { studentLifeHeader, studentLife } from '../../content/homepage/student-life';
+import Button from '../ui/Button.astro';
+import ActivityMedia from '../ui/ActivityMedia.astro';
+import { homeLife as content } from '../../content/homepage/identity';
 ---
-
-<Section>
-  <Container>
-    <SectionHeader {...studentLifeHeader} />
-    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-      {studentLife.map((item) => (
-        <Card variant="bordered" class="text-left">
-          <div class="aspect-video overflow-hidden rounded-lg bg-gray-100">
-            <SmartImage
-              src={item.image?.src}
-              alt={item.image?.alt ?? item.title}
-              slot={item.imageSlot ?? 'gallery'}
-              width={800}
-              height={450}
-              class="h-full w-full object-cover"
-            />
-          </div>
-          <IconBox icon={item.icon} color="emerald" class="mt-4" />
-          <h3 class="mt-4 text-base font-semibold text-gray-900">{item.title}</h3>
-          <p class="mt-2 text-sm text-gray-600">{item.description}</p>
-        </Card>
-      ))}
-    </div>
-  </Container>
-</Section>
+<Section class="bg-brand-soft"><Container>
+  <div class="max-w-2xl"><p class="brand-eyebrow text-brand">{content.badge}</p><h2 class="brand-heading mt-4 text-ink">{content.title}</h2><p class="mt-5 leading-relaxed text-muted">{content.description}</p></div>
+  <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{content.categories.map(item => <article class="overflow-hidden rounded-2xl border border-line bg-white p-3"><ActivityMedia src={item.photo} alt={`Dokumentasi ${item.title} Khairul Falah`} label={item.title} icon={item.icon} /><h3 class="px-3 pb-4 pt-5 text-lg font-semibold text-ink">{item.title}</h3></article>)}</div>
+  <Button href="/student-life" variant="outline" class="mt-8">{content.cta}</Button>
+</Container></Section>

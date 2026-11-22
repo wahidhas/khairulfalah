@@ -1,5 +1,7 @@
 # DESIGN_SYSTEM.md
 
+> Addendum 2027/2028: brief identitas baru dan [catatan redesign](docs/REDESIGN_2027_2028.md) menggantikan positioning/visual promosi lama. Token semantik: Deep Green `#075345`, putih, Gold `#FFD43B`; MI memakai sage/krem, MTs memakai navy/biru digital. Font, prinsip komponen, performa, dan aksesibilitas tetap berlaku.
+
 # Madrasah Khairul Falah Website Design System
 
 Version 1.0

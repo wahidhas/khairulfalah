@@ -1,0 +1,40 @@
+---
+import MainLayout from './MainLayout.astro';
+import Container from '../components/layout/Container.astro';
+import Section from '../components/layout/Section.astro';
+import Button from '../components/ui/Button.astro';
+import Breadcrumb from '../components/ui/Breadcrumb.astro';
+import FAQItem from '../components/ui/FAQItem.astro';
+import IconBox from '../components/ui/IconBox.astro';
+import { admissions, admissionFaq } from '../content/spmb';
+import { contactConfig } from '../config';
+import { whatsappHref, emailHref } from '../lib/contact';
+import { buildBreadcrumbSchema, buildFAQSchema } from '../lib/seo';
+import type { LevelContent } from '../types/levels';
+interface Props { level: LevelContent }
+const { level } = Astro.props;
+const label = level.id === 'mi' ? 'MI' : 'MTs';
+const crumbs = [{ label: 'Beranda', href: '/' }, { label: 'SPMB 2027/2028', href: '/ppdb' }, { label: `SPMB ${label}`, href: `/spmb/${level.id}` }];
+const faq = admissionFaq(level.id);
+const breadcrumbSchema = buildBreadcrumbSchema(crumbs, Astro.site);
+const faqSchema = buildFAQSchema(faq);
+const requirements = admissions.requirements[level.id];
+const formCandidate = admissions.formUrls[level.id];
+const form = /^https:\/\//.test(formCandidate) ? formCandidate : undefined;
+const waBase = whatsappHref(contactConfig.whatsapp);
+const wa = waBase ? `${waBase}?text=${encodeURIComponent(`Assalamu’alaikum, saya ingin informasi SPMB ${level.name} ${admissions.year}.`)}` : undefined;
+const email = emailHref(contactConfig.email);
+---
+<MainLayout title={`SPMB ${level.name} Bekasi ${admissions.year} | Pendaftaran ${label}`} description={`Informasi penerimaan ${level.name} ${admissions.year}. Kenali program, status jadwal, persyaratan, alur, FAQ, dan kontak panitia SPMB.`}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+  <section class:list={['py-8 md:py-12', level.id === 'mi' ? 'bg-cream' : 'bg-digital-soft']}><Container><Breadcrumb items={crumbs} /><div class="grid gap-10 py-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+    <div><p class="brand-eyebrow text-brand">SPMB Tahun Pelajaran {admissions.year}</p><h1 class="brand-heading mt-5 text-ink">Mulai langkah pendidikan bersama {level.name}.</h1><p class="mt-6 text-lg leading-relaxed text-muted">{level.summary}</p><p class="mt-4 font-semibold text-brand">{level.identity} · {level.tagline}</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><Button href={form ?? wa ?? '#kontak-spmb'} external={Boolean(form || wa)}>{form ? `Isi Formulir ${label}` : wa ? `Tanya SPMB ${label} via WhatsApp` : 'Informasi Kontak Panitia'}</Button><Button href={`/${level.id}`} variant="outline">Kenali {label}</Button></div></div>
+    <aside aria-label="Status informasi penerimaan" class="rounded-2xl border border-line bg-white p-6 shadow-sm md:p-8"><p class="brand-eyebrow text-brand">Status penerimaan</p><h2 class="mt-4 text-2xl font-bold text-ink">{admissions.status}</h2><dl class="mt-6 divide-y divide-line text-sm">{[{ title: 'Jadwal & gelombang', values: admissions.schedules }, { title: 'Biaya pendidikan', values: admissions.fees }, { title: 'Persyaratan', values: requirements }].map(item => <div class="py-4"><dt class="font-bold text-ink">{item.title}</dt><dd class="mt-2 leading-relaxed text-muted">{item.values.length ? item.values.join(' · ') : admissions.status}</dd></div>)}</dl><p class="mt-4 text-sm leading-relaxed text-muted">Formulir pendaftaran resmi {form ? 'tersedia melalui tombol pada halaman ini.' : 'belum dipublikasikan pada halaman ini.'}</p></aside>
+  </div></Container></section>
+  <Section><Container><p class="brand-eyebrow text-brand">Kenali kekhasan {label}</p><h2 class="brand-heading mt-4 max-w-3xl text-ink">{level.headline}</h2>{level.developmentNote && <p class="mt-4 font-semibold text-digital">{level.developmentNote}</p>}<div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">{level.programs.map(item => <article class="rounded-xl border border-line p-6"><IconBox icon={item.icon} /><h3 class="mt-5 text-xl font-bold text-ink">{item.title}</h3><p class="mt-3 leading-relaxed text-muted">{item.description}</p></article>)}</div></Container></Section>
+  <Section id="alur-pendaftaran" class="bg-brand-soft"><Container><p class="brand-eyebrow text-brand">Tahapan pendaftaran</p><h2 class="brand-heading mt-4 max-w-3xl text-ink">{admissions.stepsTitle}</h2><p class="mt-5 max-w-3xl leading-relaxed text-muted">{admissions.stepsNote}</p><ol class="mt-10 grid gap-6 md:grid-cols-3">{admissions.steps.map((step, index) => <li class="rounded-xl border border-line bg-white p-6"><p class="text-sm font-semibold text-brand">Langkah {index + 1}</p><h3 class="mt-4 text-xl font-bold text-ink">{step.title}</h3><p class="mt-3 leading-relaxed text-muted">{step.description}</p></li>)}</ol></Container></Section>
+  <Section id="persyaratan"><Container class="grid gap-10 lg:grid-cols-2"><div><p class="brand-eyebrow text-brand">Persyaratan {label}</p><h2 class="brand-heading mt-4 text-ink">Siapkan setelah informasi resmi tersedia.</h2><p class="mt-5 leading-relaxed text-muted">{requirements.length ? 'Daftar persyaratan yang telah disahkan panitia:' : 'Persyaratan pendaftaran 2027/2028 akan diumumkan setelah dikonfirmasi panitia. Ketentuan tahun sebelumnya tidak otomatis berlaku.'}</p>{requirements.length > 0 && <ul class="mt-5 list-inside list-disc space-y-3 text-muted">{requirements.map(item => <li>{item}</li>)}</ul>}</div><div class="rounded-xl border border-line bg-cream p-6"><h3 class="text-xl font-bold text-ink">Informasi yang perlu dikonfirmasi</h3><ul class="mt-5 space-y-3 leading-relaxed text-muted"><li>Jadwal, ketentuan usia, dan jenjang asal.</li><li>Dokumen, biaya, dan mekanisme pendaftaran.</li><li>Kesiapan program serta jadwal kegiatan belajar.</li></ul><Button href="#kontak-spmb" variant="outline" class="mt-6">Lihat Kontak Panitia</Button></div></Container></Section>
+  <Section class="bg-brand-soft"><Container size="narrow"><p class="brand-eyebrow text-brand">FAQ SPMB {label}</p><h2 class="brand-heading mt-4 text-ink">Yang ingin diketahui orang tua.</h2><div class="mt-8 space-y-4">{faq.map(item => <FAQItem {...item} />)}</div></Container></Section>
+  <Section id="kontak-spmb"><Container><div id="kontak-ppdb" class="rounded-2xl bg-brand p-6 text-white md:p-10"><p class="brand-eyebrow text-gold">{admissions.contactLabel}</p><h2 class="brand-heading mt-4 max-w-3xl">Diskusikan langkah berikutnya untuk putra-putri Anda.</h2><p class="mt-5 max-w-2xl leading-relaxed">{wa || email ? 'Hubungi kanal resmi madrasah untuk meminta informasi dan kontak panitia SPMB sesuai jenjang.' : admissions.missingContact}</p><p class="mt-5 leading-relaxed">{contactConfig.address}, {contactConfig.city}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row">{wa && <Button href={wa} external variant="accent">WhatsApp Panitia {label}</Button>}{email && <Button href={email} variant="outline">Email Madrasah</Button>}<Button href="/contact#informasi-kontak" variant="outline">Lihat Halaman Kontak</Button></div></div><div class="mt-8 flex flex-wrap gap-6 text-sm font-semibold text-brand"><a href="/ppdb" class="min-h-11 rounded py-3 underline underline-offset-4 focus-ring">Pilihan Jenjang SPMB</a><a href="/kurikulum" class="min-h-11 rounded py-3 underline underline-offset-4 focus-ring">Pelajari Kurikulum KFLF</a></div></Container></Section>
+</MainLayout>

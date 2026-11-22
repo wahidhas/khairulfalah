@@ -5,7 +5,7 @@ export const transformationCta: CTASection = {
     title: 'Bergabung dalam Perjalanan Transformasi Khairul Falah',
   },
   primaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'primary',
   },

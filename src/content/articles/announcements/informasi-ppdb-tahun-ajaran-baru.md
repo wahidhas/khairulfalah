@@ -1,26 +1,34 @@
 ---
-title: Informasi PPDB Tahun Ajaran Baru
-description: Pengumuman pembukaan Penerimaan Peserta Didik Baru (PPDB) Madrasah Khairul Falah beserta alur pendaftarannya.
+title: Informasi SPMB Tahun Pelajaran 2027/2028
+description: Pusat informasi SPMB Khairul Falah 2027/2028 untuk jenjang MI dan MTs. Jadwal dan ketentuan akan diumumkan setelah disahkan panitia.
 publishDate: 2026-07-01
+updatedDate: 2026-11-22
 author: Admin Madrasah
 category: Announcements
 featured: true
 image:
   src: /images/articles/informasi-ppdb-tahun-ajaran-baru/cover.webp
-  alt: Informasi PPDB Madrasah Khairul Falah
+  alt: Informasi SPMB Madrasah Khairul Falah
 tags:
-  - ppdb
+  - spmb
   - pengumuman
 ---
 
-Madrasah Khairul Falah membuka **Penerimaan Peserta Didik Baru (PPDB)** untuk tahun ajaran mendatang.
+Informasi penerimaan Tahun Pelajaran **2027/2028** menggunakan istilah **SPMB**. URL informasi sebelumnya tetap dapat diakses.
 
-## Alur Pendaftaran
+## Pilih Jenjang Pendidikan
 
-Alur pendaftaran, persyaratan dokumen, serta informasi biaya dapat dilihat secara lengkap di halaman [PPDB](/ppdb).
+- [MI Khairul Falah — Madrasah Adab & Life Skills](/mi): Beradab • Mandiri • Terampil.
+- [MTs Khairul Falah — Madrasah Digital Creator](/mts): Beradab • Kreatif • Produktif.
+
+Kedua jenjang berlandaskan Al-Qur’an dan adab, dalam satu filosofi Yayasan Khairul Falah: **DIBENTUK, bukan hanya diajar.**
+
+## Informasi Pendaftaran
+
+Jadwal, biaya, kuota, persyaratan, dan formulir 2027/2028 **akan diumumkan** setelah disahkan panitia. Halaman ini tidak menyatakan pendaftaran sudah dibuka.
+
+Kunjungi [pusat informasi SPMB](/ppdb), [SPMB MI](/spmb/mi), atau [SPMB MTs](/spmb/mts).
 
 ## Kontak Panitia
 
-Untuk pertanyaan lebih lanjut, silakan hubungi panitia PPDB melalui kanal kontak yang tersedia di halaman [PPDB](/ppdb#kontak-ppdb).
-
-*Jadwal pasti pembukaan pendaftaran akan diinformasikan lebih lanjut oleh panitia.*
+Gunakan kanal resmi pada [halaman Kontak](/contact) untuk memperoleh informasi terbaru.

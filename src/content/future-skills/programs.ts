@@ -1,9 +1,9 @@
 import type { SkillProgram, SectionHeader } from '../../types';
 
 export const programsHeader: SectionHeader = {
-  badge: 'Program Unggulan',
+  badge: 'Program Pendukung',
   title: 'Featured Programs',
-  description: 'Program pilihan yang mengasah keterampilan masa depan siswa.',
+  description: 'Pilihan pengembangan keterampilan pendukung. Ketersediaan, usia peserta, dan jadwal setiap program akan dikonfirmasi oleh madrasah.',
 };
 
 /** duration & ageRange sengaja placeholder — jadwal dan rentang usia resmi menyusul dari tim program. */

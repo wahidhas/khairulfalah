@@ -23,7 +23,7 @@ export const newDirection: FeatureCard[] = [
     id: 'future-skills',
     icon: 'cpu',
     title: 'Future Skills',
-    description: 'Pembekalan keterampilan masa depan seperti AI Literacy, Coding, dan Robotics.',
+    description: 'MI menguatkan life skills dengan dukungan sains dan teknologi; MTs mengembangkan arah Digital Creator berlandaskan Al-Qur’an dan adab.',
   },
   {
     id: 'leadership',

@@ -13,7 +13,7 @@ export const contactFaq: FAQ[] = [
     id: 'cara-mendaftar',
     question: 'Bagaimana cara mendaftar?',
     answer:
-      'Alur pendaftaran lengkap tersedia di halaman PPDB. Anda juga dapat menghubungi panitia PPDB melalui kanal kontak pada halaman ini untuk pendampingan langsung.',
+      'Alur pendaftaran lengkap tersedia di halaman SPMB. Anda juga dapat menghubungi panitia SPMB melalui kanal kontak pada halaman ini untuk pendampingan langsung.',
   },
   {
     id: 'survei-sekolah',
@@ -23,9 +23,9 @@ export const contactFaq: FAQ[] = [
   },
   {
     id: 'hubungi-panitia-ppdb',
-    question: 'Bagaimana menghubungi panitia PPDB?',
+    question: 'Bagaimana menghubungi panitia SPMB?',
     answer:
-      'Panitia PPDB dapat dihubungi melalui WhatsApp, telepon, atau email yang tercantum pada bagian Informasi Kontak di halaman ini.',
+      'Panitia SPMB dapat dihubungi melalui WhatsApp, telepon, atau email yang tercantum pada bagian Informasi Kontak di halaman ini.',
   },
   {
     id: 'pindahan',

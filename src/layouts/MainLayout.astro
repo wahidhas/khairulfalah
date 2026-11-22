@@ -16,7 +16,7 @@ const {
   title,
   description = seoConfig.defaultDescription,
   image = seoConfig.defaultImage,
-  noindex = false,
+  noindex = process.env.VERCEL_ENV === 'preview',
 } = Astro.props;
 
 const pageTitle = buildPageTitle(title);
@@ -51,6 +51,7 @@ const clarityId = import.meta.env.PUBLIC_CLARITY_ID;
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={siteConfig.locale} />
     {imageUrl && <meta property="og:image" content={imageUrl} />}
+    {imageUrl && <meta property="og:image:alt" content="Yayasan Khairul Falah — DIBENTUK, bukan hanya diajar. MI Adab & Life Skills · MTs Digital Creator." />}
 
     <meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={pageTitle} />

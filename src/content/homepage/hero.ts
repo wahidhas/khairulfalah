@@ -16,7 +16,7 @@ export const hero: HeroContent = {
       'Madrasah Khairul Falah memadukan pendidikan Islam yang kokoh dengan kompetensi masa depan untuk membentuk karakter dan kesiapan siswa menghadapi dunia yang terus berubah.',
   },
   primaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'primary',
   },

@@ -5,7 +5,7 @@ import { whatsappHref, phoneHref, emailHref } from '../../lib/contact';
 export const contactInfoHeader: SectionHeader = {
   badge: 'Kontak',
   title: 'Informasi Kontak',
-  description: 'Hubungi kami melalui kanal berikut untuk pertanyaan seputar madrasah dan PPDB.',
+  description: 'Hubungi kami melalui kanal berikut untuk pertanyaan seputar madrasah dan SPMB.',
 };
 
 /**

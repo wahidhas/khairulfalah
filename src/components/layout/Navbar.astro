@@ -3,57 +3,31 @@ import Container from './Container.astro';
 import MobileMenu from './MobileMenu.astro';
 import Button from '../ui/Button.astro';
 import { iconRegistry } from '../../lib/icons';
-import { mainNavItems, navCta, siteConfig } from '../../config';
-
+import { imageExists } from '../../lib/images';
+import { mainNavItems, navCta, brandingConfig } from '../../config';
 const Menu = iconRegistry.menu;
-
-const currentPath = Astro.url.pathname;
-
-function isActive(href: string): boolean {
-  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
-}
+const Chevron = iconRegistry['chevron-down'];
+const path = Astro.url.pathname;
+const isActive = (href: string) => href === '/' ? path === '/' : path === href || path.startsWith(href + '/') || (href === '/ppdb' && path.startsWith('/spmb/'));
 ---
-
-<header class="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur">
-  <Container class="flex h-16 items-center justify-between md:h-20">
-    <a
-      href="/"
-      class="rounded-lg text-lg font-bold text-emerald-700 focus-ring md:text-xl"
-    >
-      {siteConfig.siteName}
+<header class="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
+  <Container class="flex min-h-20 items-center justify-between gap-4 py-3">
+    <a href="/" aria-label="Yayasan Khairul Falah, Beranda" class="flex shrink-0 items-center gap-3 rounded-lg text-brand focus-ring">
+      {imageExists(brandingConfig.logo) && <img src={brandingConfig.logo} alt={brandingConfig.logoAlt} width="44" height="44" class="h-11 w-11 object-contain" />}
+      <span><span class="block text-sm font-medium tracking-wide">YAYASAN</span><span class="block text-lg font-bold tracking-tight">Khairul Falah<span class="text-brand">.</span></span></span>
     </a>
-
-    <nav aria-label="Navigasi utama" class="hidden items-center gap-8 lg:flex">
-      <ul class="flex items-center gap-6">
-        {mainNavItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              aria-current={isActive(item.href) ? 'page' : undefined}
-              class:list={[
-                'rounded-lg text-sm font-medium transition-colors hover:text-emerald-700 focus-ring',
-                isActive(item.href) ? 'text-emerald-700' : 'text-gray-700',
-              ]}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+    <nav aria-label="Navigasi utama" class="hidden items-center gap-4 xl:flex">
+      <ul class="flex items-center gap-3">
+        {mainNavItems.map(item => <li>{item.children ? <details class="group relative" data-level-menu><summary class="flex min-h-11 cursor-pointer list-none items-center gap-1 rounded-lg text-sm font-medium text-ink focus-ring [&::-webkit-details-marker]:hidden">{item.label}<Chevron size={16} aria-hidden="true" class="transition-transform group-open:rotate-180" /></summary><ul class="absolute left-0 top-full w-72 rounded-xl border border-line bg-white p-2 shadow-lg">{item.children.map(child => <li><a href={child.href} aria-current={isActive(child.href) ? 'page' : undefined} class="block rounded-lg px-4 py-3 text-sm font-medium text-ink hover:bg-brand-soft focus-ring">{child.label}</a></li>)}</ul></details> : <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined} class:list={['flex min-h-11 items-center rounded-lg text-sm font-medium hover:text-brand focus-ring', isActive(item.href) ? 'text-brand underline underline-offset-8' : 'text-ink']}>{item.label}</a>}</li>)}
       </ul>
       <Button href={navCta.href} size="sm">{navCta.label}</Button>
     </nav>
-
-    <button
-      type="button"
-      id="mobile-menu-trigger"
-      aria-haspopup="dialog"
-      aria-controls="mobile-menu"
-      aria-label="Buka menu navigasi"
-      class="inline-flex items-center justify-center rounded-lg p-2 text-gray-700 hover:bg-gray-100 focus-ring lg:hidden"
-    >
-      <Menu size={24} aria-hidden="true" />
-    </button>
+    <div class="flex items-center gap-3 xl:hidden"><Button href={navCta.href} size="sm" class="hidden sm:inline-flex">{navCta.label}</Button><button type="button" id="mobile-menu-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu navigasi" class="flex h-11 w-11 items-center justify-center rounded-lg text-brand hover:bg-brand-soft focus-ring"><Menu size={24} aria-hidden="true" /></button></div>
   </Container>
 </header>
-
 <MobileMenu items={mainNavItems} cta={navCta} />
+<script>
+  const menus = document.querySelectorAll<HTMLDetailsElement>('[data-level-menu]');
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') menus.forEach(menu => { if (menu.open) { menu.open = false; menu.querySelector('summary')?.focus(); } }); });
+  document.addEventListener('click', event => menus.forEach(menu => { if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false; }));
+</script>

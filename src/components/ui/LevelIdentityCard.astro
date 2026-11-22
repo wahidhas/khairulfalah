@@ -1,0 +1,19 @@
+---
+import Button from './Button.astro';
+import ActivityMedia from './ActivityMedia.astro';
+import { imageExists } from '../../lib/images';
+import type { LevelContent } from '../../types/levels';
+interface Props { level: LevelContent; admission?: boolean }
+const { level, admission = false } = Astro.props;
+const logo = `/images/logos/${level.id}.png`;
+---
+<article class="flex min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-white text-ink shadow-sm">
+  <div class="p-3 pb-0"><ActivityMedia src={level.photo} alt={level.photoAlt} label={level.photoLabel} icon={level.icon} theme={level.id} /></div>
+  <div class="flex flex-1 flex-col p-6 md:p-8">
+    <div class="flex items-center gap-3">{imageExists(logo) && <img src={logo} alt={`Logo resmi ${level.name}`} width="48" height="48" loading="lazy" class="h-12 w-12 object-contain" />}<h3 class="text-2xl font-bold tracking-tight">{level.name}</h3></div>
+    <p class:list={['mt-3 self-start rounded-lg px-3 py-2 text-sm font-semibold', level.id === 'mi' ? 'bg-brand-soft text-brand' : 'bg-digital-soft text-digital']}>{level.identity}</p>
+    <p class="mt-4 text-base leading-relaxed text-muted">{level.summary}</p>
+    <p class="mb-6 mt-4 text-sm font-semibold text-brand">{level.tagline}</p>
+    <div class="mt-auto flex flex-wrap items-center gap-4"><Button href={admission ? `/spmb/${level.id}` : `/${level.id}`} class="w-full sm:w-auto">{admission ? `Daftar ${level.id === 'mi' ? 'MI' : 'MTs'} 2027/2028` : `Jelajahi ${level.id === 'mi' ? 'MI' : 'MTs'}`}</Button><span class="text-sm text-muted">{admission ? 'Informasi penerimaan' : 'Kenali ruang tumbuhnya'}</span></div>
+  </div>
+</article>

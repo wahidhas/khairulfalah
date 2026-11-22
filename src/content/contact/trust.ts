@@ -9,7 +9,7 @@ export const trustHeader: SectionHeader = {
  * Tidak ada di daftar folder eksplisit Sprint 9, tapi brief secara eksplisit menjelaskan
  * section "Trust Builder" ini secara rinci (pola sama seperti why-choose.ts Sprint 7) —
  * dibuat file sendiri agar tetap "tidak ada hardcoded content". Keempat poin merujuk program
- * yang sudah dibangun di sprint sebelumnya (Kurikulum, Student Life, Future Skills, PPDB) —
+ * yang sudah dibangun di sprint sebelumnya (Kurikulum, Student Life, Future Skills, SPMB) —
  * bukan klaim baru.
  */
 export const trust: FeatureCard[] = [

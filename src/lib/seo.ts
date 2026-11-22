@@ -1,8 +1,25 @@
 import { seoConfig, siteConfig, socialConfig, brandingConfig } from '../config';
 import type { NavigationItem, FAQ } from '../types';
+import { imageExists } from './images';
+import type { LevelContent } from '../types/levels';
+
+export function buildSchoolSchema(level: LevelContent, site: URL | undefined) {
+  const url = getCanonicalUrl(site, `/${level.id}`);
+  const logo = `/images/logos/${level.id}.png`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'School',
+    '@id': `${url}#school`,
+    name: level.name,
+    description: level.seoDescription,
+    url,
+    parentOrganization: { '@type': 'Organization', name: siteConfig.siteName, url: getCanonicalUrl(site, '/') },
+    ...(imageExists(logo) ? { logo: getCanonicalUrl(site, logo) } : {}),
+  };
+}
 
 export function buildPageTitle(title: string): string {
-  return title === seoConfig.defaultTitle ? title : seoConfig.titleTemplate.replace('%s', title);
+  return title === seoConfig.defaultTitle || title.includes(' | ') ? title : seoConfig.titleTemplate.replace('%s', title);
 }
 
 export function getCanonicalUrl(site: URL | undefined, pathname: string): string {
@@ -29,7 +46,7 @@ export function buildOrganizationSchema(site: URL | undefined) {
     name: siteConfig.siteName,
     url,
     description: siteConfig.description,
-    ...(brandingConfig.logo ? { logo: new URL(brandingConfig.logo, url).toString() } : {}),
+    ...(imageExists(brandingConfig.logo) ? { logo: new URL(brandingConfig.logo, url).toString() } : {}),
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 }
@@ -83,7 +100,7 @@ export function buildArticleSchema(input: ArticleSchemaInput, site: URL | undefi
     publisher: {
       '@type': 'Organization',
       name: siteConfig.siteName,
-      ...(brandingConfig.logo
+      ...(imageExists(brandingConfig.logo)
         ? { logo: { '@type': 'ImageObject', url: getCanonicalUrl(site, brandingConfig.logo) } }
         : {}),
     },

@@ -17,14 +17,14 @@ export interface SiteConfig {
  * terpisah (lihat komentar di sana) agar `Astro.site` tidak pernah berbeda dari nilai ini.
  */
 export const siteConfig: SiteConfig = {
-  siteName: 'Madrasah Khairul Falah',
+  siteName: 'Yayasan Khairul Falah',
   shortName: 'Khairul Falah',
-  tagline: '[Tagline resmi akan diperbarui]',
+  tagline: 'DIBENTUK, bukan hanya diajar.',
   description:
-    'Website resmi Madrasah Khairul Falah, lembaga pendidikan Islam yang membangun karakter dan kompetensi masa depan siswa.',
-  domain: import.meta.env.PUBLIC_SITE_URL || 'https://khairulfalah.example',
+    'Melahirkan generasi beriman, berakhlak mulia, dan memberi dampak nyata bagi masyarakat.',
+  domain: import.meta.env.PUBLIC_SITE_URL || 'https://khairulfalah.my.id',
   locale: 'id_ID',
   timezone: 'Asia/Jakarta',
-  copyright: 'Madrasah Khairul Falah. Hak cipta dilindungi.',
+  copyright: 'Yayasan Khairul Falah. Hak cipta dilindungi.',
   foundedYear: null,
 };

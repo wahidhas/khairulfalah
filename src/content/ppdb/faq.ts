@@ -13,7 +13,7 @@ export const ppdbFaq: FAQ[] = [
     id: 'kapan-dibuka',
     question: 'Kapan pendaftaran dibuka?',
     answer:
-      'Jadwal resmi pembukaan PPDB diumumkan melalui kanal komunikasi madrasah. Silakan hubungi panitia PPDB untuk informasi periode terbaru.',
+      'Jadwal resmi pembukaan SPMB diumumkan melalui kanal komunikasi madrasah. Silakan hubungi panitia SPMB untuk informasi periode terbaru.',
   },
   {
     id: 'tes-masuk',
@@ -25,18 +25,18 @@ export const ppdbFaq: FAQ[] = [
     id: 'sistem-pembayaran',
     question: 'Bagaimana sistem pembayaran?',
     answer:
-      'Ketentuan dan mekanisme pembayaran dijelaskan oleh panitia PPDB saat proses pendaftaran. Silakan hubungi panitia untuk detailnya.',
+      'Ketentuan dan mekanisme pembayaran dijelaskan oleh panitia SPMB saat proses pendaftaran. Silakan hubungi panitia untuk detailnya.',
   },
   {
     id: 'cicilan',
     question: 'Apakah tersedia cicilan?',
     answer:
-      'Ketersediaan skema pembayaran bertahap mengikuti kebijakan yayasan yang berlaku. Silakan konfirmasikan langsung kepada panitia PPDB.',
+      'Ketersediaan skema pembayaran bertahap mengikuti kebijakan yayasan yang berlaku. Silakan konfirmasikan langsung kepada panitia SPMB.',
   },
   {
     id: 'hubungi-panitia',
     question: 'Bagaimana cara menghubungi panitia?',
     answer:
-      'Panitia PPDB dapat dihubungi melalui WhatsApp, telepon, atau email yang tercantum pada bagian Kontak PPDB di halaman ini.',
+      'Panitia SPMB dapat dihubungi melalui WhatsApp, telepon, atau email yang tercantum pada bagian Kontak SPMB di halaman ini.',
   },
 ];

@@ -1,52 +1,16 @@
 ---
-import Section from '../layout/Section.astro';
 import Container from '../layout/Container.astro';
-import { Button, SectionHeader, SmartImage } from '../ui';
-import { hero } from '../../content/homepage/hero';
+import Button from '../ui/Button.astro';
+import LevelIdentityCard from '../ui/LevelIdentityCard.astro';
+import { homeIdentity as content } from '../../content/homepage/identity';
+import { levels } from '../../content/levels';
 ---
-
-<Section class="bg-gray-50">
-  <Container class="grid items-center gap-12 lg:grid-cols-2">
-    <div>
-      <SectionHeader
-        as="h1"
-        align="left"
-        badge={hero.header.badge}
-        title={hero.header.title}
-        subtitle={hero.header.subtitle}
-        description={hero.header.description}
-      />
-      <div class="mt-8 flex flex-wrap gap-4">
-        <Button
-          href={hero.primaryCTA.href}
-          variant={hero.primaryCTA.variant}
-          external={hero.primaryCTA.external}
-        >
-          {hero.primaryCTA.label}
-        </Button>
-        {hero.secondaryCTA && (
-          <Button
-            href={hero.secondaryCTA.href}
-            variant={hero.secondaryCTA.variant}
-            external={hero.secondaryCTA.external}
-          >
-            {hero.secondaryCTA.label}
-          </Button>
-        )}
-      </div>
-    </div>
-
-    <div class="aspect-4/3 overflow-hidden rounded-2xl bg-gray-200">
-      <SmartImage
-        src={hero.image.src}
-        alt={hero.image.alt}
-        slot="homepage.hero"
-        width={1920}
-        height={1440}
-        loading="eager"
-        fetchpriority="high"
-        class="h-full w-full object-cover"
-      />
-    </div>
+<section class="bg-brand text-white">
+  <Container class="pb-16 pt-12 text-center md:pb-20 md:pt-20">
+    <p class="brand-eyebrow text-gold">{content.eyebrow}</p>
+    <h1 class="hero-heading mx-auto mt-6 max-w-5xl"><span class="block text-gold">{content.headline[0]}</span><span class="block">{content.headline[1]}</span></h1>
+    <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white md:text-lg">{content.intro}</p>
+    <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row"><Button href="#jenjang" variant="accent">{content.primaryCta}</Button><Button href="/ppdb" variant="inverse">{content.secondaryCta}</Button></div>
   </Container>
-</Section>
+  <Container id="jenjang" class="pb-12 md:pb-16"><h2 class="mb-6 text-center text-base font-medium text-white">{content.levelsLabel}</h2><div class="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">{levels.map(level => <LevelIdentityCard level={level} />)}</div></Container>
+</section>

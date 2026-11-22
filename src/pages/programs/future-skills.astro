@@ -1,4 +1,5 @@
 ---
+import GrowthPathsSection from '../../components/sections/GrowthPathsSection.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 import {
   FutureSkillsHeroSection,
@@ -29,6 +30,7 @@ const faqSchema = buildFAQSchema(futureSkillsFaq);
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
 
   <FutureSkillsHeroSection />
+  <GrowthPathsSection />
   <WhyFutureSkillsSection />
   <SkillsGridSection />
   <ProgramsSection />

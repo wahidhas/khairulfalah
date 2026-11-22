@@ -1,0 +1,28 @@
+---
+import Container from '../layout/Container.astro';
+import Button from '../ui/Button.astro';
+import Breadcrumb from '../ui/Breadcrumb.astro';
+import ActivityMedia from '../ui/ActivityMedia.astro';
+import { imageExists } from '../../lib/images';
+import type { LevelContent } from '../../types/levels';
+interface Props { level: LevelContent }
+const { level } = Astro.props;
+const logo = `/images/logos/${level.id}.png`;
+---
+<section class:list={['py-8 md:py-12', level.id === 'mi' ? 'bg-cream' : 'bg-digital-soft']}>
+  <Container>
+    <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: level.name, href: `/${level.id}` }]} />
+    <div class="grid items-center gap-10 py-10 lg:grid-cols-2 lg:gap-12 lg:py-12">
+      <div>
+        <div class="flex items-center gap-3">{imageExists(logo) && <img src={logo} alt={`Logo resmi ${level.name}`} width="56" height="56" class="h-14 w-14 object-contain" />}<p class="brand-eyebrow text-brand">{level.name}</p></div>
+        <p class:list={['mt-4 inline-flex rounded-lg px-3 py-2 text-sm font-semibold', level.id === 'mi' ? 'bg-sage text-brand' : 'bg-navy text-white']}>{level.identity}</p>
+        <h1 class="brand-heading mt-6 text-ink">{level.headline}</h1>
+        <p class="mt-6 text-base leading-relaxed text-muted md:text-lg">{level.description}</p>
+        <p class="mt-5 font-semibold text-brand">{level.tagline}</p>
+        {level.developmentNote && <p class="mt-5 rounded-lg border border-line bg-white p-3 text-sm font-medium text-digital">{level.developmentNote}</p>}
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row"><Button href={`/spmb/${level.id}`}>Daftar {level.id === 'mi' ? 'MI' : 'MTs'}</Button><Button href="#program" variant="outline">{level.secondaryCta}</Button></div>
+      </div>
+      <ActivityMedia src={level.photo} alt={level.photoAlt} label={level.photoLabel} icon={level.icon} theme={level.id} eager />
+    </div>
+  </Container>
+</section>

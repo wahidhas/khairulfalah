@@ -5,7 +5,7 @@ export const futureSkillsCta: CTASection = {
     title: 'Siapkan Anak Menjadi Pembelajar Masa Depan',
   },
   primaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'primary',
   },

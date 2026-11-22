@@ -15,7 +15,7 @@ export const seoConfig: SeoConfig = {
   defaultTitle: siteConfig.siteName,
   titleTemplate: `%s | ${siteConfig.siteName}`,
   defaultDescription: siteConfig.description,
-  defaultImage: '',
+  defaultImage: '/images/brand/social-preview.png',
   robots: 'index, follow',
   canonicalBase: siteConfig.domain,
   openGraphType: 'website',

@@ -14,7 +14,7 @@ export const contactHero: HeroContent = {
   header: {
     title: 'Hubungi Madrasah Khairul Falah',
     description:
-      'Kami siap membantu menjawab pertanyaan Anda mengenai program pendidikan dan PPDB.',
+      'Kami siap membantu menjawab pertanyaan Anda mengenai program pendidikan dan SPMB.',
   },
   breadcrumb: [
     { label: 'Beranda', href: '/' },
@@ -27,7 +27,7 @@ export const contactHero: HeroContent = {
     external: Boolean(realWhatsappHref),
   },
   secondaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'outline',
   },

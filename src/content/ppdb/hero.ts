@@ -1,7 +1,7 @@
 import type { HeroContent } from '../../types';
 
 /**
- * TODO: ganti image.src dengan foto kegiatan PPDB/madrasah resmi, bukan foto stok.
+ * TODO: ganti image.src dengan foto kegiatan SPMB/madrasah resmi, bukan foto stok.
  * Subheadline sengaja tidak menyebut tahun ajaran spesifik — tahun ajaran resmi
  * belum dikonfirmasi yayasan, jangan mengarang periode.
  *
@@ -12,12 +12,12 @@ import type { HeroContent } from '../../types';
  */
 export const ppdbHero: HeroContent = {
   header: {
-    title: 'PPDB Madrasah Khairul Falah',
+    title: 'SPMB Madrasah Khairul Falah',
     description: 'Pendaftaran peserta didik baru untuk tahun ajaran terbaru.',
   },
   breadcrumb: [
     { label: 'Beranda', href: '/' },
-    { label: 'PPDB', href: '/ppdb' },
+    { label: 'SPMB', href: '/ppdb' },
   ],
   primaryCTA: {
     label: 'Daftar Sekarang',

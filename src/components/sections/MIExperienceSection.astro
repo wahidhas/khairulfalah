@@ -1,0 +1,10 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import ProgramFeatureCard from '../ui/ProgramFeatureCard.astro';
+import { miExperience as content } from '../../content/levels/mi';
+---
+<Section class="bg-cream"><Container>
+  <div class="max-w-2xl"><p class="brand-eyebrow text-brand">{content.header.badge}</p><h2 class="brand-heading mt-4 text-ink">{content.header.title}</h2><p class="mt-5 leading-relaxed text-muted">{content.header.description}</p></div>
+  <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{content.items.map(feature => <ProgramFeatureCard feature={feature} />)}</div>
+</Container></Section>
