@@ -4,6 +4,7 @@ import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
 import { siteConfig, brandingConfig, seoConfig } from '../config';
 import { buildPageTitle, getCanonicalUrl } from '../lib/seo';
+import { imageExists } from '../lib/images';
 
 interface Props {
   title: string;
@@ -58,8 +59,12 @@ const clarityId = import.meta.env.PUBLIC_CLARITY_ID;
     <meta name="twitter:description" content={description} />
     {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
-    <link rel="icon" type="image/svg+xml" href={brandingConfig.favicon} />
-    <link rel="icon" href={brandingConfig.faviconIco} />
+    {imageExists(brandingConfig.favicon) ? (
+      <link rel="icon" type="image/svg+xml" href={brandingConfig.favicon} />
+    ) : imageExists(brandingConfig.logo) ? (
+      <link rel="icon" type="image/png" href={brandingConfig.logo} />
+    ) : <link rel="icon" href="data:," />}
+    {imageExists(brandingConfig.faviconIco) && <link rel="icon" href={brandingConfig.faviconIco} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

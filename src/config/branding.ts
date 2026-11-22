@@ -19,7 +19,7 @@ export const brandingConfig: BrandingConfig = {
   accentColor: '#FFD43B',
   logo: '/images/logos/yayasan.png',
   logoAlt: 'Logo resmi Yayasan Khairul Falah',
-  favicon: '/favicon.svg',
-  faviconIco: '/favicon.ico',
+  favicon: '/images/logos/favicon.svg',
+  faviconIco: '/images/logos/favicon.ico',
   defaultHeroImage: '',
 };
