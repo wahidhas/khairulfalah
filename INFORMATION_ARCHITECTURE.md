@@ -1,5 +1,11 @@
 # INFORMATION_ARCHITECTURE.md
 
+> Layanan Digital: empat kartu di beranda (`/#layanan-digital`) setelah Kegiatan & Karya,
+> sebelum CTA SPMB. Footer semua halaman memuat SAJADA MI, SAJADA MTs, Ruang Baca,
+> Laporan Infaq, dan Karya. Akses terkait juga tersedia di MI/MTs, Tentang Kami (Infaq),
+> serta Kegiatan & Karya (Karya). Alamat dan deskripsi dikelola dalam
+> `src/content/digital-services.ts`. Tautan aplikasi membuka tab baru; navigasi utama tetap lima menu.
+
 > Addendum 2027/2028: navigasi utama kini Beranda, Jenjang Pendidikan (MI, MTs, RA melalui admin), Kegiatan & Karya, Tentang Kami, dan Kontak. Ringkasan dan tautan Kurikulum KFLF tersedia di halaman Tentang Kami; SPMB diakses melalui tombol Daftar SPMB dan CTA penerimaan. Rute baru `/mi`, `/mts`, `/spmb/mi`, `/spmb/mts`; `/ppdb` tetap menjadi pusat SPMB. Rute lama tetap tersedia. Lihat [catatan redesign](docs/REDESIGN_2027_2028.md).
 
 # Website Resmi Madrasah Khairul Falah

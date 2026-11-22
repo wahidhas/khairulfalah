@@ -9,6 +9,7 @@ import GrowthPortalPreview from '../components/sections/GrowthPortalPreview.astr
 import MIGraduateSection from '../components/sections/MIGraduateSection.astro';
 import DigitalJourneySection from '../components/sections/DigitalJourneySection.astro';
 import PortfolioGallery from '../components/sections/PortfolioGallery.astro';
+import DigitalServicesSection from '../components/sections/DigitalServicesSection.astro';
 import { buildBreadcrumbSchema, buildSchoolSchema } from '../lib/seo';
 import type { LevelContent } from '../types/levels';
 interface Props { level: LevelContent }
@@ -22,5 +23,6 @@ const schoolSchema = buildSchoolSchema(level, Astro.site);
   <script type="application/ld+json" set:html={JSON.stringify(schoolSchema)} is:inline />
   <LevelHeroSection level={level} /><LevelProgramsSection level={level} />
   {level.id === 'mi' ? <><MIExperienceSection /><GrowthPortalPreview /><MIGraduateSection /></> : <><DigitalJourneySection /><SharedFoundationSection /><PortfolioGallery /></>}
+  <DigitalServicesSection context={level.id} />
   <AdmissionBanner level={level} />
 </MainLayout>

@@ -1,5 +1,6 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import DigitalServicesSection from '../components/sections/DigitalServicesSection.astro';
 import {
   AboutHeroSection,
   HistorySection,
@@ -31,5 +32,6 @@ const breadcrumbSchema = buildBreadcrumbSchema(aboutHero.breadcrumb, Astro.site)
   <LeadershipSection />
   <TeachersPreviewSection />
   <AchievementsSection />
+  <DigitalServicesSection context="about" />
   <FinalCTASection content={aboutFinalCta} />
 </MainLayout>

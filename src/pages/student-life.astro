@@ -1,5 +1,6 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import DigitalServicesSection from '../components/sections/DigitalServicesSection.astro';
 import {
   StudentLifeHeroSection,
   DailyLifeSection,
@@ -36,6 +37,7 @@ const faqSchema = buildFAQSchema(studentLifeFaq);
   <ProjectBasedLearningSection />
   <ExtracurricularSection />
   <GallerySection />
+  <DigitalServicesSection context="student-life" />
   <StudentLifeFAQSection />
   <StudentLifeCTASection />
 </MainLayout>
