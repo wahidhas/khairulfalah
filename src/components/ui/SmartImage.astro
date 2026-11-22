@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { resolveImage, resolveImageSlot, imageExists } from '../../lib/images';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   src: string | undefined;
@@ -38,9 +40,26 @@ const isPlaceholder = !imageExists(src);
 // Alt text tidak boleh mengklaim foto asli ketika yang tampil sebenarnya ilustrasi placeholder
 // (lihat IMAGE_GUIDE.md) — deskripsi konten dari content file hanya dipakai untuk foto asli.
 const resolvedAlt = isPlaceholder ? 'Ilustrasi — foto/dokumentasi asli belum tersedia' : alt;
+const aboutPhotos = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../public/images/about/*.{png,jpg,jpeg,webp}',
+  { eager: true },
+);
+const photoAsset = aboutPhotos[`../../../public${resolvedSrc}`]?.default;
 ---
 
-<img
+{photoAsset ? <Image
+  id={id}
+  src={photoAsset}
+  alt={resolvedAlt}
+  width={Math.min(width, photoAsset.width)}
+  widths={[480, 960, 1440]}
+  sizes="(min-width: 1280px) 1216px, (min-width: 1024px) calc(100vw - 64px), (min-width: 768px) calc(100vw - 48px), calc(100vw - 32px)"
+  format="webp"
+  loading={loading}
+  decoding="async"
+  fetchpriority={fetchpriority}
+  class={className}
+/> : <img
   id={id}
   src={resolvedSrc}
   alt={resolvedAlt}
@@ -50,4 +69,4 @@ const resolvedAlt = isPlaceholder ? 'Ilustrasi — foto/dokumentasi asli belum t
   decoding="async"
   fetchpriority={fetchpriority}
   class={className}
-/>
+/>}

@@ -1,6 +1,5 @@
 import type { PageHeroContent } from '../../types';
 
-/** TODO: ganti image.src dengan foto resmi madrasah (gedung/kegiatan), bukan foto stok. */
 export const aboutHero: PageHeroContent = {
   title: 'Tentang Madrasah Khairul Falah',
   description:
@@ -10,7 +9,7 @@ export const aboutHero: PageHeroContent = {
     { label: 'Tentang', href: '/about' },
   ],
   image: {
-    src: '/images/about/about.webp',
-    alt: 'Gedung dan kegiatan Madrasah Khairul Falah',
+    src: '/images/about/about.png',
+    alt: 'Visual Khairul Falah: pendidik mendampingi pelajar berkarya dengan kamera, laptop, dan tablet',
   },
 };
