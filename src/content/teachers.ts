@@ -33,6 +33,7 @@ export const staffDirectory: StaffProfile[] = [
   { id: 'endah-sri-utami', name: 'Endah Sri Utami, SE', role: 'Guru — Seni Budaya', unit: 'MI', group: 'mi', placeholder: false },
   { id: 'afrizal', name: 'Afrizal, S.Pd', role: 'Guru — B. Inggris', unit: 'MI', group: 'mi', placeholder: false },
   { id: 'jamaluddin', name: 'Jamaluddin, S.Pd.I', role: 'Guru', unit: 'MI', group: 'mi', placeholder: false },
+  { id: 'musaadah', name: "Dra. Musa'adah", role: 'Guru — B. Indonesia', unit: 'MI', group: 'mi', placeholder: false },
   { id: 'moh-jalaluddin', name: 'KH. Moh. Jalaluddin, S.Ag, M.Pd', role: 'Kepala Madrasah', unit: 'MTs', group: 'mts', placeholder: false },
   { id: 'jamilah-syairoh', name: 'Jamilah Syairoh, M.Pd', role: 'Wali Kelas IX', unit: 'MTs', group: 'mts', placeholder: false },
   { id: 'aripin', name: 'Ust. Aripin, S.Pd.I', role: 'Guru Fiqih & Mulok', unit: 'MTs', group: 'mts', placeholder: false },
