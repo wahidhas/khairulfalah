@@ -5,10 +5,10 @@ import { PersonCard, SectionHeader } from '../ui';
 import { leadershipHeader, leadership } from '../../content/about';
 ---
 
-<Section>
+<Section id="pimpinan">
   <Container>
     <SectionHeader {...leadershipHeader} />
-    <div class="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
+    <div class="mx-auto mt-10 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {leadership.map((person) => (
         <PersonCard
           name={person.name}
