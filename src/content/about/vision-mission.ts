@@ -11,7 +11,7 @@ export const visionMissionHeader: SectionHeader = {
  * tidak boleh dicampur. Visi-misi resmi madrasah menyusul dari yayasan.
  */
 export const visionMission: VisionMission = {
-  vision: '[Visi resmi madrasah akan diperbarui oleh yayasan]',
+  vision: 'Melahirkan generasi beriman, berakhlak mulia, dan memberi dampak nyata bagi masyarakat.',
   mission: [
     '[Poin misi 1 akan diperbarui oleh yayasan]',
     '[Poin misi 2 akan diperbarui oleh yayasan]',

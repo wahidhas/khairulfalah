@@ -1,0 +1,10 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { mtsJourney as content } from '../../content/levels/mts';
+import { iconRegistry } from '../../lib/icons';
+---
+<Section class="bg-navy text-white"><Container>
+  <div class="max-w-2xl"><p class="brand-eyebrow text-gold">{content.badge}</p><h2 class="brand-heading mt-4">{content.title}</h2><p class="mt-5 leading-relaxed">{content.description}</p></div>
+  <ol class="mt-10 grid gap-6 md:grid-cols-3">{content.items.map(item => { const Icon = iconRegistry[item.icon]; return <li class="rounded-xl border border-white/25 bg-digital p-6"><div class="flex items-center justify-between gap-3"><span class="rounded-lg bg-white px-3 py-2 text-sm font-bold text-navy">{item.label}</span><Icon size={24} class="text-gold" aria-hidden="true" /></div><h3 class="mt-8 text-2xl font-bold tracking-tight">{item.title}</h3><p class="mt-4 leading-relaxed">{item.description}</p></li>; })}</ol>
+</Container></Section>

@@ -12,7 +12,7 @@ export const feesNotice = 'Silakan hubungi sekolah untuk informasi terbaru.';
 /**
  * PENTING: seluruh `amount` WAJIB tetap berupa penanda placeholder.
  * CLAUDE.md Content Rules melarang mengarang angka — nominal biaya resmi hanya boleh
- * diisi setelah dikonfirmasi yayasan/panitia PPDB.
+ * diisi setelah dikonfirmasi yayasan/panitia SPMB.
  */
 export const fees: FeeItem[] = [
   {

@@ -6,7 +6,7 @@ export const finalCta: CTASection = {
     description: 'Mulai langkah pendidikan anak Anda bersama kami. Tim kami siap membantu proses pendaftaran.',
   },
   primaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'primary',
   },

@@ -1,5 +1,7 @@
 # Website Resmi Madrasah Khairul Falah
 
+> Redesign identitas 2027/2028: lihat [audit, sumber konten, aset, pengujian, dan keputusan publikasi](docs/REDESIGN_2027_2028.md). MI: Madrasah Adab & Life Skills. MTs: Madrasah Digital Creator. Filosofi Yayasan: **DIBENTUK, bukan hanya diajar.**
+
 > Website resmi Madrasah Khairul Falah yang dibangun menggunakan **Astro**, **TypeScript**, dan **Tailwind CSS** dengan fokus pada performa, aksesibilitas, SEO, dan pengalaman pengguna yang modern.
 
 ---

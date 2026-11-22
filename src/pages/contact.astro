@@ -31,7 +31,7 @@ const faqSchema = buildFAQSchema(contactFaq);
 */}
 <MainLayout
   title="Kontak"
-  description="Hubungi Madrasah Khairul Falah untuk informasi program pendidikan dan PPDB."
+  description="Hubungi Madrasah Khairul Falah untuk informasi program pendidikan dan SPMB 2027/2028."
 >
   {breadcrumbSchema && (
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
@@ -41,6 +41,7 @@ const faqSchema = buildFAQSchema(contactFaq);
   <ContactHeroSection />
   <TrustBuilderSection />
   <ContactInfoSection />
+  <section id="ra" class="bg-brand-soft py-12"><div class="mx-auto max-w-3xl px-4"><h2 class="brand-heading text-ink">Informasi jenjang RA</h2><p class="mt-4 leading-relaxed text-muted">Untuk informasi RA di lingkungan Yayasan Khairul Falah, silakan menghubungi admin melalui kanal resmi pada bagian Informasi Kontak. Rincian program dan penerimaannya akan diinformasikan oleh madrasah.</p><a href="#informasi-kontak" class="mt-5 inline-flex min-h-11 items-center rounded-lg font-semibold text-brand underline underline-offset-4 focus-ring">Lihat Kontak Admin</a></div></section>
   <LocationSection />
   <OfficeHoursSection />
   <ContactFAQSection />

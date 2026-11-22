@@ -5,7 +5,7 @@ export const curriculumFinalCta: CTASection = {
     title: 'Ingin melihat bagaimana anak belajar di Madrasah Khairul Falah?',
   },
   primaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'primary',
   },

@@ -4,6 +4,7 @@ export interface NavigationItem {
   external?: boolean;
   /** True bila halaman tujuan belum dibangun — dirender sebagai teks non-klik, bukan tautan rusak. */
   comingSoon?: boolean;
+  children?: NavigationItem[];
 }
 
 export interface FooterLink extends NavigationItem {}

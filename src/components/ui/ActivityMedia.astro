@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { imageExists } from '../../lib/images';
+import { iconRegistry } from '../../lib/icons';
+interface Props { src: string; alt: string; label: string; icon?: string; theme?: 'mi' | 'mts' | 'neutral'; eager?: boolean; class?: string }
+const { src, alt, label, icon = 'book-open', theme = 'neutral', eager = false, class: className } = Astro.props;
+const Icon = iconRegistry[icon];
+const exists = imageExists(src);
+const localPhotos = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../public/images/{mi,mts,gallery}/*.{png,jpg,jpeg,webp}',
+  { eager: true },
+);
+const photoAsset = localPhotos[`../../../public${src}`]?.default;
+const responsiveSources = [480, 960, 1440]
+  .map(width => ({ width, src: src.replace(/\.(webp|png|jpe?g)$/i, `-${width}.$1`) }))
+  .filter(candidate => imageExists(candidate.src))
+  .map(candidate => `${candidate.src} ${candidate.width}w`)
+  .join(', ');
+---
+<figure class:list={['relative flex aspect-[16/10] min-w-0 items-center justify-center overflow-hidden rounded-xl', theme === 'mts' ? 'digital-grid bg-navy text-white' : 'media-grid bg-sage text-brand', className]}>
+  {exists ? photoAsset ? (
+    <Image
+      src={photoAsset}
+      alt={alt}
+      width={1440}
+      widths={[480, 960, 1440]}
+      sizes="(min-width: 1280px) 600px, (min-width: 1024px) 45vw, calc(100vw - 32px)"
+      format="webp"
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      decoding="async"
+      class="absolute inset-0 h-full w-full object-contain"
+    />
+  ) : <img src={src} srcset={responsiveSources || undefined} sizes={responsiveSources ? '(min-width: 1280px) 600px, (min-width: 768px) 45vw, 100vw' : undefined} alt={alt} width="960" height="600" loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : 'auto'} decoding="async" class="absolute inset-0 h-full w-full object-cover" /> : <div class="relative flex max-w-sm flex-col items-center gap-4 p-6 text-center">
+    <span class:list={['flex h-16 w-16 items-center justify-center rounded-2xl shadow-sm', theme === 'mts' ? 'bg-digital text-gold' : 'bg-white text-brand']} aria-hidden="true">{Icon && <Icon size={32} />}</span>
+    <span class="text-lg font-semibold leading-snug">{label}</span>
+    <span class:list={['rounded-lg px-3 py-2 text-sm', theme === 'mts' ? 'bg-navy text-white' : 'bg-white text-brand']}>Foto kegiatan akan ditambahkan</span>
+  </div>}
+</figure>

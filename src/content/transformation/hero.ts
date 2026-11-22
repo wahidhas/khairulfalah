@@ -5,7 +5,7 @@ export const transformationHero: HeroContent = {
   header: {
     title: 'Transformasi Madrasah Khairul Falah',
     description:
-      'Membangun generasi muslim yang berakhlak, kompeten, dan siap menghadapi masa depan.',
+      'Melahirkan generasi beriman, berakhlak mulia, dan memberi dampak nyata bagi masyarakat. MI berfokus pada adab dan life skills; MTs mengarah pada pembentukan kreator digital yang beradab.',
   },
   breadcrumb: [
     { label: 'Beranda', href: '/' },
@@ -17,7 +17,7 @@ export const transformationHero: HeroContent = {
     variant: 'primary',
   },
   secondaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'outline',
   },

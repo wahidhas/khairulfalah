@@ -1,5 +1,7 @@
 # CONTENT_STRATEGY.md
 
+> Addendum 2027/2028: MI = Madrasah Adab & Life Skills (Beradab • Mandiri • Terampil); MTs = Madrasah Digital Creator (Beradab • Kreatif • Produktif). Keduanya berlandaskan Al-Qur’an dan adab. Filosofi Yayasan: **DIBENTUK, bukan hanya diajar.** Gunakan istilah SPMB dalam promosi terbaru, serta label pengembangan/rancangan untuk program yang belum berjalan. Lihat [catatan redesign](docs/REDESIGN_2027_2028.md).
+
 # Website Resmi Madrasah Khairul Falah
 
 Version 1.0

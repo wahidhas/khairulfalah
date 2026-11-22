@@ -5,7 +5,7 @@ export const aboutFinalCta: CTASection = {
     title: 'Ingin mengenal Madrasah Khairul Falah lebih dekat?',
   },
   primaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'primary',
   },

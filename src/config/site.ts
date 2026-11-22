@@ -12,19 +12,18 @@ export interface SiteConfig {
 
 /**
  * foundedYear: null — belum ada data resmi tahun berdiri dari yayasan.
- * domain dibaca dari PUBLIC_SITE_URL (lihat .env.example) — jatuh ke domain contoh saat
- * env var belum diisi (dev lokal). astro.config.mjs membaca env var yang sama secara
- * terpisah (lihat komentar di sana) agar `Astro.site` tidak pernah berbeda dari nilai ini.
+ * Domain canonical mengikuti domain yang dikonfirmasi dalam brief 2027/2028.
+ * Satu sumber ini juga dipakai astro.config.mjs; env lama tidak boleh mengalihkan SEO.
  */
 export const siteConfig: SiteConfig = {
-  siteName: 'Madrasah Khairul Falah',
+  siteName: 'Yayasan Khairul Falah',
   shortName: 'Khairul Falah',
-  tagline: '[Tagline resmi akan diperbarui]',
+  tagline: 'DIBENTUK, bukan hanya diajar.',
   description:
-    'Website resmi Madrasah Khairul Falah, lembaga pendidikan Islam yang membangun karakter dan kompetensi masa depan siswa.',
-  domain: import.meta.env.PUBLIC_SITE_URL || 'https://khairulfalah.example',
+    'Melahirkan generasi beriman, berakhlak mulia, dan memberi dampak nyata bagi masyarakat.',
+  domain: 'https://khairulfalah.my.id',
   locale: 'id_ID',
   timezone: 'Asia/Jakarta',
-  copyright: 'Madrasah Khairul Falah. Hak cipta dilindungi.',
+  copyright: 'Yayasan Khairul Falah. Hak cipta dilindungi.',
   foundedYear: null,
 };

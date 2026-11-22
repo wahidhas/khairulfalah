@@ -1,41 +1,25 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import {
-  HeroSection,
-  ValuePropositionSection,
-  AboutPreviewSection,
-  FeaturedProgramsSection,
-  KFLFPreviewSection,
-  FutureSkillsSection,
-  StudentLifeSection,
-  StatisticsSection,
-  TestimonialsSection,
-  FAQSection,
-  FinalCTASection,
-} from '../components/sections';
-import { siteConfig } from '../config';
-import { faq } from '../content/homepage/faq';
-import { buildOrganizationSchema, buildWebsiteSchema, buildFAQSchema } from '../lib/seo';
-
+import HeroSection from '../components/sections/HeroSection.astro';
+import FoundationHighlightsSection from '../components/sections/FoundationHighlightsSection.astro';
+import LevelChoicesSection from '../components/sections/LevelChoicesSection.astro';
+import AcademyNewsSection from '../components/sections/AcademyNewsSection.astro';
+import KFLFPreviewSection from '../components/sections/KFLFPreviewSection.astro';
+import StudentLifeSection from '../components/sections/StudentLifeSection.astro';
+import AdmissionBanner from '../components/sections/AdmissionBanner.astro';
+import { homeIdentity } from '../content/homepage/identity';
+import { buildOrganizationSchema, buildWebsiteSchema } from '../lib/seo';
 const organizationSchema = buildOrganizationSchema(Astro.site);
 const websiteSchema = buildWebsiteSchema(Astro.site);
-const faqSchema = buildFAQSchema(faq);
 ---
-
-<MainLayout title={siteConfig.siteName}>
+<MainLayout title={homeIdentity.title} description={homeIdentity.description}>
   <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline />
   <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
-
   <HeroSection />
-  <ValuePropositionSection />
-  <AboutPreviewSection />
-  <FeaturedProgramsSection />
+  <FoundationHighlightsSection />
+  <LevelChoicesSection />
+  <AcademyNewsSection />
   <KFLFPreviewSection />
-  <FutureSkillsSection />
   <StudentLifeSection />
-  <StatisticsSection />
-  <TestimonialsSection />
-  <FAQSection />
-  <FinalCTASection />
+  <AdmissionBanner compact />
 </MainLayout>

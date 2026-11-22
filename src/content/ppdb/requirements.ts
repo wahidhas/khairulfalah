@@ -4,7 +4,7 @@ export const requirementsHeader: SectionHeader = {
   badge: 'Berkas',
   title: 'Persyaratan',
   description:
-    'Berkas yang perlu disiapkan saat mendaftar. Ketentuan lengkap dapat dikonfirmasi ke panitia PPDB.',
+    'Berkas yang perlu disiapkan saat mendaftar. Ketentuan lengkap dapat dikonfirmasi ke panitia SPMB.',
 };
 
 /**

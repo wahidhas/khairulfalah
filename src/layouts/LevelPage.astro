@@ -1,0 +1,26 @@
+---
+import MainLayout from './MainLayout.astro';
+import LevelHeroSection from '../components/sections/LevelHeroSection.astro';
+import LevelProgramsSection from '../components/sections/LevelProgramsSection.astro';
+import SharedFoundationSection from '../components/sections/SharedFoundationSection.astro';
+import AdmissionBanner from '../components/sections/AdmissionBanner.astro';
+import MIExperienceSection from '../components/sections/MIExperienceSection.astro';
+import GrowthPortalPreview from '../components/sections/GrowthPortalPreview.astro';
+import MIGraduateSection from '../components/sections/MIGraduateSection.astro';
+import DigitalJourneySection from '../components/sections/DigitalJourneySection.astro';
+import PortfolioGallery from '../components/sections/PortfolioGallery.astro';
+import { buildBreadcrumbSchema, buildSchoolSchema } from '../lib/seo';
+import type { LevelContent } from '../types/levels';
+interface Props { level: LevelContent }
+const { level } = Astro.props;
+const crumbs = [{ label: 'Beranda', href: '/' }, { label: level.name, href: `/${level.id}` }];
+const breadcrumbSchema = buildBreadcrumbSchema(crumbs, Astro.site);
+const schoolSchema = buildSchoolSchema(level, Astro.site);
+---
+<MainLayout title={level.seoTitle} description={level.seoDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  <script type="application/ld+json" set:html={JSON.stringify(schoolSchema)} is:inline />
+  <LevelHeroSection level={level} /><LevelProgramsSection level={level} />
+  {level.id === 'mi' ? <><MIExperienceSection /><GrowthPortalPreview /><MIGraduateSection /></> : <><DigitalJourneySection /><SharedFoundationSection /><PortfolioGallery /></>}
+  <AdmissionBanner level={level} />
+</MainLayout>

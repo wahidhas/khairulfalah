@@ -1,0 +1,27 @@
+---
+import Container from './Container.astro';
+import { contactConfig, socialConfig } from '../../config';
+import { whatsappHref, emailHref } from '../../lib/contact';
+import { iconRegistry } from '../../lib/icons';
+
+const MapPin = iconRegistry['map-pin'];
+const Phone = iconRegistry.phone;
+const Mail = iconRegistry.mail;
+const wa = whatsappHref(contactConfig.whatsapp);
+const email = emailHref(contactConfig.email);
+const socials = Object.entries(socialConfig).filter(([, url]) => /^https:\/\//.test(url));
+---
+
+<div class="border-b border-line bg-surface text-muted">
+  <Container class="flex min-h-10 flex-wrap items-center justify-between gap-x-6 gap-y-2 py-2 text-sm">
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+      <a href="/contact#informasi-kontak" class="inline-flex items-center gap-2 rounded focus-ring">
+        <MapPin size={16} aria-hidden="true" />
+        <span>{contactConfig.address}, {contactConfig.city}</span>
+      </a>
+      {wa && <a href={wa} class="hidden items-center gap-2 rounded hover:text-brand focus-ring md:inline-flex"><Phone size={16} aria-hidden="true" />{contactConfig.whatsapp}</a>}
+      {email && <a href={email} class="hidden items-center gap-2 rounded hover:text-brand focus-ring lg:inline-flex"><Mail size={16} aria-hidden="true" />{contactConfig.email}</a>}
+    </div>
+    {socials.length > 0 ? <nav aria-label="Media sosial resmi" class="hidden items-center gap-4 lg:flex">{socials.map(([name, url]) => <a href={url} target="_blank" rel="noopener noreferrer" class="rounded capitalize hover:text-brand focus-ring">{name}</a>)}</nav> : <p class="hidden font-medium text-brand xl:block">Beradab · Mandiri · Berkarya</p>}
+  </Container>
+</div>

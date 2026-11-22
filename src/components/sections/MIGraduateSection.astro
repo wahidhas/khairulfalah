@@ -1,0 +1,11 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import { miGraduate as content } from '../../content/levels/mi';
+import { iconRegistry } from '../../lib/icons';
+const Check = iconRegistry['circle-check-big'];
+---
+<Section class="bg-brand-soft"><Container>
+  <div class="max-w-2xl"><p class="brand-eyebrow text-brand">{content.badge}</p><h2 class="brand-heading mt-4 text-ink">{content.title}</h2><p class="mt-5 leading-relaxed text-muted">{content.description}</p></div>
+  <ul class="mt-10 grid gap-4 md:grid-cols-2">{content.items.map(item => <li class="flex items-center gap-4 rounded-xl border border-line bg-white p-5 font-medium text-ink"><Check size={24} aria-hidden="true" class="shrink-0 text-brand" />{item}</li>)}</ul>
+</Container></Section>

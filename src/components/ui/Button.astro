@@ -1,5 +1,5 @@
 ---
-type Variant = 'primary' | 'secondary' | 'outline' | 'ghost';
+type Variant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'accent' | 'light' | 'inverse';
 type Size = 'sm' | 'md' | 'lg';
 
 interface Props {
@@ -27,7 +27,7 @@ const {
 } = Astro.props;
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition duration-200 focus-ring disabled:pointer-events-none disabled:opacity-50';
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-lg font-semibold transition duration-200 focus-ring disabled:pointer-events-none disabled:opacity-50';
 
 // "outline" mengikuti spesifikasi Content Model (types/content.ts). Secara visual identik
 // dengan "secondary" (border emerald) — DESIGN_SYSTEM.md hanya mendefinisikan 3 gaya tombol
@@ -38,10 +38,13 @@ const base =
 // hanya 3.65:1 (gagal WCAG AA 4.5:1, ditemukan sejak audit Sprint 1). emerald-700 = 5.36:1,
 // dan tetap dalam palet resmi DESIGN_SYSTEM.md ("Primary: emerald-600, emerald-700, emerald-800").
 const variants: Record<Variant, string> = {
-  primary: 'bg-emerald-700 text-white hover:bg-emerald-800',
-  secondary: 'border border-emerald-700 bg-white text-emerald-700 hover:bg-emerald-50',
-  outline: 'border border-emerald-700 bg-white text-emerald-700 hover:bg-emerald-50',
-  ghost: 'bg-transparent text-emerald-700 hover:bg-gray-100',
+  primary: 'bg-brand text-white hover:bg-brand-dark',
+  secondary: 'border border-brand bg-white text-brand hover:bg-brand-soft',
+  outline: 'border border-brand bg-white text-brand hover:bg-brand-soft',
+  ghost: 'bg-transparent text-brand hover:bg-brand-soft',
+  accent: 'bg-gold text-ink hover:bg-white',
+  light: 'border border-white bg-white text-brand hover:bg-brand-soft',
+  inverse: 'border border-white/50 bg-transparent text-white hover:bg-brand-dark',
 };
 
 const sizes: Record<Size, string> = {

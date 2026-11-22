@@ -1,5 +1,7 @@
 # INFORMATION_ARCHITECTURE.md
 
+> Addendum 2027/2028: navigasi utama kini Beranda, Jenjang Pendidikan (MI, MTs, RA melalui admin), Kegiatan & Karya, Tentang Kami, dan Kontak. Ringkasan dan tautan Kurikulum KFLF tersedia di halaman Tentang Kami; SPMB diakses melalui tombol Daftar SPMB dan CTA penerimaan. Rute baru `/mi`, `/mts`, `/spmb/mi`, `/spmb/mts`; `/ppdb` tetap menjadi pusat SPMB. Rute lama tetap tersedia. Lihat [catatan redesign](docs/REDESIGN_2027_2028.md).
+
 # Website Resmi Madrasah Khairul Falah
 
 Version 1.0

@@ -3,9 +3,9 @@ import type { HeroContent } from '../../types';
 /** TODO: ganti image.src dengan foto aktivitas belajar nyata, bukan foto stok. */
 export const curriculumHero: HeroContent = {
   header: {
-    title: 'Kurikulum yang Menumbuhkan Karakter, Kompetensi, dan Masa Depan',
+    title: 'KFLF: Dibentuk, Bukan Hanya Diajar.',
     description:
-      'Khairul Falah Learning Framework (KFLF) memadukan pembelajaran akademik, karakter Islami, dan kesiapan masa depan dalam satu kerangka kurikulum yang utuh.',
+      'Bukan hanya apa yang diajarkan, tetapi apa yang sekarang mampu dilakukan anak. KFLF memadukan Al-Qur’an, adab, literasi, numerasi, dan pengalaman nyata: MI membangun kemandirian dan life skills; MTs mengembangkan kreativitas dan karya digital.',
   },
   breadcrumb: [
     { label: 'Beranda', href: '/' },

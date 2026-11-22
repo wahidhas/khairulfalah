@@ -4,8 +4,8 @@ import { whatsappHref, phoneHref, emailHref } from '../../lib/contact';
 
 export const contactHeader: SectionHeader = {
   badge: 'Kontak',
-  title: 'Kontak PPDB',
-  description: 'Hubungi panitia PPDB untuk pertanyaan dan proses pendaftaran.',
+  title: 'Kontak SPMB',
+  description: 'Hubungi panitia SPMB untuk pertanyaan dan proses pendaftaran.',
 };
 
 /**

@@ -9,7 +9,9 @@ export const GET: APIRoute = ({ site }) => {
 
   const sitemapUrl = new URL('sitemap-index.xml', site).toString();
 
-  const body = `User-agent: *\nAllow: /\n\nSitemap: ${sitemapUrl}\n`;
+  const body = process.env.VERCEL_ENV === 'preview'
+    ? 'User-agent: *\nDisallow: /\n'
+    : `User-agent: *\nAllow: /\n\nSitemap: ${sitemapUrl}\n`;
 
   return new Response(body, {
     headers: { 'Content-Type': 'text/plain' },

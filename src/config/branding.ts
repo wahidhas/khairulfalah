@@ -10,17 +10,16 @@ export interface BrandingConfig {
 }
 
 /**
- * Warna diambil langsung dari token Design System (emerald-600, white, amber-500),
- * bukan nilai hex yang diciptakan bebas — lihat DESIGN_SYSTEM.md Color System.
- * logo & defaultHeroImage masih kosong: belum ada aset resmi dari yayasan.
+ * Identitas 2027/2028; warna CSS disimpan sebagai token semantik di global.css.
+ * Logo hanya dirender setelah file resmi tersedia. Tidak dibuat logo pengganti.
  */
 export const brandingConfig: BrandingConfig = {
-  primaryColor: '#009966',
+  primaryColor: '#075345',
   secondaryColor: '#ffffff',
-  accentColor: '#fe9a00',
-  logo: '',
-  logoAlt: 'Logo Madrasah Khairul Falah',
-  favicon: '/favicon.svg',
-  faviconIco: '/favicon.ico',
+  accentColor: '#FFD43B',
+  logo: '/images/logos/yayasan.png',
+  logoAlt: 'Logo resmi Yayasan Khairul Falah',
+  favicon: '/images/logos/favicon.svg',
+  faviconIco: '/images/logos/favicon.ico',
   defaultHeroImage: '',
 };

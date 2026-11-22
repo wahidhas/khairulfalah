@@ -1,0 +1,14 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import ProgramFeatureCard from '../ui/ProgramFeatureCard.astro';
+import { mtsSafety } from '../../content/levels/mts';
+import type { LevelContent } from '../../types/levels';
+interface Props { level: LevelContent }
+const { level } = Astro.props;
+---
+<Section id="program"><Container>
+  <div class="max-w-2xl"><p class="brand-eyebrow text-brand">{level.programHeader.badge}</p><h2 class="brand-heading mt-4 text-ink">{level.programHeader.title}</h2><p class="mt-5 leading-relaxed text-muted">{level.programHeader.description}</p></div>
+  <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">{level.programs.map(feature => <ProgramFeatureCard feature={feature} digital={level.id === 'mts'} />)}</div>
+  {level.id === 'mts' && <p class="mt-8 rounded-xl border border-line bg-digital-soft p-5 text-sm leading-relaxed text-digital">{mtsSafety}</p>}
+</Container></Section>

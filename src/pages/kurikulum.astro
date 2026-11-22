@@ -1,4 +1,5 @@
 ---
+import GrowthPathsSection from '../components/sections/GrowthPathsSection.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import {
   CurriculumHeroSection,
@@ -30,6 +31,7 @@ const faqSchema = buildFAQSchema(curriculumFaq);
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
 
   <CurriculumHeroSection />
+  <GrowthPathsSection />
   <PhilosophySection />
   <GraduateProfileSection />
   <LearningDomainsSection />

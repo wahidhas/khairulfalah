@@ -9,17 +9,17 @@ export const faq: FAQ[] = [
   {
     id: 'cara-mendaftar',
     question: 'Bagaimana cara mendaftar di Madrasah Khairul Falah?',
-    answer: 'Informasi alur pendaftaran lengkap dapat dilihat di halaman PPDB.',
+    answer: 'Informasi alur pendaftaran lengkap dapat dilihat di halaman SPMB.',
   },
   {
     id: 'syarat-pendaftaran',
     question: 'Apa saja persyaratan pendaftaran?',
-    answer: 'Persyaratan lengkap akan ditampilkan di halaman PPDB setelah tersedia.',
+    answer: 'Persyaratan lengkap akan ditampilkan di halaman SPMB setelah tersedia.',
   },
   {
     id: 'jadwal-ppdb',
-    question: 'Kapan jadwal PPDB dibuka?',
-    answer: 'Jadwal resmi akan diumumkan melalui halaman PPDB dan kanal komunikasi madrasah.',
+    question: 'Kapan jadwal SPMB dibuka?',
+    answer: 'Jadwal resmi akan diumumkan melalui halaman SPMB dan kanal komunikasi madrasah.',
   },
   {
     id: 'hubungi-admin',

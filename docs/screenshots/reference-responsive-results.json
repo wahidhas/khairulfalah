@@ -1,0 +1,380 @@
+[
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/",
+    "client": 305,
+    "h1": 1,
+    "route": "/",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mi/",
+    "client": 305,
+    "h1": 1,
+    "route": "/mi",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mts/",
+    "client": 305,
+    "h1": 1,
+    "route": "/mts",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/ppdb/",
+    "client": 305,
+    "h1": 1,
+    "route": "/ppdb",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mi/",
+    "client": 305,
+    "h1": 1,
+    "route": "/spmb/mi",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mts/",
+    "client": 305,
+    "h1": 1,
+    "route": "/spmb/mts",
+    "scroll": 305,
+    "width": 320
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/",
+    "client": 375,
+    "h1": 1,
+    "route": "/",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mi/",
+    "client": 375,
+    "h1": 1,
+    "route": "/mi",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mts/",
+    "client": 375,
+    "h1": 1,
+    "route": "/mts",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/ppdb/",
+    "client": 375,
+    "h1": 1,
+    "route": "/ppdb",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mi/",
+    "client": 375,
+    "h1": 1,
+    "route": "/spmb/mi",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mts/",
+    "client": 375,
+    "h1": 1,
+    "route": "/spmb/mts",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/",
+    "client": 753,
+    "h1": 1,
+    "route": "/",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mi/",
+    "client": 753,
+    "h1": 1,
+    "route": "/mi",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mts/",
+    "client": 753,
+    "h1": 1,
+    "route": "/mts",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/ppdb/",
+    "client": 753,
+    "h1": 1,
+    "route": "/ppdb",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mi/",
+    "client": 753,
+    "h1": 1,
+    "route": "/spmb/mi",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mts/",
+    "client": 753,
+    "h1": 1,
+    "route": "/spmb/mts",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/",
+    "client": 1009,
+    "h1": 1,
+    "route": "/",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mi/",
+    "client": 1009,
+    "h1": 1,
+    "route": "/mi",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mts/",
+    "client": 1009,
+    "h1": 1,
+    "route": "/mts",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/ppdb/",
+    "client": 1009,
+    "h1": 1,
+    "route": "/ppdb",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mi/",
+    "client": 1009,
+    "h1": 1,
+    "route": "/spmb/mi",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mts/",
+    "client": 1009,
+    "h1": 1,
+    "route": "/spmb/mts",
+    "scroll": 1009,
+    "width": 1024
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/",
+    "client": 1185,
+    "h1": 1,
+    "route": "/",
+    "scroll": 1185,
+    "width": 1200
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mi/",
+    "client": 1185,
+    "h1": 1,
+    "route": "/mi",
+    "scroll": 1185,
+    "width": 1200
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mts/",
+    "client": 1185,
+    "h1": 1,
+    "route": "/mts",
+    "scroll": 1185,
+    "width": 1200
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/ppdb/",
+    "client": 1185,
+    "h1": 1,
+    "route": "/ppdb",
+    "scroll": 1185,
+    "width": 1200
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mi/",
+    "client": 1185,
+    "h1": 1,
+    "route": "/spmb/mi",
+    "scroll": 1185,
+    "width": 1200
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mts/",
+    "client": 1185,
+    "h1": 1,
+    "route": "/spmb/mts",
+    "scroll": 1185,
+    "width": 1200
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/",
+    "client": 1265,
+    "h1": 1,
+    "route": "/",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mi/",
+    "client": 1265,
+    "h1": 1,
+    "route": "/mi",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mts/",
+    "client": 1265,
+    "h1": 1,
+    "route": "/mts",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/ppdb/",
+    "client": 1265,
+    "h1": 1,
+    "route": "/ppdb",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mi/",
+    "client": 1265,
+    "h1": 1,
+    "route": "/spmb/mi",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mts/",
+    "client": 1265,
+    "h1": 1,
+    "route": "/spmb/mts",
+    "scroll": 1265,
+    "width": 1280
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/",
+    "client": 1425,
+    "h1": 1,
+    "route": "/",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mi/",
+    "client": 1425,
+    "h1": 1,
+    "route": "/mi",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/mts/",
+    "client": 1425,
+    "h1": 1,
+    "route": "/mts",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/ppdb/",
+    "client": 1425,
+    "h1": 1,
+    "route": "/ppdb",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mi/",
+    "client": 1425,
+    "h1": 1,
+    "route": "/spmb/mi",
+    "scroll": 1425,
+    "width": 1440
+  },
+  {
+    "broken": 0,
+    "canonical": "https://khairulfalah.my.id/spmb/mts/",
+    "client": 1425,
+    "h1": 1,
+    "route": "/spmb/mts",
+    "scroll": 1425,
+    "width": 1440
+  }
+]

@@ -1,9 +1,12 @@
 ---
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import officialLogo from '../../public/images/logos/yayasan.png';
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
 import { siteConfig, brandingConfig, seoConfig } from '../config';
 import { buildPageTitle, getCanonicalUrl } from '../lib/seo';
+import { imageExists } from '../lib/images';
 
 interface Props {
   title: string;
@@ -16,12 +19,13 @@ const {
   title,
   description = seoConfig.defaultDescription,
   image = seoConfig.defaultImage,
-  noindex = false,
+  noindex = process.env.VERCEL_ENV === 'preview',
 } = Astro.props;
 
 const pageTitle = buildPageTitle(title);
 const canonicalUrl = getCanonicalUrl(Astro.site, Astro.url.pathname);
 const imageUrl = image ? getCanonicalUrl(Astro.site, image) : undefined;
+const foundationFavicon = await getImage({ src: officialLogo, width: 48, height: 48, format: 'png' });
 
 /**
  * Analytics (Sprint 10) — ID dari environment variable, TIDAK PERNAH hardcode. Script hanya
@@ -51,14 +55,19 @@ const clarityId = import.meta.env.PUBLIC_CLARITY_ID;
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={siteConfig.locale} />
     {imageUrl && <meta property="og:image" content={imageUrl} />}
+    {imageUrl && <meta property="og:image:alt" content="Yayasan Khairul Falah — DIBENTUK, bukan hanya diajar. MI Adab & Life Skills · MTs Digital Creator." />}
 
     <meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
-    <link rel="icon" type="image/svg+xml" href={brandingConfig.favicon} />
-    <link rel="icon" href={brandingConfig.faviconIco} />
+    {imageExists(brandingConfig.favicon) ? (
+      <link rel="icon" type="image/svg+xml" href={brandingConfig.favicon} />
+    ) : imageExists(brandingConfig.logo) ? (
+      <link rel="icon" type="image/png" href={foundationFavicon.src} />
+    ) : <link rel="icon" href="data:," />}
+    {imageExists(brandingConfig.faviconIco) && <link rel="icon" href={brandingConfig.faviconIco} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -2,7 +2,7 @@ import type { HeroContent } from '../../types';
 
 /**
  * TODO: ganti image.src dengan foto aktivitas siswa nyata, bukan foto stok.
- * primaryCTA = Daftar PPDB, konsisten dengan prioritas CTA situs (CONTENT_STRATEGY.md)
+ * primaryCTA = Daftar SPMB, konsisten dengan prioritas CTA situs (CONTENT_STRATEGY.md)
  * dan pola Hero Homepage/Future Skills.
  */
 export const studentLifeHero: HeroContent = {
@@ -16,7 +16,7 @@ export const studentLifeHero: HeroContent = {
     { label: 'Kehidupan Madrasah', href: '/student-life' },
   ],
   primaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'primary',
   },

@@ -1,0 +1,16 @@
+---
+import Container from '../layout/Container.astro';
+import LevelIdentityCard from '../ui/LevelIdentityCard.astro';
+import { levels } from '../../content/levels';
+import { academyHome as content } from '../../content/homepage/identity';
+---
+
+<section id="jenjang" class="py-12 md:py-16">
+  <Container>
+    <div class="mb-8 grid gap-5 lg:grid-cols-2 lg:items-end">
+      <div><p class="brand-eyebrow text-brand">{content.levelsEyebrow}</p><h2 class="brand-heading mt-3 max-w-xl text-ink">{content.levelsTitle}</h2></div>
+      <p class="max-w-xl leading-relaxed text-muted">{content.levelsIntro}</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">{levels.map(level => <LevelIdentityCard level={level} compact />)}</div>
+  </Container>
+</section>

@@ -12,7 +12,7 @@ export const admissionProcess: JourneyStep[] = [
     id: 'isi-formulir',
     label: 'Langkah 1',
     title: 'Isi Formulir',
-    description: 'Mengisi formulir pendaftaran yang disediakan panitia PPDB.',
+    description: 'Mengisi formulir pendaftaran yang disediakan panitia SPMB.',
   },
   {
     id: 'verifikasi-data',

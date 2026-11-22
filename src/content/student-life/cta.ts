@@ -5,7 +5,7 @@ export const studentLifeCta: CTASection = {
     title: 'Ingin Melihat Kehidupan Belajar Anak di Khairul Falah?',
   },
   primaryCTA: {
-    label: 'Daftar PPDB',
+    label: 'Daftar SPMB',
     href: '/ppdb',
     variant: 'primary',
   },
