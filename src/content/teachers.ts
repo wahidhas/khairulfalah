@@ -44,4 +44,5 @@ export const staffDirectory: StaffProfile[] = [
   { id: 'aprinah', name: 'Aprinah, S.Pd', role: 'Guru — PJOK', unit: 'MTs', group: 'mts', placeholder: false },
   { id: 'zultaman', name: 'Zultaman', role: 'Operator EMIS, Verval PD, dan RDM', unit: 'MI & MTs', group: 'tendik', placeholder: false },
   { id: 'widia-reisya-yulianti', name: 'Widia Reisya Yulianti, S.Ak', role: 'Administrasi dan pengelolaan data siswa', unit: 'MI & MTs', group: 'tendik', placeholder: false },
+  { id: 'siti-alfiah', name: 'Siti Alfiah', role: 'Tata Usaha & Keuangan', unit: 'MI & MTs', group: 'tendik', placeholder: false },
 ];
