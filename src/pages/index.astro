@@ -9,11 +9,15 @@ import StudentLifeSection from '../components/sections/StudentLifeSection.astro'
 import AdmissionBanner from '../components/sections/AdmissionBanner.astro';
 import DigitalServicesSection from '../components/sections/DigitalServicesSection.astro';
 import { homeIdentity } from '../content/homepage/identity';
+import { launch } from '../content/launch';
 import { buildOrganizationSchema, buildWebsiteSchema } from '../lib/seo';
 const organizationSchema = buildOrganizationSchema(Astro.site);
 const websiteSchema = buildWebsiteSchema(Astro.site);
 ---
 <MainLayout title={homeIdentity.title} description={homeIdentity.description}>
+  <script slot="head" define:vars={{ opensAt: launch.opensAt }}>
+    if (Date.now() < Date.parse(opensAt)) window.location.replace('/coming-soon');
+  </script>
   <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline />
   <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline />
   <HeroSection />

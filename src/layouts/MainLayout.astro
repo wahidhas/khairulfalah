@@ -13,6 +13,7 @@ interface Props {
   description?: string;
   image?: string;
   noindex?: boolean;
+  standalone?: boolean;
 }
 
 const {
@@ -20,6 +21,7 @@ const {
   description = seoConfig.defaultDescription,
   image = seoConfig.defaultImage,
   noindex = process.env.VERCEL_ENV === 'preview',
+  standalone = false,
 } = Astro.props;
 
 const pageTitle = buildPageTitle(title);
@@ -42,6 +44,7 @@ const clarityId = import.meta.env.PUBLIC_CLARITY_ID;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <slot name="head" />
 
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
@@ -125,12 +128,12 @@ const clarityId = import.meta.env.PUBLIC_CLARITY_ID;
       Lewati ke konten utama
     </a>
 
-    <Navbar />
+    {!standalone && <Navbar />}
 
     <main id="main-content" class="flex-1">
       <slot />
     </main>
 
-    <Footer />
+    {!standalone && <Footer />}
   </body>
 </html>
