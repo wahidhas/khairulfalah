@@ -1,14 +1,14 @@
 import type { PersonProfile } from '../types';
 
-export type StaffGroup = 'mi' | 'mts' | 'tendik';
+export type StaffGroup = 'mi' | 'mts' | 'tendik' | 'karyawan';
 export interface StaffProfile extends PersonProfile {
   group: StaffGroup;
-  unit: 'MI' | 'MTs' | 'MI & MTs';
+  unit?: 'MI' | 'MTs' | 'MI & MTs';
 }
 
 export const staffPage = {
   title: 'Guru & Tenaga Kependidikan',
-  description: 'Kenali guru MI, guru MTs, dan tenaga kependidikan yang mendampingi pembelajaran serta layanan di Khairul Falah.',
+  description: 'Kenali guru MI, guru MTs, tenaga kependidikan, dan karyawan yang mendampingi pembelajaran serta layanan di Khairul Falah.',
 };
 
 export const staffFilters = [
@@ -16,6 +16,7 @@ export const staffFilters = [
   { id: 'mi', label: 'MI' },
   { id: 'mts', label: 'MTs' },
   { id: 'tendik', label: 'Tendik' },
+  { id: 'karyawan', label: 'Karyawan' },
 ] as const;
 
 export const staffDirectory: StaffProfile[] = [
@@ -45,4 +46,7 @@ export const staffDirectory: StaffProfile[] = [
   { id: 'zultaman', name: 'Zultaman', role: 'Operator EMIS, Verval PD, dan RDM', unit: 'MI & MTs', group: 'tendik', placeholder: false },
   { id: 'widia-reisya-yulianti', name: 'Widia Reisya Yulianti, S.Ak', role: 'Administrasi dan pengelolaan data siswa', unit: 'MI & MTs', group: 'tendik', placeholder: false },
   { id: 'siti-alfiah', name: 'Siti Alfiah', role: 'Tata Usaha & Keuangan', unit: 'MI & MTs', group: 'tendik', placeholder: false },
+  { id: 'm-idrus', name: 'M IDRUS', role: 'Tenaga Keamanan', group: 'karyawan', placeholder: false },
+  { id: 'boim', name: 'BOIM', role: 'Tenaga Layanan Umum', group: 'karyawan', placeholder: false },
+  { id: 'maemunah', name: 'MAEMUNAH', role: 'Tenaga Kebersihan', group: 'karyawan', placeholder: false },
 ];
