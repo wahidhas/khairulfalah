@@ -8,7 +8,7 @@ import { staffDirectory, staffFilters } from '../../content/teachers';
 <Section id="daftar-guru" spacing="sm" class="bg-surface">
   <Container>
     <div data-staff-directory>
-      <div hidden data-staff-filters role="group" aria-label="Filter guru dan tenaga kependidikan" class="mb-6 flex flex-wrap gap-3">
+      <div hidden data-staff-filters role="group" aria-label="Filter guru, tenaga kependidikan, dan karyawan" class="mb-6 flex flex-wrap gap-3">
         {staffFilters.map(filter => (
           <button type="button" data-staff-filter={filter.id} aria-pressed={filter.id === 'all'} aria-controls="staff-list" class="inline-flex min-h-11 items-center gap-2 rounded-lg border border-brand bg-white px-5 py-3 text-sm font-semibold text-brand transition hover:bg-sage focus-ring aria-pressed:bg-brand aria-pressed:text-white">
             {filter.label}
@@ -16,7 +16,7 @@ import { staffDirectory, staffFilters } from '../../content/teachers';
           </button>
         ))}
       </div>
-      <p data-staff-count role="status" aria-live="polite" aria-atomic="true" class="mb-8 text-sm text-muted">Menampilkan {staffDirectory.length} guru dan tenaga kependidikan.</p>
+      <p data-staff-count role="status" aria-live="polite" aria-atomic="true" class="mb-8 text-sm text-muted">Menampilkan {staffDirectory.length} guru, tenaga kependidikan, dan karyawan.</p>
       <ul id="staff-list" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {staffDirectory.map(person => (
           <li data-staff-group={person.group}>
@@ -43,7 +43,8 @@ import { staffDirectory, staffFilters } from '../../content/teachers';
           if (!profile.hidden) visibleCount++;
         }
         for (const option of buttons) option.setAttribute('aria-pressed', String(option === button));
-        if (count) count.textContent = `Menampilkan ${visibleCount} guru dan tenaga kependidikan.`;
+        const category = filter === 'karyawan' ? 'karyawan' : filter === 'tendik' ? 'tenaga kependidikan' : filter === 'all' ? 'guru, tenaga kependidikan, dan karyawan' : 'guru';
+        if (count) count.textContent = `Menampilkan ${visibleCount} ${category}.`;
       });
     }
     directory.querySelector<HTMLElement>('[data-staff-filters]')?.removeAttribute('hidden');
